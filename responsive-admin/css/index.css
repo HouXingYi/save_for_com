@@ -61,8 +61,6 @@ body{
 }
 
 
-
-
 /*顶端导航*/
 .wrapper .top-nav{
     position: fixed;
@@ -99,9 +97,6 @@ body{
 }
 
 
-
-
-
 /*左侧导航*/
 .wrapper .side-bar{
     position: fixed;
@@ -121,34 +116,53 @@ body{
     overflow: hidden;
     position: relative;
     left: 0;
+    -webkit-transition: all  0.5s ;
+    -moz-transition: all  0.5s ;
+    transition: all  0.5s ;
 }
 .wrapper .side-bar .side-nav-box .side-nav-move .nav-group{
     float: left;
     width: 100px;    
 }
-
 .wrapper .side-bar .side-nav-box .side-nav-move .nav-group .side-item{
-    background: pink;
     width: 96px;
     height: 77px;
     margin: 0 auto;
+    text-align: center;
 }
-
 .wrapper .side-bar .side-nav-box .side-nav-move .nav-group .side-item .side-item-icon{
-
-    
-
+    margin-top: 10px;
 }
-
-.wrapper .side-bar .side-nav-box .side-nav-move .nav-group .side-item .side-item-icon{
-
-}
-
-
-
 .wrapper .side-bar .SN-btn-group{
-
+    position: absolute;
+    bottom: 20px;
+    left: 27px;
 }
+.wrapper .side-bar .SN-btn-group .SN-btn{
+    border-radius: 50%;
+    display: inline-block;    
+    vertical-align: middle;
+    background: rgb(118,147,151);
+    margin: 5px;
+}
+.wrapper .side-bar .SN-btn-group .SN-btn.now{
+    background: #fff;
+}
+.wrapper .side-bar .SN-btn-group .SN-btn1{
+    width: 5px;
+    height: 5px;
+}
+.wrapper .side-bar .SN-btn-group .SN-btn2{
+    width: 7px;
+    height: 7px;
+}
+.wrapper .side-bar .SN-btn-group .SN-btn3{
+    width: 10px;
+    height: 10px;
+}
+
+
+
 
 
 /*内容区域*/
