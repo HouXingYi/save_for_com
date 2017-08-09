@@ -1,0 +1,176 @@
+
+
+html{
+    width: 100%;
+    height: 100%;
+}
+/*渐变*/
+body{  
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(rgba(27,78,85,.8) 5%, rgba(41,149,193,.8) 90%) ;  
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#C82995C1', endColorstr='#C81B4E55',GradientType=0 );
+    color: #fff;
+}
+
+
+
+/*头部*/
+.wrapper .header{
+    height:70px;
+    position: relative;
+    overflow: hidden;
+}    
+.wrapper .header .logo-img{
+    margin-left: 40px;
+    margin-top: 10px;
+    vertical-align: middle;
+}
+.wrapper .header .logo-title{
+    font-size: 20px;
+    margin-left: 35px;
+    display: inline-block;
+    position: relative;
+    top: 10px;
+}
+.wrapper .header .header-right{
+    float: right;
+    height: 40px;
+    font-size: 0;
+    margin-top: 10px;
+    line-height: 40px;
+    margin-right: 10px;
+}
+.wrapper .header .header-right .HRicon{
+    width: 24px;
+    height: 24px;
+    margin-right: 30px;
+    position: relative;
+    top: 10px;
+}
+.wrapper .header .header-right .adminBox{
+    display: inline-block;
+    font-size: 12px;
+}
+.wrapper .header .header-right .adminBox .avatar{
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.wrapper .header .header-right .adminBox .down{
+    margin-left: 5px;
+}
+
+
+
+
+/*顶端导航*/
+.wrapper .top-nav{
+    position: fixed;
+    left: 113px;
+    right: 0;
+    top: 70px;
+    height: 40px;
+}
+.wrapper .top-nav .top-nav-item{
+    list-style-type: none;
+    float: left;
+    height: 30px;
+    min-width: 90px;
+    margin: 0 10px;
+    text-align: center;
+    color: #aecfdd;
+    padding-right: 14px;
+    position: relative;
+}
+.wrapper .top-nav .top-nav-item .close{
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    background: url("../images/close-tag.png");
+    right: 0;
+    top: 0;
+}
+.wrapper .top-nav .top-nav-item.now{
+    color: #fff;
+    border-bottom: 2px solid #fff;
+}
+.wrapper .top-nav .top-nav-item.close-all{
+    color: #fff;
+}
+
+
+
+
+
+/*左侧导航*/
+.wrapper .side-bar{
+    position: fixed;
+    top: 70px;
+    bottom: 0;
+    width: 113px;
+}
+.wrapper .side-bar .side-nav-box{
+    margin: 40px auto;
+    /*height: 800px;*/
+    width: 100px;
+    overflow: hidden;
+    position: relative;
+}
+.wrapper .side-bar .side-nav-box .side-nav-move{
+    width: 300px;
+    overflow: hidden;
+    position: relative;
+    left: 0;
+}
+.wrapper .side-bar .side-nav-box .side-nav-move .nav-group{
+    float: left;
+    width: 100px;    
+}
+
+.wrapper .side-bar .side-nav-box .side-nav-move .nav-group .side-item{
+    background: pink;
+    width: 96px;
+    height: 77px;
+    margin: 0 auto;
+}
+
+.wrapper .side-bar .side-nav-box .side-nav-move .nav-group .side-item .side-item-icon{
+
+    
+
+}
+
+.wrapper .side-bar .side-nav-box .side-nav-move .nav-group .side-item .side-item-icon{
+
+}
+
+
+
+.wrapper .side-bar .SN-btn-group{
+
+}
+
+
+/*内容区域*/
+.wrapper .content-wrapper{
+    position: absolute;
+    top: 110px;
+    left: 113px;
+    right: 0;
+    background: #fff;
+    bottom: 0;
+    width: auto;
+    overflow: hidden;
+    overflow-y: auto;
+    height: auto;
+    color: #000;
+}
+
+
+
+
+
+
+
+
+
