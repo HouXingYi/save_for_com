@@ -8,14 +8,23 @@
 </head>
 <body>
     <div class="wrapper">
+
         <div class="header">
             <img class="logo-img" src="./images/LOGO.png" alt="logo">
             <span class="logo-title">盛辉运营管理统一平台</span>
             <div class="header-right">
-                <img class="refresh-icon HRicon" src="./images/refresh.png" alt="刷新">
-                <img class="nav-icon HRicon" src="./images/nav.png" alt="导航">
-                <img class="alert-icon HRicon" src="./images/alert.png" alt="提醒">
-                <img class="theme-icon HRicon" src="./images/theme.png" alt="主题">
+                <a href="">
+                    <img class="refresh-icon HRicon" src="./images/refresh.png" alt="刷新">
+                </a>
+                <a href="">
+                    <img class="nav-icon HRicon" src="./images/nav.png" alt="导航">
+                </a>
+                <a href="">
+                    <img class="alert-icon HRicon" src="./images/alert.png" alt="提醒">
+                </a>
+                <a href="">
+                    <img class="theme-icon HRicon" src="./images/theme.png" alt="主题">
+                </a>                 
                 <div class="adminBox">
                     <img class="avatar" src="./images/avatar.png" alt="">
                     <span>系统管理员</span>
@@ -23,6 +32,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="top-nav">
             <ul class="top-nav-list">
                 <li class="top-nav-item now">
@@ -37,8 +47,9 @@
                     其他考勤登记
                     <i class="close"></i>
                 </li>
-                <li class="top-nav-item close-all">关闭所有窗口</li>
+                <li class="top-nav-item close-all" id="close-all" data-flag="0">关闭所有窗口</li>
             </ul>
+            <div class="transBar"></div>
         </div>
         <div class="side-bar">
             <div class="side-nav-box">
@@ -106,11 +117,8 @@
                             <img class="side-item-icon" src="./images/secure.png" alt=""><br>
                             <span class="side-item-text">考勤管理</span>
                         </div>
-                        
                     </div>
-
                 </div>
-                
             </div>
 
             <div class="SN-btn-group">
@@ -120,7 +128,24 @@
             </div>
 
         </div>
-        <div class="content-wrapper"></div>
+        <div class="content-wrapper">
+            内容
+            <button id="alertBtn">消息提醒</button>
+        </div>
+
+
+        <!--左侧选择框背景-->
+        <div class="choseBox">
+        </div>
+
+        <!--alert框-->
+        <div class="alertBox" id="alertBox">
+            <i class="alert-text-icon"></i>
+            <div class="alertContent">
+            </div>
+            <i class="alert-close-icon" id="alert-close-icon"></i>
+        </div>
+
     </div>
     <script src="./lib/jquery-3.2.1.min.js"></script>
     <script src="./js/index.js"></script>

@@ -14,7 +14,6 @@ body{
 }
 
 
-
 /*头部*/
 .wrapper .header{
     height:70px;
@@ -60,7 +59,6 @@ body{
     margin-left: 5px;
 }
 
-
 /*顶端导航*/
 .wrapper .top-nav{
     position: fixed;
@@ -69,16 +67,36 @@ body{
     top: 70px;
     height: 40px;
 }
+.wrapper .top-nav .transBar{
+    width: 97%;
+    height: 14px;
+    position: absolute;
+    background: rgba(255 , 255, 255, .07);
+    border: 1px solid rgba(255 , 255, 255, .1);
+    bottom: 0;
+    right: 0;
+}
+.wrapper .top-nav .transBar:after{
+    content: '';
+    width: 97%;
+    height: 27px;
+    position: absolute;
+    background: rgba(255 , 255, 255, .07);
+    border: 1px solid rgba(255 , 255, 255, .1);
+    bottom: 0;
+    right: 0;
+}
 .wrapper .top-nav .top-nav-item{
     list-style-type: none;
     float: left;
-    height: 30px;
+    height: 26px;
     min-width: 90px;
     margin: 0 10px;
     text-align: center;
     color: #aecfdd;
     padding-right: 14px;
     position: relative;
+    cursor: pointer;
 }
 .wrapper .top-nav .top-nav-item .close{
     width: 14px;
@@ -87,15 +105,16 @@ body{
     background: url("../images/close-tag.png");
     right: 0;
     top: 0;
+    cursor: pointer;
 }
 .wrapper .top-nav .top-nav-item.now{
     color: #fff;
-    border-bottom: 2px solid #fff;
+    border-bottom: 4px solid #fff;
 }
 .wrapper .top-nav .top-nav-item.close-all{
     color: #fff;
+    cursor: pointer;
 }
-
 
 /*左侧导航*/
 .wrapper .side-bar{
@@ -144,6 +163,7 @@ body{
     vertical-align: middle;
     background: rgb(118,147,151);
     margin: 5px;
+    cursor: pointer;
 }
 .wrapper .side-bar .SN-btn-group .SN-btn.now{
     background: #fff;
@@ -178,13 +198,94 @@ body{
     overflow-y: auto;
     height: auto;
     color: #000;
+    border-radius: 3px;
 }
 
 
 
+/*边侧导航选择框*/
+.choseBox{
+    display: none;
+    border: 1px solid rgba(255 , 255, 255, .1);
+    width: 96px;
+    height: 78px;
+    background: rgba(255 , 255, 255, .07);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.choseBox:before{
+    content:' ';
+    position: absolute;
+    background: rgba(255 , 255, 255, .07);
+    width: 88px;
+    height: 77px;
+    border: 1px solid rgba(255 , 255, 255, .1);
+    top: 3px;
+    left: 3px;
+}
+.choseBox:after{
+    content:' ';
+    position: absolute;
+    background: rgba(255 , 255, 255, .07);
+    width: 81px;
+    height: 77px;
+    border: 1px solid rgba(255 , 255, 255, .1);
+    top: 7px;
+    left: 6px;
+}
 
 
+/*alert框*/
 
+
+.alertBox{
+    position: fixed;
+    width: 190px;
+    height: 50px;
+    margin-left: -125px;
+    background: rgba(255 , 255, 255, .07);
+    border: 1px solid rgba(255 , 255, 255, .1);
+    top: -100px;
+    left: 50%;
+    padding: 0 30px;
+}
+.alertBox:after{
+    content: '';
+    position: absolute;
+    width: 238px;
+    height: 100%;
+    background: rgba(255 , 255, 255, .07);
+    border: 1px solid rgba(255 , 255, 255, .1);
+    left: 5px;
+    z-index: -1;
+    top: 5px;
+}
+.alertBox .alert-text-icon{
+    display: block;
+    position: absolute;
+    left: 17px;
+    top: 18px;
+    width: 16px;
+    height: 14px;
+    background: url("../images/mes.png");
+}
+.alertBox .alert-close-icon{
+    display: block;
+    position: absolute;
+    right: 17px;
+    top: 18px;
+    width: 16px;
+    height: 16px;
+    background: url("../images/close.png");
+    cursor: pointer;
+}
+.alertBox .alertContent{
+    width: 75%;
+    height: 100%;
+    margin-left: 27px;
+    line-height: 50px;
+}
 
 
 
