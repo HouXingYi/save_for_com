@@ -46,9 +46,14 @@ Index.prototype = {
         //顶部导航选中切换
         $(".top-nav-item").on("click",function(){
             var cur = $(this);
+
+            //当是"关闭所有窗口"或者是"当前"的时候return
             var flag = cur.attr("data-flag");
-            if( !flag ){
+            if( !flag && cur.attr("class") != "top-nav-item now"){
                 $(this).addClass("now").siblings().removeClass("now");
+
+                that.changeTag(cur);
+
             }else{
                 return false
             }
@@ -65,7 +70,6 @@ Index.prototype = {
             }
         });
 
-
         //关闭所有
         $("#close-all").on("click",function(){
             $(this).siblings().remove();
@@ -73,6 +77,45 @@ Index.prototype = {
         //弹出消息
         $("#alertBtn").on("click",function(){
             that.tranAlert("这是一条消息提醒");
+        });
+
+    },
+
+    // 切换标签
+    changeTag : function(cur){
+
+        var url = cur.attr("data-url");
+        var repeatFlag = 0;
+
+        //检查是否重复append
+        $(".contentObjectBox").each(function(){
+            var data = $(this).attr("data");
+            if(data == url){
+                repeatFlag = 1;//重复append了
+            }
+        });
+
+        if(repeatFlag == 1){
+            //只显示当前tag
+            $(".contentObjectBox").each(function(){
+                var data = $(this).attr("data");
+                if(data == url){
+                    $(this).css("display","block").siblings().css("display","none");
+                }
+            });
+            return false
+        }else{
+            console.log("append");
+            var objTpl = '<object class="contentObjectBox" data="'+ url +'" type=""></object>';
+            $(".content-wrapper").append(objTpl);
+        }
+
+        //只显示当前tag
+        $(".contentObjectBox").each(function(){
+            var data = $(this).attr("data");
+            if(data == url){
+                $(this).css("display","block").siblings().css("display","none");
+            }
         });
 
 

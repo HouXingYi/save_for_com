@@ -148,6 +148,7 @@ body{
     height: 77px;
     margin: 0 auto;
     text-align: center;
+    cursor: pointer;
 }
 .wrapper .side-bar .side-nav-box .side-nav-move .nav-group .side-item .side-item-icon{
     margin-top: 10px;
@@ -201,7 +202,11 @@ body{
     border-radius: 3px;
 }
 
-
+.wrapper .content-wrapper .contentObjectBox{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
 
 /*边侧导航选择框*/
 .choseBox{
@@ -235,9 +240,7 @@ body{
     left: 6px;
 }
 
-
 /*alert框*/
-
 
 .alertBox{
     position: fixed;
