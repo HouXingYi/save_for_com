@@ -9,7 +9,6 @@
 <body>
 
     <div class="wrapper">
-        
         <div class="header">
             <img class="logo-img" src="./images/LOGO.png" alt="logo">
             <span class="logo-title">盛辉运营管理统一平台</span>
@@ -34,9 +33,9 @@
             </div>
         </div>
         
-        <div class="top-nav">
-            <ul class="top-nav-list">
-                <li class="top-nav-item now" data-url="./index1.html">
+        <div class="top-nav" id="top-nav">
+            <ul class="top-nav-list" id="top-nav-list">
+                <!--<li class="top-nav-item now" data-url="./index1.html">
                     index1
                     <i class="close"></i>
                 </li>
@@ -47,99 +46,55 @@
                 <li class="top-nav-item" data-url="./index3.html">
                     index3
                     <i class="close"></i>
-                </li>
+                </li>-->
                 <li class="top-nav-item close-all" id="close-all" data-flag="0">关闭所有窗口</li>
             </ul>
             <div class="transBar"></div>
         </div>
-
-        <div class="side-bar">
+        
+        <div class="middle side-bar" id="side-bar">
             <div class="side-nav-box">
-
-                <div class="side-nav-move">
-
-                    <div class="nav-group1 nav-group">
-                        <div class="side-item1 side-item">
-                            <img class="side-item-icon" src="./images/secure.png" alt=""><br>
-                            <span class="side-item-text">考勤管理</span>
-                        </div>
-                        <div class="side-item2 side-item">
-                            <img class="side-item-icon" src="./images/secure.png" alt=""><br>
-                            <span class="side-item-text">考勤管理</span>
-                        </div>
-                        <div class="side-item3 side-item">
-                            <img class="side-item-icon" src="./images/secure.png" alt=""><br>
-                            <span class="side-item-text">考勤管理</span>
-                        </div>
-                        <div class="side-item1 side-item">
-                            <img class="side-item-icon" src="./images/secure.png" alt=""><br>
-                            <span class="side-item-text">考勤管理</span>
-                        </div>
+                <div class="nav-group">
+                    <div class="side-item1 side-item" data-url="./pages/index1.html" data-title="index1">
+                        <img class="side-item-icon" src="./images/attendance.png" alt=""><br>
+                        <span class="side-item-text">考勤管理</span>
                     </div>
-                    <div class="nav-group2 nav-group">
-                        <div class="side-item1 side-item">
-                            <img class="side-item-icon" src="./images/pay.png" alt=""><br>
-                            <span class="side-item-text">工资管理</span>
-                        </div>
-                        <div class="side-item2 side-item">
-                            <img class="side-item-icon" src="./images/pay.png" alt=""><br>
-                            <span class="side-item-text">工资管理</span>
-                        </div>
-                        <div class="side-item3 side-item">
-                            <img class="side-item-icon" src="./images/pay.png" alt=""><br>
-                            <span class="side-item-text">工资管理</span>
-                        </div>
-                        <div class="side-item1 side-item">
-                            <img class="side-item-icon" src="./images/pay.png" alt=""><br>
-                            <span class="side-item-text">工资管理</span>
-                        </div>
-                        <div class="side-item2 side-item">
-                            <img class="side-item-icon" src="./images/pay.png" alt=""><br>
-                            <span class="side-item-text">工资管理</span>
-                        </div>
-                        <div class="side-item3 side-item">
-                            <img class="side-item-icon" src="./images/pay.png" alt=""><br>
-                            <span class="side-item-text">工资管理</span>
-                        </div>
+                    <div class="side-item2 side-item" data-url="./pages/index2.html" data-title="index2">
+                        <img class="side-item-icon" src="./images/secure.png" alt=""><br>
+                        <span class="side-item-text">治安管理</span>
                     </div>
-                    <div class="nav-group3 nav-group">
-                        <div class="side-item1 side-item">
-                            <img class="side-item-icon" src="./images/secure.png" alt=""><br>
-                            <span class="side-item-text">考勤管理</span>
-                        </div>
-                        <div class="side-item2 side-item">
-                            <img class="side-item-icon" src="./images/secure.png" alt=""><br>
-                            <span class="side-item-text">考勤管理</span>
-                        </div>
-                        <div class="side-item3 side-item">
-                            <img class="side-item-icon" src="./images/secure.png" alt=""><br>
-                            <span class="side-item-text">考勤管理</span>
-                        </div>
-                        <div class="side-item1 side-item">
-                            <img class="side-item-icon" src="./images/secure.png" alt=""><br>
-                            <span class="side-item-text">考勤管理</span>
-                        </div>
+                    <div class="side-item3 side-item" data-url="./pages/index3.html" data-title="index3">
+                        <img class="side-item-icon" src="./images/pay.png" alt=""><br>
+                        <span class="side-item-text">工资管理</span>
+                    </div>
+                    <div class="side-item4 side-item" data-url="./pages/index4.html" data-title="index4"> 
+                        <img class="side-item-icon" src="./images/ope.png" alt=""><br>
+                        <span class="side-item-text">运维管理</span>
+                    </div>
+                    <div class="side-item5 side-item" data-url="./pages/index5.html" data-title="index5">
+                        <img class="side-item-icon" src="./images/design.png" alt=""><br>
+                        <span class="side-item-text">设计表单</span>
+                    </div>
+                    <div class="side-item6 side-item" data-url="./pages/index6.html" data-title="index6">
+                        <img class="side-item-icon" src="./images/sys.png" alt=""><br>
+                        <span class="side-item-text">系统管理</span>
                     </div>
                 </div>
             </div>
-
-            <div class="SN-btn-group">
-                <div class="SN-btn1 SN-btn now" data-index="1"></div>
-                <div class="SN-btn2 SN-btn" data-index="2"></div>
+            <div class="SN-btn-group" id="SN-btn-group">
+                <div class="SN-btn1 SN-btn" data-index="1"></div>
+                <div class="SN-btn2 SN-btn now" data-index="2"></div>
                 <div class="SN-btn3 SN-btn" data-index="3"></div>
             </div>
-
         </div>
-
-        <div class="content-wrapper">
-            <object class="contentObjectBox" data="./index1.html" type=""></object>
+        <div class="content-wrapper" id="content-wrapper">
+            <div class="contentObjectBox">
+                <button id="alertBtn">提醒窗口</button>
+            </div>            
         </div>
         <!--左侧选择框背景-->
-
         <div class="choseBox">
-
         </div>
-
         <!--alert框-->
         <div class="alertBox" id="alertBox">
             <i class="alert-text-icon"></i>
@@ -147,6 +102,7 @@
             </div>
             <i class="alert-close-icon" id="alert-close-icon"></i>
         </div>
+
     </div>
     <script src="./lib/jquery-3.2.1.min.js"></script>
     <script src="./js/index.js"></script>
