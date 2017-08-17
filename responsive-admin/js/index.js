@@ -1,7 +1,6 @@
 
 
 // 首页
-
 console.log($);
 //构造函数
 function Index(){
@@ -11,8 +10,13 @@ function Index(){
 Index.prototype = {
     //初始化
     init : function(){
+
         // 绑定事件
         this.bind();
+
+        // 宽度自适应适配
+        this.respWidth();
+
     },
     bind : function(){
         var that = this;
@@ -130,6 +134,13 @@ Index.prototype = {
         //顶部导航删除标签
         $(".top-nav-item .close").off().on("click",function(){
             var fa = $(this).parent();
+            var url = fa.attr("data-url");
+            $(".contentObjectBox").each(function() {
+                var dataUrl = $(this).attr("data");
+                if( dataUrl === url ){
+                    $(this).remove();
+                }
+            }).eq(1).css("zIndex","100");
             fa.remove();
             var restF = $(".top-nav-item").eq(0) ;
             var flag = restF.attr("data-flag");
@@ -190,13 +201,22 @@ Index.prototype = {
                 "top" : "-100px"
             });
         },5000);
-        
         //关闭按钮
         $("#alertBox .alert-close-icon").on("click",function(){
             $("#alertBox").animate({
                 "top" : "-100px"
             });
         });
+    },
+
+    respWidth :　function(){
+        
+        $(window).on("resize",function(){
+
+            console.log(111);
+
+        });
+
     }
 
 }

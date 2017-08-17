@@ -13,42 +13,24 @@ body{
     color: #fff;
 }
 
-
-
 /*媒体查询*/
 /*当小于768px时生效*/
+/*具体什么效果后面再讨论*/
 
 @media screen and (max-width:768px) {  
-
-    body{
-        color: green;
-    }        
-
-
+    .header-right{
+        display: none !important;
+    }
+    .menuIcon{
+        display: inline-block !important;
+    }
+    .logo-img{
+        vertical-align: top !important;
+    }
+    .logo-title{
+        top: -14px !important;
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*头部*/
 .wrapper .header{
@@ -56,6 +38,14 @@ body{
     position: relative;
     overflow: hidden;
 }    
+.wrapper .header .menuIcon{
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background: #123456;
+    display: none;
+}   
 .wrapper .header .logo-img{
     margin-left: 40px;
     margin-top: 10px;
@@ -112,6 +102,7 @@ body{
     border: 1px solid rgba(255 , 255, 255, .1);
     bottom: 0;
     right: 0;
+    z-index: -100;
 }
 .wrapper .top-nav .transBar:after{
     content: '';
@@ -122,6 +113,7 @@ body{
     border: 1px solid rgba(255 , 255, 255, .1);
     bottom: 0;
     right: 0;
+    z-index: -100;
 }
 .wrapper .top-nav .top-nav-item{
     list-style-type: none;
