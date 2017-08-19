@@ -5,30 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>影像扫描</title>
-    <link rel="stylesheet" href="./reset.css">
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/imageSort.css">
+    <link rel="stylesheet" href="./lib/fancybox/jquery.fancybox.css">
 </head>
 <body>
-
     <div class="wrap">
         <div class="left">
             <div class="Ltop">
-                <button>删除</button>  
-                <button>清空</button>  
-                <button>保存并上传</button>  
-                <button>设置批注</button>  
+                <button id="topDel">删除</button>  
+                <button id="topEmpty">清空</button>  
+                <button id="topSave">保存并上传</button>  
+                <button id="topNote">设置批注</button>  
             </div>
-            <div class="Lmain"></div>
+            <div class="Lmain">
+                <div class="LmainImgBox">
+                    <ul class="leftImgList" id="leftImgList">
+                    </ul> 
+                </div>
+            </div>
         </div>
         <div class="right">
             <div class="Rtop">
-                <span>可拖动图片进行修改添加</span>
-                <div class="add btnItem">一键加入</div>
-                <div class="start btnItem">开始扫描</div>
+                <span class="RtopText">可拖动图片进行修改添加</span>
+                <div class="add btnItem" id="addAll">一键加入</div>
+                <div class="start btnItem" id="startScan">开始扫描</div>
             </div>
-            <div class="Rmain"></div>
+            <div class="Rmain">
+                <div class="RmainImgBox" id="RmainImgBox">
+                </div>
+            </div>
         </div>
     </div>
-
+    <!-- 模板 -->
+    <script id="RmainListTpl" type="text/html">
+    <ul class="imgList clearfix" id="imgList">
+        <%for(var i = 0; i < list.length; i++) {%>
+        <li class="item" status="">
+            <a data-fancybox="gallery" href="<%:=list[i]%>">
+                <img src="<%:=list[i]%>" alt="">
+            </a>
+            <div class="closeItem">
+                <i class="removeIcon" ></i>
+            </div>
+        </li>
+        <%}%>
+    </ul>
+    </script>
+    <script src="./lib/jquery-3.2.1.min.js"></script>
+    <script src="./lib/Sortable.js"></script>
+    <script src="./lib/template.js"></script>
+    <script src="./lib/fancybox/jquery.fancybox.js"></script>
+    <script src="./js/imageSort.js"></script>
 </body>
 </html>
