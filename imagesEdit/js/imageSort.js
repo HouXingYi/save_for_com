@@ -28,6 +28,7 @@ ImageSort.prototype = {
                 $("#leftImgList").append(allImg);
                 that.bindchoose();
                 that.bindClose();
+                that.bindAdd();
             }else{
                 alert("图片列表为空");
             }
@@ -91,6 +92,9 @@ ImageSort.prototype = {
                 //重新绑定事件
                 that.bindchoose();
                 that.bindClose();
+                that.bindAdd();
+                //fancybox重新reload
+                $(".fancybox").fancybox();
             }
         });
     },
@@ -101,14 +105,20 @@ ImageSort.prototype = {
             var url = './images/test'+ i +'.jpg';
             arr.push(url);
         }
+
         //模板引擎渲染并插入
         var tpl = $("#RmainListTpl").html();
         var html = template(tpl, {list: arr});
         $("#RmainImgBox").html(html);
+
         //初始化拖拽
         this.startSort();
         //绑定关闭按钮事件
         this.bindClose();
+        this.bindAdd();
+        //fancybox初始化
+        $(".fancybox").fancybox();
+        
     },
     bindchoose : function(){
         var flag = 0; //没有active
@@ -152,6 +162,15 @@ ImageSort.prototype = {
         $(".closeItem").off().on("click",function(){
             var fa = $(this).parent().remove();
             that.bindchoose();
+        });
+    },
+    bindAdd :function(){
+        var that = this;
+        $(".addItem").off().on("click",function(){
+            var fa = $(this).parent().remove();
+            $("#leftImgList").append(fa);
+            that.bindchoose();
+            that.bindClose();
         });
     }
 }

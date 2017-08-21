@@ -42,11 +42,14 @@
     <ul class="imgList clearfix" id="imgList">
         <%for(var i = 0; i < list.length; i++) {%>
         <li class="item" status="">
-            <a data-fancybox="gallery" href="<%:=list[i]%>">
+            <a data-fancybox="gallery" href="<%:=list[i]%>" class="fancybox">
                 <img src="<%:=list[i]%>" alt="">
             </a>
             <div class="closeItem">
                 <i class="removeIcon" ></i>
+            </div>
+            <div class="addItem">
+                <i class="add" ></i>
             </div>
         </li>
         <%}%>
@@ -57,5 +60,13 @@
     <script src="./lib/template.js"></script>
     <script src="./lib/fancybox/jquery.fancybox.js"></script>
     <script src="./js/imageSort.js"></script>
+
+
+
+    
+
+
+
+
 </body>
 </html>
