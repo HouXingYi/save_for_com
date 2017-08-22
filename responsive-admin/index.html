@@ -6,28 +6,39 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/index.css">
 </head>
-<body>
+<body class="blue">
 
     <div class="wrapper">
         <div class="header">
-
-            <div class="menuIcon"></div>
-
+            <div class="menuIcon off" id="menuIcon" status="off">
+                <img src="./images/navList.png" alt="" class="menuIconImg">
+            </div>
             <img class="logo-img" src="./images/LOGO.png" alt="logo">
             <span class="logo-title">盛辉运营管理统一平台</span>
             <div class="header-right">
-                <a href="javascript:;">
+
+                <span href="javascript:;" class="iconBox">
                     <img class="refresh-icon HRicon" src="./images/refresh.png" alt="刷新" id="refresh" >
-                </a>
-                <a href="">
+                </span>
+                <span href="javascript:;" class="iconBox">
                     <img class="nav-icon HRicon" src="./images/nav.png" alt="导航">
-                </a>
-                <a href="">
+                </span>
+                <span href="javascript:;" class="iconBox">
                     <img class="alert-icon HRicon" src="./images/alert.png" alt="提醒">
-                </a>
-                <a href="">
-                    <img class="theme-icon HRicon" src="./images/theme.png" alt="主题">
-                </a>                 
+                </span>
+                <span href="javascript:;" class="iconBox">
+                    <img class="theme-icon HRicon" id="theme-icon" src="./images/theme.png" alt="主题">
+                    <div class="themeBox">
+                        <div class="choseSkin">
+                            <span class="t">选择皮肤:</span>
+                            <span class="skinTheme blue" theme="blue"></span>
+                            <span class="skinTheme green" theme="green"></span>
+                            <span class="skinTheme pink" theme="pink"></span>
+                            <span class="skinTheme orange" theme="orange"></span>
+                            <span class="skinTheme red" theme="red"></span>
+                        </div>
+                    </div>
+                </span>                 
                 <div class="adminBox">
                     <img class="avatar" src="./images/avatar.png" alt="">
                     <span>系统管理员</span>
@@ -36,7 +47,11 @@
             </div>
         </div>
         <div class="top-nav" id="top-nav">
-            <ul class="top-nav-list" id="top-nav-list">
+            <ul class="top-nav-list clearfix" id="top-nav-list">
+                <li class="top-nav-item now" data-url="./pages/main.html" tag="main">
+                    main
+                    <!-- 不可关闭 -->
+                </li>
                 <li class="top-nav-item close-all" id="close-all" data-flag="0">关闭所有窗口</li>
             </ul>
             <div class="transBar"></div>
@@ -77,9 +92,7 @@
             </div>
         </div>
         <div class="content-wrapper" id="content-wrapper">
-            <div class="contentObjectBox">
-                <button id="alertBtn">提醒窗口</button>
-            </div>            
+            <object class="contentObjectBox" tag="main" data="./pages/main.html" style="z-index:100;"></object> 
         </div>
         <!--左侧选择框背景-->
         <div class="choseBox">
@@ -95,9 +108,6 @@
     </div>
     <script src="./lib/jquery-3.2.1.min.js"></script>
     <script src="./js/index.js"></script>
-    <script>
-
-    </script>
 
 </body>
 </html>
