@@ -1,5 +1,4 @@
 
-
 html{
     width: 100%;
     height: 100%;
@@ -143,7 +142,7 @@ body.red{
     /* height: 100px; */
     width: 200px;
     left: -100px;
-    top: 25px;
+    top: 10px;
     background: #fff;
     z-index: 101;    
     border: 1px solid #eaeaea;
@@ -283,6 +282,7 @@ body.red{
 }
 .wrapper .side-bar .side-nav-box .nav-group .side-item .side-item-text{
     transition: all 0.5s;
+    color: #fff;
 }
 /*中等大小左侧导航*/
 .wrapper .middle.side-bar{

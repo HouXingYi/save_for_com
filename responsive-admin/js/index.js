@@ -1,7 +1,32 @@
 
 //构造函数
 function Index(){
+    var that = this;
     this.nowObject = $(".contentObjectBox[tag=main]");
+    this.Sconfirm = function(option){
+        swal(
+            {
+                title: "提示",
+                text: option.text,
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: option.confirmColor,
+                confirmButtonText: "确定",
+                cancelButtonText: "取消",
+                closeOnConfirm: false
+            },
+            function(){
+                option.callback();
+                swal.close();
+                return true
+            }
+        );
+    }
+    this.themeColor = "#519ab4";  //默认主题颜色
+    //子页面需要用的属性与方法
+    that.nowObject[0].contentWindow.document.themeColor = that.themeColor;
+    that.nowObject[0].contentWindow.document.Sconfirm = that.Sconfirm;
+
     this.init();
 }
 //原型方法
@@ -98,12 +123,43 @@ Index.prototype = {
             if(repeatFlag == 1){
                 return false
             }
+            that.appendObject(url,title);
+        });
 
+    },
+    // 加入页面
+    appendObject : function(url,title){
+        var that = this;
+        var topItemLength = $(".top-nav-item").length ;
+        if(topItemLength > 7){
+            // var r = confirm("打开窗口个数已经达到6个，新开窗口将会关闭第一个窗口，是否继续?");
+            // if( r === true){
+            //     var Fitem = $(".top-nav-item").eq(1);
+            //     that.removeObject(Fitem);
+            //     append();
+            //     return true
+            // }else{
+            //     return false
+            // }
+            //用插件的话流程控制麻烦点，但样式好看
+            that.Sconfirm({
+                text: "打开窗口个数已经达到6个，新开窗口将会关闭第一个窗口，是否继续?",
+                confirmColor : that.themeColor,
+                callback : function(){
+                    var Fitem = $(".top-nav-item").eq(1);
+                    that.removeObject(Fitem);
+                    append();
+                }
+            });
+            return false
+        }
+        append()
+        function append(){
             //append顶部item，并设置now
-            var tpl = '<li class="top-nav-item" data-url="' + url + '">' +
-                          title +
-                          '<i class="close"></i>' +
-                      '</li>' ;
+            var tpl =   '<li class="top-nav-item" data-url="' + url + '">' +
+                                title +
+                            '<i class="close"></i>' +
+                        '</li>' ;
             $(tpl).insertBefore("#close-all");        
             $(".top-nav-item").eq(-2).addClass("now").siblings().removeClass("now");
             //append页面，并设置zindex
@@ -113,9 +169,7 @@ Index.prototype = {
             that.nowObject = $('.contentObjectBox[data="'+ url +'"]');
             //绑定tag页事件
             that.bindTag();
-
-        });
-
+        }
     },
     // 绑定tag页事件
     bindTag : function(){
@@ -136,38 +190,7 @@ Index.prototype = {
         $(document).on("click",".top-nav-item .close",function(e){
             e.stopPropagation();   //防止冒泡
             var fa = $(this).parent();
-            var faName = fa.attr("class");
-            var url = fa.attr("data-url");
-            var objectLen = $(".contentObjectBox").length;
-
-            if( fa.attr("class") == "top-nav-item now" ){
-                removeItemAndObject("now");
-            }else{
-                removeItemAndObject("notNow");
-            }
-            function removeItemAndObject(flag){
-                if(flag == "now"){
-                    $(".contentObjectBox").each(function() {
-                        var dataUrl = $(this).attr("data");
-                        if( dataUrl === url ){
-                            that.nowObject = $(this).prev();
-                            $(this).prev().css("z-index","100").siblings().css("z-index","-10");
-                            $(this).remove();
-                        }
-                    });
-                    var prevItem = fa.prev();
-                    fa.remove();
-                    prevItem.addClass("now");
-                }else if(flag == "notNow"){
-                    $(".contentObjectBox").each(function() {
-                        var dataUrl = $(this).attr("data");
-                        if( dataUrl === url ){
-                            $(this).remove();
-                        }
-                    });
-                    fa.remove();
-                }
-            }
+            that.removeObject(fa);
         });
         //关闭所有标签
         $(document).on("click","#close-all",function(){
@@ -190,19 +213,55 @@ Index.prototype = {
             });
         });
     },
+
+    removeObject : function(item){
+        var that = this;
+        var itemName = item.attr("class");
+        var url = item.attr("data-url");
+        var objectLen = $(".contentObjectBox").length;
+
+        if( item.attr("class") == "top-nav-item now" ){
+            removeItemAndObject("now");
+        }else{
+            removeItemAndObject("notNow");
+        }
+        function removeItemAndObject(flag){
+            if(flag == "now"){
+                $(".contentObjectBox").each(function() {
+                    var dataUrl = $(this).attr("data");
+                    if( dataUrl === url ){
+                        that.nowObject = $(this).prev();
+                        $(this).prev().css("z-index","100").siblings().css("z-index","-10");
+                        $(this).remove();
+                    }
+                });
+                var prevItem = item.prev();
+                item.remove();
+                prevItem.addClass("now");
+            }else if(flag == "notNow"){
+                $(".contentObjectBox").each(function() {
+                    var dataUrl = $(this).attr("data");
+                    if( dataUrl === url ){
+                        $(this).remove();
+                    }
+                });
+                item.remove();
+            }
+        }
+    },
     // 切换标签
     changeTag : function(cur){
         var that = this;
         var url = cur.attr("data-url");
-        var repeatFlag = 0;
+        // var repeatFlag = 0;
         //检查是否重复append
-        $(".contentObjectBox").each(function(){
-            var data = $(this).attr("data");
-            if(data == url){
-                repeatFlag = 1;//重复append了
-            }
-        });
-        if(repeatFlag == 1){
+        // $(".contentObjectBox").each(function(){
+        //     var data = $(this).attr("data");
+        //     if(data == url){
+        //         repeatFlag = 1;//重复append了
+        //     }
+        // });
+        // if(repeatFlag == 1){
             //只显示当前tag
             $(".contentObjectBox").each(function(){
                 var data = $(this).attr("data");
@@ -211,19 +270,20 @@ Index.prototype = {
                     that.nowObject = $(this);
                 }
             });
-            return false
-        }else{
-            var objTpl = '<object class="contentObjectBox" data="'+ url +'" type=""></object>';
-            $(".content-wrapper").append(objTpl);
-            //只显示当前tag
-            $(".contentObjectBox").each(function(){
-                var data = $(this).attr("data");
-                if(data == url){
-                    $(this).css("zIndex","100").siblings().css("zIndex","-10");
-                    that.nowObject = $(this);
-                }
-            });
-        }
+            // return false
+        // }else{
+        //     console.log(3);
+        //     var objTpl = '<object class="contentObjectBox" data="'+ url +'" type=""></object>';
+        //     $(".content-wrapper").append(objTpl);
+        //     //只显示当前tag
+        //     $(".contentObjectBox").each(function(){
+        //         var data = $(this).attr("data");
+        //         if(data == url){
+        //             $(this).css("zIndex","100").siblings().css("zIndex","-10");
+        //             that.nowObject = $(this);
+        //         }
+        //     });
+        // }
         
     },
     respWidth :　function(){
@@ -290,30 +350,48 @@ Index.prototype = {
     },
     bindTheme : function(){
         var that = this;
-        $("#theme-icon").on("click",function(){
-            var display = $(".themeBox").css("display");
-            if( display === "none" ){
-                $(".themeBox").css("display","block");
-            }else if( display === "block" ){
-                $(".themeBox").css("display","none");
-            }
+
+        // $("#theme-icon").on("click",function(){
+        //     var display = $(".themeBox").css("display");
+        //     if( display === "none" ){
+        //         $(".themeBox").css("display","block");
+        //     }else if( display === "block" ){
+        //         $(".themeBox").css("display","none");
+        //     }
+        // })
+        //改为hover体验更好
+        $("#theme-icon,.themeBox").hover(function(){
+            $(".themeBox").css("display","block");
+        },function(){
+            $(".themeBox").css("display","none");
         })
+
         $(".skinTheme").on("click",function(){
             var theme = $(this).attr("theme");
             var changeColor = that.nowObject[0].contentWindow.document.changeColor;
             if(theme == "blue"){
                 $("body").attr("class","blue");
+                that.themeColor = "#519ab4";  
+                that.nowObject[0].contentWindow.document.themeColor = "#519ab4";
             }else if(theme == "green"){
                 $("body").attr("class","green");
+                that.themeColor = "#38a547";  
+                that.nowObject[0].contentWindow.document.themeColor = "#38a547";
             }else if(theme == "pink"){
                 $("body").attr("class","pink");
+                that.themeColor = "#e662a5";  
+                that.nowObject[0].contentWindow.document.themeColor = "#e662a5";
             }else if(theme == "orange"){
                 $("body").attr("class","orange");
+                that.themeColor = "#f2a45b";  
+                that.nowObject[0].contentWindow.document.themeColor = "#f2a45b";
             }else if(theme == "red"){
                 $("body").attr("class","red");
+                that.themeColor = "#c83939";  
+                that.nowObject[0].contentWindow.document.themeColor = "#c83939";
             }
             if( changeColor ){
-                changeColor(theme);
+                changeColor(theme,that.themeColor);
             }
         });
     }
@@ -323,9 +401,6 @@ Index.prototype = {
 $(function(){
     var index = new Index();
 })
-
-
-
 
 
 

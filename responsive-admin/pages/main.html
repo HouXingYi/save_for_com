@@ -10,10 +10,26 @@
     main
     <button id="Btn">点击我</button>
     <script>
-        function change(theme){
-            console.log(theme);
+        
+        window.onload = function(){
+            //用于父元素调用
+            function change(theme){
+                console.log(theme);
+            }
+            document.changeColor = change;
+
+            //调用父元素的
+            document.getElementById("Btn").onclick = function(){
+                document.Sconfirm({
+                    text : "子元素调用",
+                    confirmColor : document.themeColor,
+                    callback : function(){
+                        console.log("callback");
+                    }
+                })
+            }
         }
-        document.changeColor = change;
+        
     </script>        
 </body>
 </html>

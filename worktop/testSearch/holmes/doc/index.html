@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="css/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav class="main-nav">
+    <header class="nav-header"><h2><a href="index.html">Home</a></h2></header><header class="nav-header"><h3>Global</h3></header><ul><li><a href="global.html#holmes">holmes</a></li></ul>
+</nav>
+
+<main id="main" class="main-content">
+    <section>
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article class="card"><h1><a href="https://www.npmjs.com/package/holmes.js"><img alt="Holmes.js" src="https://haroen.me/holmes/images/logo.png" height="50px"></img></a></h1><blockquote>
+<p>Fast and easy searching inside a page.</p>
+</blockquote>
+<p><a href="https://travis-ci.org/Haroenv/holmes"><img src="https://travis-ci.org/Haroenv/holmes.svg?branch=gh-pages" alt="Build Status"></a>
+<a href="https://coveralls.io/github/Haroenv/holmes"><img src="https://coveralls.io/repos/github/Haroenv/holmes/badge.svg" alt="Coverage Status"></a>
+<a href="https://yarnpkg.com/en/package/holmes.js"><img src="https://badge.fury.io/js/holmes.js.svg" alt="npm version"></a>
+<a href="https://badge.fury.io/bo/holmes.js"><img src="https://badge.fury.io/bo/holmes.js.svg" alt="Bower version"></a>
+<a href="https://gitter.im/Haroenv/holmes?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Haroenv/holmes.svg" alt="Join the chat at https://gitter.im/Haroenv/holmes"></a>
+<a href="https://david-dm.org/haroenv/holmes?type=dev"><img src="https://david-dm.org/haroenv/holmes/dev-status.svg" alt="devDependencies Status"></a>
+<a href="https://unpkg.com/holmes.js"><img src="http://img.badgesize.io/https://unpkg.com/holmes.js?compression=gzip" alt="gzipped size"></a></p>
+<p>Holmes filters a list of elements based on the value of a <code>input</code> in just ~2KB.</p>
+<h2>Installation</h2><p>You can install Holmes with either <code>npm</code> or <code>bower</code> under the package name <code>holmes.js</code>. For <code>npm</code> that looks like this:</p>
+<pre class="prettyprint source lang-sh"><code>$ yarn add holmes.js # or via npm</code></pre><p>After which you can add it in your page with i.e. webpack, rollup, browserify or loading the module in a different script tag.</p>
+<p>You have to make sure that you have a <code>css</code> rule for the class <code>.hidden</code> that hides elements however you want. One option is to have this:</p>
+<pre class="prettyprint source lang-css"><code>.hidden {
+  display: none;
+}</code></pre><p>but this could be any <code>css</code> you want.</p>
+<h2>Usage</h2><p><a href="https://haroen.me/holmes/">demo</a></p>
+<h3>When should I use it?</h3><p>You should use Holmes when </p>
+<ul>
+<li>you have a limited amount of items</li>
+<li>you don't need typo-tolerance</li>
+<li>you only want to add a really small library</li>
+<li>all items are already visible on the page</li>
+</ul>
+<p>In cases where you have a more complicated expectation, I'd suggest using a service like <a href="https://github.com/algolia/instantsearch.js">Algolia</a>.</p>
+<blockquote>
+<p>Fair disclosure: I currently work at Algolia, does it seem interesting? <a href="https://algolia.com/careers">Join us!</a></p>
+</blockquote>
+<h3>Simple example</h3><pre class="prettyprint source lang-js"><code>holmes({
+  input: '.search input', // default: input[type=search]
+  find: '.results div' // querySelectorAll that matches each of the results individually
+})</code></pre><h2>Options</h2><p><a href="https://haroen.me/holmes/doc">full documentation</a></p>
+<h3><code>input</code></h3><p><strong>default</strong>: <code>input[type=search]</code></p>
+<p>querySelector for the input</p>
+<p><strong>examples</strong>: <code>input</code>, <code>.search input</code></p>
+<h3><code>find</code> <strong>required</strong></h3><p>querySelectorAll for elements to search in</p>
+<p><strong>examples</strong>: <code>blockquote p</code>, <code>.result</code>, <code>.results div</code></p>
+<h3><code>class</code></h3><h4><code>class.hidden</code></h4><p><strong>default</strong>: <code>hidden</code></p>
+<p>Class to add when the a <code>.find</code> doesn't contain the search query.</p>
+<p><strong>examples</strong>: <code>hidden</code>, <code>dn</code>, <code>none</code></p>
+<h4><code>class.visible</code></h4><p><strong>default</strong>: <code>false</code></p>
+<p>Class to add to visible items if they contain the search query.</p>
+<p><strong>examples</strong>: <code>visible</code>, <code>vis</code>, <code>nohidden</code></p>
+<h3><code>placeholder</code></h3><p><strong>default</strong>: <code>false</code></p>
+<p>html to show when no results.</p>
+<p><strong>examples</strong>: <code>&lt;p&gt; No results &lt;/p&gt;</code>, <code>Didn't find anything.</code></p>
+<h3><code>dynamic</code></h3><p><strong>default</strong>: <code>false</code></p>
+<p>Enable this option if you want Holmes to query the value of the <code>.find</code> at every input.</p>
+<p><strong>examples</strong>: <code>true</code>, <code>false</code></p>
+<h3><code>instant</code> :warning: DEPRECATED</h3><p><strong>default</strong>: <code>false</code></p>
+<p>This option is deprecated. To use Holmes in an async environment, initialise it with:</p>
+<pre class="prettyprint source lang-js"><code>holmes(options).start();
+// or
+const h = new holmes(options);
+h.start();</code></pre><p>This way it'll start immediately, just like it used to do with <code>instant: true</code>. Sorry for the inconvenience.</p>
+<p>By default Holmes will wait on a <code>DOMContentLoaded</code> event to start searching. If you're loading the elements by <code>AJAX</code> for example this event comes too early. In that case you can enable <code>instant</code>, and start Holmes when your content is ready.</p>
+<p><strong>examples</strong>: <code>true</code>, <code>false</code></p>
+<h3><code>minCharacters</code></h3><p><strong>default</strong>: <code>0</code></p>
+<p>A minimum amount of characters need to be typed before Holmes starts filtering.</p>
+<p><strong>examples</strong>: <code>2</code>, <code>5</code></p>
+<h3><code>mark</code></h3><p><strong>default</strong>: <code>false</code></p>
+<p>To start showing the result in a <code>&lt;mark&gt;</code> tag inside the <code>.find</code>, you should enable this. To change the colour this <code>match</code> is shown in, you should style the <a href="https://developer.mozilla.org/en/docs/Web/HTML/Element/mark"><code>mark</code></a> background-color.</p>
+<blockquote>
+<p>:exclamation: this will break event listeners on nested content</p>
+<p>:exclamation: this won't work if the character after the match is a literal <code>&gt;</code>.</p>
+<p>:speaking_head: If you really have to use this character, you can replace all occurences of <code>&gt;</code> by <code>&amp;gt;</code></p>
+</blockquote>
+<p><strong>examples</strong>: <code>true</code>, <code>false</code></p>
+<h3><code>hiddenAttr</code></h3><p><strong>default</strong>: <code>true</code></p>
+<p>Adds <code>hidden=&quot;true&quot;</code> to hidden elements. <a href="https://www.paciellogroup.com/blog/2012/05/html5-accessibility-chops-hidden-and-aria-hidden/">Interesting link</a> explaining its use.</p>
+<h3><code>shouldShow</code></h3><p>default match judgment is a partial match of the input value.</p>
+<pre class="prettyprint source lang-js"><code>function(htmlText, search) {
+  return htmlText.indexOf(search) !== -1;
+}</code></pre><p>A custom matching function to be called with as first argument the text of an element,
+and as second argument the current input text. This should return true if you want the
+element to show, and false if it needs to be hidden.</p>
+<pre class="prettyprint source lang-js"><code>var customMatching = function(htmlText, search) {
+  return search.split(/\s+/).every(function(v, i) {
+    if (htmlText.indexOf(v) === -1) {
+      return false;
+    }
+    return true;
+  });
+}
+holmes({
+  shouldShow: customMatching
+})</code></pre><h3><code>onHidden</code></h3><p>Callback for when an item is hidden.</p>
+<pre class="prettyprint source lang-js"><code>function(el) {
+  console.log('hide',el);
+}</code></pre><h3><code>onVisible</code></h3><p>Callback for when an item is visible again.</p>
+<pre class="prettyprint source lang-js"><code>function(el) {
+  console.log('show',el);
+}</code></pre><h3><code>onEmpty</code></h3><p>Callback for when no items were found.</p>
+<pre class="prettyprint source lang-js"><code>function(placeholder) {
+  console.log('nothing found',placeholder);
+}</code></pre><h3><code>onFound</code></h3><p>Callback for when items are found after being empty.</p>
+<pre class="prettyprint source lang-js"><code>function(placeholder) {
+  console.log('something found',placeholder);
+}</code></pre><h3><code>onInput</code></h3><p>Callback for every input.</p>
+<pre class="prettyprint source lang-js"><code>function(input) {
+  console.log('current input',input);
+}</code></pre><h2>Methods and members</h2><p>For all of the methods you should initialise a new instance of Holmes like this:</p>
+<pre class="prettyprint source lang-js"><code>var h = new holmes(options);</code></pre><p>Then you can use the following methods:</p>
+<h3><code>.clear()</code></h3><p>You can clear a holmes input programmatically, by using:</p>
+<pre class="prettyprint source lang-js"><code>h.clear();</code></pre><h3><code>.count()</code></h3><p>You can receive informations on what elements are visible, hidden and in total at any point:</p>
+<pre class="prettyprint source lang-js"><code>h.count(); // {all: 41, hidden: 34, visible: 7}</code></pre><h3><code>.start()</code></h3><p>Start an even listener for the specified options. Holmes <strong>always</strong> has <code>.start()</code> running on initialisation.</p>
+<pre class="prettyprint source lang-js"><code>h.start();</code></pre><h3><code>.stop()</code></h3><p>Stops the current running event listener. Resolves a Promise when this has been completed.</p>
+<pre class="prettyprint source lang-js"><code>h.stop();
+h.start(); // could accidentally start too soon
+
+h.stop().then(h.start); // might take a small time</code></pre><h3><code>.hidden</code></h3><p>There's also a member <code>.hidden</code> that gives the count without a function call:</p>
+<pre class="prettyprint source lang-js"><code>console.log(h.hidden); // 34</code></pre><h3><code>.elements</code></h3><p>A <code>NodeList</code> of all of the elements that holmes considers. There's also <code>.elementsLength</code> for the amount of elements and <code>.elementsArray</code> with an array of the elements.</p>
+<h3><code>.input</code></h3><p>The input that holmes looks in. There's also the last search string as <code>.searchString</code></p>
+<h3><code>.placeholder</code></h3><p>The current placeholder (DOM Node).</p>
+<h3><code>.running</code></h3><p>Whether or not this instance is running.</p>
+<h3><code>.options</code></h3><p>Shows the options chosen chosen for this instance of holmes. You can also set options like this after initialisation.</p>
+<pre class="prettyprint source lang-js"><code>console.log(h.options); // specified options</code></pre><blockquote>
+<p>note: setting options after it's running might require <code>h.stop().then(h.start)</code></p>
+</blockquote>
+<h3>Showcase</h3><table>
+<thead>
+<tr>
+<th>What</th>
+<th>who</th>
+<th>image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://bullg.it">bullg.it</a></td>
+<td><a href="https://github.com/haroenv">@haroenv</a></td>
+<td><img alt="screenshot of bullg.it" src="https://haroen.me/holmes/images/screen-bullgit.gif" width="100%" /></td>
+</tr>
+<tr>
+<td><a href="https://lukyvj.github.io/family.scss">family.scss</a></td>
+<td><a href="https://github.com/lukyvj">@lukyvj</a></td>
+<td><img alt="screenshot of family.scss" src="https://haroen.me/holmes/images/screen-family.gif" width="100%" /></td>
+</tr>
+<tr>
+<td><a href="https://wikeo.be">wikeo.be</a></td>
+<td><a href="https://github.com/bistory">@bistory</a></td>
+<td><img src="https://haroen.me/holmes/images/screen-wikeo.gif" alt="searching on wikeo.be for pages" width="100%"></td>
+</tr>
+<tr>
+<td><a href="https://www.lunchbreakapp.be">lunchbreakapp.be</a></td>
+<td><a href="https://github.com/AndreasBackx">@AndreasBackx</a></td>
+<td><img src="https://thumbs.gfycat.com/FancyDependentGiraffe-size_restricted.gif" alt="searching on lunchbreak for items" width="100%"></td>
+</tr>
+</tbody>
+</table>
+<p>I'd love to find out how people use my project, <a href="https://github.com/Haroenv/holmes/issues/new?title=add+my+project+to+usages&amp;body=who%7Cwhat%0D%0A---%7C---%0D%0A%40myusername%7C%5Bmy+project%5D%28https%3A%2F%2Flink-to-project.com%29%0D%0A%0D%0ASome+explanation+what+it+is">let me know</a> if you want to be featured!</p>
+<h3>Questions?</h3><p>Compatible up to IE11. For support of older browsers you'll need to polyfill <code>classList</code>, <code>addEventListener</code> and the <code>input</code> event with for example <a href="https://github.com/remy/polyfills">remy/polyfills</a>. I haven't tried this myself yet, so let me know what you used if you support older browsers!</p>
+<p>For IE11 you need to polyfill <code>Object.assign</code> and <code>String.includes</code>, you can do that as described in <a href="https://github.com/Haroenv/holmes/issues/90">#90</a></p>
+<p>Let me know on twitter: <a href="https://twitter.com/haroenv">@haroenv</a>, or in an issue.</p>
+<h2>Contributing</h2><p>Contributions are always welcome! Here are some loose guidelines:</p>
+<ul>
+<li>use <code>feature branches</code></li>
+<li>don't make it slower</li>
+<li>explain why you want a feature</li>
+<li><code>npm run doc</code> to recreate the documentation</li>
+</ul>
+<p>Building to a UMD is done via rollup (<code>npm run build</code>).</p>
+<p>But I don't bite, if you have any questions or insecurities, hit me up for example on <a href="https://gitter.im/Haroenv/holmes?utm_source=readme&amp;utm_medium=link&amp;utm_content=link">gitter</a>.</p>
+<h2>License</h2><p>Apache 2.0</p></article>
+    </section>
+
+
+
+
+
+
+    </section>
+</main>
+
+
+<footer class="main-footer">
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Thu Aug 17 2017 07:33:29 GMT+0000 (UTC)
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
