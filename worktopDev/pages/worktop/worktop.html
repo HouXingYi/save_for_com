@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>工作台</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./lib/gridstack.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+</head>
+<body>
+
+    <div class="box">
+
+        <div class="control">
+            <div class="custom control-item">
+                <i class="custom control-icon"></i>
+                <span class="t">自定义</span>
+            </div>
+            <div class="add control-item" style="display:none;">
+                <i class="add control-icon"></i>
+                <span class="t">添加模块</span>
+            </div>
+            <div class="cancel control-item" style="display:none;">
+                <i class="cancel control-icon"></i>
+                <span class="t">取消</span>
+            </div>
+            <div class="save control-item" style="display:none;">
+                <i class="save control-icon"></i>
+                <span class="t">保存</span>
+            </div>
+        </div>
+
+        <div class="grid-stack"
+            data-gs-animate="true"
+            data-gs-width="12"
+            data-gs-height="7">
+
+           <!-- <div class="grid-stack-item"
+               data-gs-x="0" data-gs-y="0"
+               data-gs-width="5" data-gs-height="3">
+                   <div class="grid-stack-item-content">
+                        <object class="objectBox" data="./pages/index1.html" type=""></object>
+                   </div>
+                   <div class="drag-handle-box">
+                        <i class="drag-handle-icon"></i>
+                   </div>
+           </div>
+
+           <div class="grid-stack-item"
+               data-gs-x="5" data-gs-y="0"
+               data-gs-width="2" data-gs-height="3">
+                   <div class="grid-stack-item-content">index2</div>
+                   <div class="drag-handle-box">
+                        <i class="drag-handle-icon"></i>
+                   </div>
+           </div>
+           <div class="grid-stack-item"
+               data-gs-x="7" data-gs-y="0"
+               data-gs-width="2" data-gs-height="3">
+                   <div class="grid-stack-item-content">index3</div>
+                   <div class="drag-handle-box">
+                        <i class="drag-handle-icon"></i>
+                   </div>
+           </div>
+           <div class="grid-stack-item"
+               data-gs-x="0" data-gs-y="3"
+               data-gs-width="5" data-gs-height="4">
+                   <div class="grid-stack-item-content">index5</div>
+                   <div class="drag-handle-box">
+                        <i class="drag-handle-icon"></i>
+                   </div>
+           </div>
+           <div class="grid-stack-item"
+               data-gs-x="5" data-gs-y="3"
+               data-gs-width="4" data-gs-height="4">
+                   <div class="grid-stack-item-content">index6</div>
+                   <div class="drag-handle-box">
+                        <i class="drag-handle-icon"></i>
+                   </div>
+           </div> -->
+
+       </div>
+    </div>
+
+    <script id="gridStackTpl" type="text/html">
+    <%for(var i = 0; i < list.length; i++) {%>
+    <div class="grid-stack-item"
+        data-gs-x="<%=list[i].x%>" data-gs-y="<%=list[i].y%>"
+        data-gs-width="<%=list[i].width%>" data-gs-height="<%=list[i].height%>">
+            <div class="grid-stack-item-content">
+                <object class="objectBox" data="./pages/index1.html" type=""></object>
+            </div>
+            <div class="drag-handle-box">
+                <i class="drag-handle-icon"></i>
+            </div>
+    </div>
+    <%}%>
+    </script>
+    
+    <script src="./lib/underscore.js"></script>
+    <script src="./lib/jquery-3.2.1.min.js"></script>
+    <script src="./lib/jquery.ui.js"></script>
+    <script src="./lib/gridstack.js"></script>
+    <script src="./lib/gridstack.jQueryUI.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>

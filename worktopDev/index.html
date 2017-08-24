@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盛辉运营管理统一平台</title>
+    <link rel="stylesheet" href="./lib/sweetalert/sweetalert.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body class="blue">
+
+    <div class="wrapper">
+        <div class="header">
+            <div class="menuIcon off" id="menuIcon" status="off">
+                <img src="./images/navList.png" alt="" class="menuIconImg">
+            </div>
+            <img class="logo-img" src="./images/LOGO.png" alt="logo">
+            <span class="logo-title">盛辉运营管理统一平台</span>
+            <div class="header-right">
+                <span href="javascript:;" class="iconBox">
+                    <img class="refresh-icon HRicon" src="./images/refresh.png" alt="刷新" id="refresh" >
+                </span>
+                <span href="javascript:;" class="iconBox">
+                    <img class="nav-icon HRicon" src="./images/nav.png" alt="导航">
+                </span>
+                <span href="javascript:;" class="iconBox">
+                    <img class="alert-icon HRicon" src="./images/alert.png" alt="提醒">
+                </span>
+                <span href="javascript:;" class="iconBox">
+                    <img class="theme-icon HRicon" id="theme-icon" src="./images/theme.png" alt="主题">
+                    <div class="themeBox">
+                        <div class="choseSkin">
+                            <span class="t">选择皮肤:</span>
+                            <span class="skinTheme blue" theme="blue"></span>
+                            <span class="skinTheme green" theme="green"></span>
+                            <span class="skinTheme pink" theme="pink"></span>
+                            <span class="skinTheme orange" theme="orange"></span>
+                            <span class="skinTheme red" theme="red"></span>
+                        </div>
+                    </div>
+                </span>                 
+                <div class="adminBox">
+                    <img class="avatar" src="./images/avatar.png" alt="">
+                    <span>系统管理员</span>
+                    <img class="down" src="./images/down.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="top-nav" id="top-nav">
+            <ul class="top-nav-list clearfix" id="top-nav-list">
+                <li class="top-nav-item now" data-url="./pages/worktop/worktop.html" tag="main">
+                    工作台
+                    <!-- 不可关闭 -->
+                </li>
+                <li class="top-nav-item close-all" id="close-all" data-flag="0">关闭所有窗口</li>
+            </ul>
+            <div class="transBar"></div>
+        </div>
+        <div class="middle side-bar" id="side-bar">
+            <div class="side-nav-box">
+                <div class="nav-group">
+                    <div class="side-item1 side-item" data-url="./pages/index1.html" data-title="index1">
+                        <img class="side-item-icon" src="./images/attendance.png" alt=""><br>
+                        <span class="side-item-text">考勤管理</span>
+                    </div>
+                    <div class="side-item2 side-item" data-url="./pages/index2.html" data-title="index2">
+                        <img class="side-item-icon" src="./images/secure.png" alt=""><br>
+                        <span class="side-item-text">治安管理</span>
+                    </div>
+                    <div class="side-item3 side-item" data-url="./pages/index3.html" data-title="index3">
+                        <img class="side-item-icon" src="./images/pay.png" alt=""><br>
+                        <span class="side-item-text">工资管理</span>
+                    </div>
+                    <div class="side-item4 side-item" data-url="./pages/index4.html" data-title="index4"> 
+                        <img class="side-item-icon" src="./images/ope.png" alt=""><br>
+                        <span class="side-item-text">运维管理</span>
+                    </div>
+                    <div class="side-item5 side-item" data-url="./pages/index5.html" data-title="index5">
+                        <img class="side-item-icon" src="./images/design.png" alt=""><br>
+                        <span class="side-item-text">设计表单</span>
+                    </div>
+                    <div class="side-item6 side-item" data-url="./pages/index6.html" data-title="index6">
+                        <img class="side-item-icon" src="./images/sys.png" alt=""><br>
+                        <span class="side-item-text">系统管理</span>
+                    </div>
+                    <div class="side-item7 side-item" data-url="./pages/index7.html" data-title="index7">
+                        <img class="side-item-icon" src="./images/sys.png" alt=""><br>
+                        <span class="side-item-text">系统管理</span>
+                    </div>
+                </div>
+            </div>
+            <div class="SN-btn-group" id="SN-btn-group">
+                <div class="SN-btn1 SN-btn" data-index="1"></div>
+                <div class="SN-btn2 SN-btn now" data-index="2"></div>
+                <div class="SN-btn3 SN-btn" data-index="3"></div>
+            </div>
+        </div>
+        <div class="content-wrapper" id="content-wrapper">
+            <object class="contentObjectBox" tag="main" data="./pages/worktop/worktop.html" style="z-index:100;"></object> 
+        </div>
+        <!--左侧选择框背景-->
+        <div class="choseBox">
+        </div>
+        <!--alert框-->
+        <div class="alertBox" id="alertBox">
+            <i class="alert-text-icon"></i>
+            <div class="alertContent">
+            </div>
+            <i class="alert-close-icon" id="alert-close-icon"></i>
+        </div>
+
+    </div>
+    <script src="./lib/sweetalert/sweetalert-dev.js"></script>
+    <script src="./lib/jquery-3.2.1.min.js"></script>
+    <script src="./js/index.js"></script>
+
+</body>
+</html>

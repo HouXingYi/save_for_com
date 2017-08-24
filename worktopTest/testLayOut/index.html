@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试可拖拽布局</title>
+    <link rel="stylesheet" href="./lib/gridstack.css" />
+    <style>
+
+        .box{
+            padding: 50px;
+            background-color: #18bc9c;
+        }
+        .grid-stack-item .drag-handle-box{
+            height: 30px;
+            width: 30px;
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 50%;
+            cursor: move;
+            position: absolute;
+            margin-left: -15px;
+            left: 50%;
+            top: -15px;
+            z-index: 100;
+            display: none;
+        }
+        .grid-stack-item .drag-handle-box .drag-handle-icon{
+            display: block;
+            height: 20px;
+            width: 20px;
+            background-image: url("./images/move.png");
+            background-size: 20px 20px;
+            z-index: 101;
+            margin: 5px auto;
+        }
+        .grid-stack-item-content{
+            color: #2c3e50;
+            text-align: center;
+            background: #fff;
+            z-index: 100;
+        }
+        .objectBox{
+            width: 100%;
+            height: 98%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <div class="grid-stack"
+            data-gs-animate="true"
+            data-gs-width="12"
+            data-gs-height="9">
+           <div class="grid-stack-item"
+               data-gs-x="0" data-gs-y="0"
+               data-gs-width="6" data-gs-height="3">
+                   <div class="grid-stack-item-content">
+                        <object class="objectBox" data="./pages/index1.html" type=""></object>
+                   </div>
+                   <div class="drag-handle-box">
+                        <i class="drag-handle-icon"></i>
+                   </div>
+           </div>
+           <div class="grid-stack-item"
+               data-gs-x="6" data-gs-y="0"
+               data-gs-width="2" data-gs-height="3">
+                   <div class="grid-stack-item-content">index2</div>
+                   <div class="drag-handle-box">
+                        <i class="drag-handle-icon"></i>
+                   </div>
+           </div>
+           <div class="grid-stack-item"
+               data-gs-x="8" data-gs-y="0"
+               data-gs-width="2" data-gs-height="3">
+                   <div class="grid-stack-item-content">index3</div>
+                   <div class="drag-handle-box">
+                        <i class="drag-handle-icon"></i>
+                   </div>
+           </div>
+           <div class="grid-stack-item"
+               data-gs-x="10" data-gs-y="0"
+               data-gs-width="2" data-gs-height="3">
+                   <div class="grid-stack-item-content">index4</div>
+                   <div class="drag-handle-box">
+                        <i class="drag-handle-icon"></i>
+                   </div>
+           </div>
+
+           <div class="grid-stack-item"
+               data-gs-x="0" data-gs-y="3"
+               data-gs-width="6" data-gs-height="3">
+                   <div class="grid-stack-item-content">index5</div>
+                   <div class="drag-handle-box">
+                        <i class="drag-handle-icon"></i>
+                   </div>
+           </div>
+           <div class="grid-stack-item"
+               data-gs-x="6" data-gs-y="3"
+               data-gs-width="4" data-gs-height="3">
+                   <div class="grid-stack-item-content">index6</div>
+                   <div class="drag-handle-box">
+                        <i class="drag-handle-icon"></i>
+                   </div>
+           </div>
+           <div class="grid-stack-item"
+               data-gs-x="10" data-gs-y="3"
+               data-gs-width="2" data-gs-height="3">
+                   <div class="grid-stack-item-content">index7</div>
+                   <div class="drag-handle-box">
+                        <i class="drag-handle-icon"></i>
+                   </div>
+           </div>
+       </div>
+    </div>
+
+    <button id="enable">enable</button>
+    <button id="disable">disable</button>
+
+    <script src="./lib/underscore.js"></script>
+    <script src="./lib/jquery-3.2.1.min.js"></script>
+    <script src="./lib/jquery.ui.js"></script>
+    <script src="./lib/gridstack.js"></script>
+    <script src="./lib/gridstack.jQueryUI.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+
+            var opt = {
+                float : true
+                ,disableResize : true
+                ,disableDrag : true  
+                ,draggable : {
+                    handle: '.drag-handle-box'  //drag控件的名称
+                }
+                ,resizable : {
+                    handles: 'none-resize'  //resize控件的名称
+                }
+            }
+
+            var gs = $('.grid-stack').gridstack(opt);
+            var grid = gs.data('gridstack');
+
+            $("#disable").on("click",function(){
+                grid.disable();
+                $(".grid-stack-item .drag-handle-box").css("display","none");
+            });
+            $("#enable").on("click",function(){
+                grid.enable();  
+                $(".grid-stack-item .drag-handle-box").css("display","block");
+            });
+
+            //可以监听disable和able事件
+            $('.grid-stack').on('disable', function(event) {
+                var grid = event.target;
+            });
+            $('.grid-stack').on('enable', function(event) {
+                var grid = event.target;
+            });
+
+        });
+
+    </script>
+</body>
+</html>
