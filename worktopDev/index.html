@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="./lib/sweetalert/sweetalert.css">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/index.css">
+    <style>
+        mark {
+            background: #86BA68;
+        }
+    </style>
 </head>
 <body class="blue">
 
@@ -16,6 +21,11 @@
             </div>
             <img class="logo-img" src="./images/LOGO.png" alt="logo">
             <span class="logo-title">盛辉运营管理统一平台</span>
+            <div class="search">
+                <i class="search-icon"></i>
+                <!-- <span>搜索导航菜单和窗口内容</span> -->
+                <input class="searchInput" id="searchInput" type="text" placeholder="搜索导航菜单和窗口内容">
+            </div>  
             <div class="header-right">
                 <span href="javascript:;" class="iconBox">
                     <img class="refresh-icon HRicon" src="./images/refresh.png" alt="刷新" id="refresh" >
@@ -112,6 +122,7 @@
     </div>
     <script src="./lib/sweetalert/sweetalert-dev.js"></script>
     <script src="./lib/jquery-3.2.1.min.js"></script>
+    <script src="./lib/holmes.js"></script>
     <script src="./js/index.js"></script>
 
 </body>

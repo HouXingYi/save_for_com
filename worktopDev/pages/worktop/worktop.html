@@ -12,7 +12,6 @@
 <body>
 
     <div class="box">
-
         <div class="control">
             <div class="custom control-item">
                 <i class="custom control-icon"></i>
@@ -35,7 +34,7 @@
         <div class="grid-stack"
             data-gs-animate="true"
             data-gs-width="12"
-            data-gs-height="7">
+            data-gs-height="0">
 
            <!-- <div class="grid-stack-item"
                data-gs-x="0" data-gs-y="0"
@@ -88,15 +87,52 @@
     <%for(var i = 0; i < list.length; i++) {%>
     <div class="grid-stack-item"
         data-gs-x="<%=list[i].x%>" data-gs-y="<%=list[i].y%>"
-        data-gs-width="<%=list[i].width%>" data-gs-height="<%=list[i].height%>">
-            <div class="grid-stack-item-content">
-                <object class="objectBox" data="./pages/index1.html" type=""></object>
+        data-gs-width="<%=list[i].width%>" data-gs-height="<%=list[i].height%>"
+        data-smallW="<%=list[i].smallW%>" data-smallH="<%=list[i].smallH%>"
+        data-largeW="<%=list[i].largeW%>"  data-largeH="<%=list[i].largeH%>"
+        data-status="<%=list[i].status%>" data-index="<%=i%>">
+        <div class="grid-stack-item-content">
+            <object class="objectBox" data="./pages/index1.html" type=""></object>
+        </div>
+        <div class="drag-handle-box">
+            <i class="drag-handle-icon"></i>
+        </div>
+        <div class="edit-handle-box" style="display:none;">
+            <i class="edit-handle-icon"></i>
+            <div class="edit-panel" style="display:none;">
+                <li class="edit-item simplify" act="simplify">精简</li>
+                <li class="edit-item detail" act="detail">详细</li>
+                <li class="edit-item delete" act="delete">删除模块</li>
             </div>
-            <div class="drag-handle-box">
-                <i class="drag-handle-icon"></i>
-            </div>
+        </div>
     </div>
     <%}%>
+    </script>
+
+
+    <!-- 随机位置新控件 -->
+    <script id="newItem" type="text/html">
+    <div class="grid-stack-item"
+        data-gs-x="<%=parseInt(Math.random()*10)%>" data-gs-y="<%=parseInt(Math.random()*10)%>"
+        data-gs-width="<%=parseInt(Math.random()*10)%>" data-gs-height="<%=parseInt(Math.random()*10)%>"
+        data-smallW="2" data-smallH="2"
+        data-largeW="4"  data-largeH="4"
+        data-status="large" data-index="">
+        <div class="grid-stack-item-content">
+            <object class="objectBox" data="./pages/index1.html" type=""></object>
+        </div>
+        <div class="drag-handle-box" style="display:block;">
+            <i class="drag-handle-icon"></i>
+        </div>
+        <div class="edit-handle-box" style="display:block;">
+            <i class="edit-handle-icon"></i>
+            <div class="edit-panel" style="display:none;">
+                <li class="edit-item simplify" act="simplify">精简</li>
+                <li class="edit-item detail" act="detail">详细</li>
+                <li class="edit-item delete" act="delete">删除模块</li>
+            </div>
+        </div>
+    </div>
     </script>
     
     <script src="./lib/underscore.js"></script>

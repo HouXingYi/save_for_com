@@ -36,6 +36,7 @@ Index.prototype = {
         this.bind();
         // 宽度自适应适配
         this.respWidth();
+        
     },
     bind : function(){
         //左侧导航栏宽度切换
@@ -46,6 +47,33 @@ Index.prototype = {
         this.bindRefresh();    
         //主题功能
         this.bindTheme();
+
+        holmes({
+            input: '#searchInput', // default: input[type=search]
+            find: 'body *', // querySelectorAll that matches each of the results individually
+            class: {
+                visible: 'visible',
+                hidden: 'hidden'
+            },
+            mark:true,
+            onHidden(el) {  
+                console.log('hidden', el);
+            },
+            onFound(el) { //Callback for when items are found after being empty.
+                console.log('found', el);
+            },
+            onInput(el) {
+                console.log('input', el);
+            },
+            onVisible(el) {   
+                console.log('visible', el);
+            },
+            onEmpty(el) {
+                console.log('empty', el);
+            }
+        })
+
+
     },
     sideChange : function(){
         var that = this;
@@ -264,8 +292,6 @@ Index.prototype = {
             //只显示当前tag
             $(".contentObjectBox").each(function(){
                 var data = $(this).attr("data");
-                console.log(data);
-                console.log(url);
                 if(data == url){
                     $(this).css("zIndex","100").siblings().css("zIndex","-10");
                     that.nowObject = $(this);
@@ -360,6 +386,7 @@ Index.prototype = {
         //         $(".themeBox").css("display","none");
         //     }
         // })
+        
         //改为hover体验更好
         $("#theme-icon,.themeBox").hover(function(){
             $(".themeBox").css("display","block");

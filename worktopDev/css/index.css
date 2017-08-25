@@ -110,6 +110,38 @@ body.red{
     position: relative;
     top: 10px;
 }
+
+
+.wrapper .header .search{
+    position: absolute;
+    right: 385px;
+    top: 14px;
+    width: 240px;
+    height: 40px;
+    border: 1px solid #e5e5e5;
+    border-radius: 50px;
+    background: #fff;
+}
+.wrapper .header .search .searchInput{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    position: absolute;
+    height: 20px;
+    top: 9px;
+    left: 45px;
+}
+.wrapper .header .search .search-icon{
+    display: block;
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    background-image: url("../images/avatar.png");
+    background-size: 25px 25px;
+    top: 7px;
+    left: 11px;
+}
 .wrapper .header .header-right{
     float: right;
     height: 40px;
