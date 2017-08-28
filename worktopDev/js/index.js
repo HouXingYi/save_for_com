@@ -1,4 +1,30 @@
 
+var h = holmes({
+    input: '.se', // default: input[type=search]
+    find: '.side-item,.top-nav-item,li', // querySelectorAll that matches each of the results individually
+    class: {
+        visible: 'visible',
+        hidden: 'hidden'
+    },
+    mark:true,
+    onHidden(el) {  
+        // console.log('hidden', el);
+    },
+    onFound(el) { //Callback for when items are found after being empty.
+        // console.log('found', el);
+    },
+    onInput(el) {
+        // console.log('input', el);
+    },
+    onVisible(el) {   
+        // console.log('visible', el);
+    },
+    onEmpty(el) {
+        // console.log('empty', el);
+    }
+});
+
+
 //构造函数
 function Index(){
     var that = this;
@@ -22,10 +48,10 @@ function Index(){
             }
         );
     }
+
     this.themeColor = "#519ab4";  //默认主题颜色
-    //子页面需要用的属性与方法
-    that.nowObject[0].contentWindow.document.themeColor = that.themeColor;
-    that.nowObject[0].contentWindow.document.Sconfirm = that.Sconfirm;
+    this.initSonWin(); //将父数据传给子数据 
+
     this.init();
 }
 //原型方法
@@ -36,7 +62,7 @@ Index.prototype = {
         this.bind();
         // 宽度自适应适配
         this.respWidth();
-        
+        $(".metismenu").metisMenu();
     },
     bind : function(){
         //左侧导航栏宽度切换
@@ -47,33 +73,6 @@ Index.prototype = {
         this.bindRefresh();    
         //主题功能
         this.bindTheme();
-
-        holmes({
-            input: '#searchInput', // default: input[type=search]
-            find: 'body *', // querySelectorAll that matches each of the results individually
-            class: {
-                visible: 'visible',
-                hidden: 'hidden'
-            },
-            mark:true,
-            onHidden(el) {  
-                console.log('hidden', el);
-            },
-            onFound(el) { //Callback for when items are found after being empty.
-                console.log('found', el);
-            },
-            onInput(el) {
-                console.log('input', el);
-            },
-            onVisible(el) {   
-                console.log('visible', el);
-            },
-            onEmpty(el) {
-                console.log('empty', el);
-            }
-        })
-
-
     },
     sideChange : function(){
         var that = this;
@@ -152,7 +151,6 @@ Index.prototype = {
             }
             that.appendObject(url,title);
         });
-
     },
     // 加入页面
     appendObject : function(url,title){
@@ -176,11 +174,13 @@ Index.prototype = {
                     var Fitem = $(".top-nav-item").eq(1);
                     that.removeObject(Fitem);
                     append();
+                    h.start(); //搜索重启
                 }
             });
             return false
         }
         append()
+        h.start(); //搜索重启
         function append(){
             //append顶部item，并设置now
             var tpl =   '<li class="top-nav-item" data-url="' + url + '">' +
@@ -194,6 +194,9 @@ Index.prototype = {
             $(".content-wrapper").append(objTpl);
             $('.contentObjectBox[data="'+ url +'"]').css("zIndex","100").siblings().css("zIndex","-10");
             that.nowObject = $('.contentObjectBox[data="'+ url +'"]');
+
+            that.initSonWin();
+
             //绑定tag页事件
             that.bindTag();
         }
@@ -240,13 +243,11 @@ Index.prototype = {
             });
         });
     },
-
     removeObject : function(item){
         var that = this;
         var itemName = item.attr("class");
         var url = item.attr("data-url");
         var objectLen = $(".contentObjectBox").length;
-
         if( item.attr("class") == "top-nav-item now" ){
             removeItemAndObject("now");
         }else{
@@ -367,7 +368,6 @@ Index.prototype = {
             });
         });
     },
-    
     bindRefresh : function(){
         var that = this;
         $("#refresh").on("click",function(){
@@ -377,7 +377,6 @@ Index.prototype = {
     },
     bindTheme : function(){
         var that = this;
-
         // $("#theme-icon").on("click",function(){
         //     var display = $(".themeBox").css("display");
         //     if( display === "none" ){
@@ -386,14 +385,12 @@ Index.prototype = {
         //         $(".themeBox").css("display","none");
         //     }
         // })
-        
         //改为hover体验更好
         $("#theme-icon,.themeBox").hover(function(){
             $(".themeBox").css("display","block");
         },function(){
             $(".themeBox").css("display","none");
         })
-
         $(".skinTheme").on("click",function(){
             var theme = $(this).attr("theme");
             var changeColor = that.nowObject[0].contentWindow.document.changeColor;
@@ -422,7 +419,39 @@ Index.prototype = {
                 changeColor(theme,that.themeColor);
             }
         });
+    },
+
+    initSonWin : function(){
+        var that = this;
+        //子页面需要用的属性与方法
+        // that.nowObject[0].contentWindow.document.themeColor = that.themeColor;
+        // that.nowObject[0].contentWindow.document.Sconfirm = that.Sconfirm;
+        // that.nowObject[0].contentWindow.document.h = h;
+        // that.nowObject[0].contentWindow.h = h; //这个可以
+        // that.nowObject[0].contentWindow.$ = $; //这个可以
+
+        // console.log(window.location.href + 'pages/index1/index1.html');
+
+        // window.postMessage($("#se").val(),window.location.href + 'pages/index1/index1.html');
+
+
+
+        $("#se").off().on("input",function(){
+            console.log($("#se").val());
+            that.nowObject[0].contentWindow.postMessage($("#se").val(),window.location.href + 'pages/index1/index1.html');
+        })
+
+        
+        window.addEventListener("message", function(e){
+            if(typeof e.data == "string"){
+                console.log(e.data);
+            }
+        }, false);
+                
+
+
     }
+
 
 }
 

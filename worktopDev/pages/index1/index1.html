@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index1</title>
+</head>
+<body>
+    
+    <div>index1</div>
+
+    <input type="text" class="ses">
+
+    <button id="btn">点击我改变input</button>
+
+    <script src="../../lib/holmes.js"></script>
+    <script src="../../lib/jquery-3.2.1.min.js"></script>
+    <script>
+
+
+var h = holmes({
+    input: '.ses', // default: input[type=search]
+    find: 'div', // querySelectorAll that matches each of the results individually
+    class: {
+        visible: 'visible',
+        hidden: 'hidden'
+    },
+    mark:true,
+    onHidden(el) {  
+        // console.log('hidden', el);
+    },
+    onFound(el) { //Callback for when items are found after being empty.
+        // console.log('found', el);
+    },
+    onInput(el) {
+        // console.log('input', el);
+    },
+    onVisible(el) {   
+        // console.log('visible', el);
+    },
+    onEmpty(el) {
+        // console.log('empty', el);
+    }
+});
+
+
+
+
+        $(function(){
+
+            // function change(theme){
+            //     console.log(theme);
+            // }
+            // document.changeColor = change;
+
+            // setTimeout(function(){
+                // window.h.start();
+                // console.log(window.h.start());
+            // },1000)
+
+            // $("#btn").on("click",function(){
+            //     $(".ses").val("ind");
+            //     h.search();
+            // });
+            // $(".ses").on("input propertychange",function(){
+            //     var va = $(".ses").val();
+            //     console.log(va);
+            // });
+                
+            window.addEventListener("message", function(e){
+                // console.log("data",e.data);
+                // h.searchString = e.data;
+                $(".ses").val(e.data);
+                h.search();
+                event.source.postMessage(window.location.href,event.origin);
+            }, false);
+
+
+        })
+
+    </script>
+</body>
+</html>

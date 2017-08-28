@@ -245,7 +245,17 @@ WorkTop.prototype = {
 }
 
 $(function(){
+    
     var worktop = new WorkTop();
+
+    setTimeout(function(){
+        // console.log(document);
+        // console.log(document.h);
+        // console.log(window.document.themeColor);
+        // console.log(window.h); //window上的可以document上的不可以
+        // window.h.start();
+    },1000);
+
 })
 
     
@@ -256,14 +266,28 @@ $(function(){
 //     }
 //     document.changeColor = change;  
 
+//     // console.log(document.h);
+
+
+//     setTimeout(function(){
+
+//         console.log(document.h);
+//         console.log(document.themeColor);
+
+//     },1000);
+
+
 //     //调用父元素的
-//     document.getElementById("Btn").onclick = function(){
-//         document.Sconfirm({
-//             text : "子元素调用",
-//             confirmColor : document.themeColor,
-//             callback : function(){
-//                 console.log("callback");
-//             }
-//         })
-//     }
+
+//     // document.getElementById("Btn").onclick = function(){
+//     //     document.Sconfirm({
+//     //         text : "子元素调用",
+//     //         confirmColor : document.themeColor,
+//     //         callback : function(){
+//     //             console.log("callback");
+//     //         }
+//     //     })
+//     // }
+
+
 // }

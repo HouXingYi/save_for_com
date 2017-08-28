@@ -299,6 +299,7 @@ body.red{
 /*动画,transition*/
 .wrapper .side-bar{
     transition: all 0.5s;
+    z-index: 500;
 }
 .wrapper .side-bar .side-nav-box{
     transition: all 0.5s;
@@ -316,6 +317,54 @@ body.red{
     transition: all 0.5s;
     color: #fff;
 }
+
+/* 浮动菜单 */
+
+/* 中等浮动菜单情况 */
+.wrapper .middle.side-bar .metismenu{
+    position: absolute;
+    left: 100px;
+    top: 10px;
+    z-index: 500;
+    width: 100px;
+    background: #fff;
+    color: #000;
+    list-style-type: none;
+    text-align: left;
+    display: none;
+}
+.wrapper .middle.side-bar .metismenu li{
+    list-style-type: none;
+}
+.wrapper .middle.side-bar .metismenu{
+    width: 200px;
+}
+.wrapper .middle.side-bar .metismenu li{
+    min-height: 50px;
+    line-height: 50px;
+    border: 1px solid #e5e5e5;
+}
+.wrapper .middle.side-bar .metismenu li.title{
+    padding-left: 20px;
+    background: #e5e5e5;
+}
+.wrapper .middle.side-bar .metismenu li a.titleLink{
+    display: block;
+    padding-left: 20px;
+    text-decoration: none;
+    color: #000;
+}
+.wrapper .middle.side-bar .metismenu li.active a.titleLink{
+    background: #4E5465;
+    color: #fff;
+}
+.wrapper .middle.side-bar .metismenu li .subitem{
+    padding-left: 20px;
+} 
+.wrapper .middle.side-bar .metismenu li .subitem:hover{
+    background: #e5e5e5;
+}
+
 /*中等大小左侧导航*/
 .wrapper .middle.side-bar{
     position: fixed;
@@ -326,7 +375,7 @@ body.red{
 .wrapper .middle.side-bar .side-nav-box{
     margin: 40px auto;
     width: 100px;
-    overflow: hidden;
+    /* overflow: hidden; */
     position: relative;
 }
 .wrapper .middle.side-bar .side-nav-box .nav-group{
@@ -334,11 +383,16 @@ body.red{
 }
 .wrapper .middle.side-bar .side-nav-box .nav-group .side-item{
     width: 96px;
-    height: 77px;
+    min-height: 77px;
     margin: 0 auto;
     text-align: center;
     cursor: pointer;
 }
+
+.wrapper .middle.side-bar .side-nav-box .nav-group .side-item:hover .metismenu{
+    display: block;
+}
+
 .wrapper .middle.side-bar .side-nav-box .nav-group .side-item .side-item-icon{
     margin-top: 10px;
 }

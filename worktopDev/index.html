@@ -5,6 +5,9 @@
     <title>盛辉运营管理统一平台</title>
     <link rel="stylesheet" href="./lib/sweetalert/sweetalert.css">
     <link rel="stylesheet" href="./css/reset.css">
+
+    <link rel="stylesheet" href="./lib/metisMenu/metisMenu.css">
+
     <link rel="stylesheet" href="./css/index.css">
     <style>
         mark {
@@ -14,7 +17,7 @@
 </head>
 <body class="blue">
 
-    <div class="wrapper">
+    <div class="wrapper" id="wrapper">
         <div class="header">
             <div class="menuIcon off" id="menuIcon" status="off">
                 <img src="./images/navList.png" alt="" class="menuIconImg">
@@ -23,8 +26,7 @@
             <span class="logo-title">盛辉运营管理统一平台</span>
             <div class="search">
                 <i class="search-icon"></i>
-                <!-- <span>搜索导航菜单和窗口内容</span> -->
-                <input class="searchInput" id="searchInput" type="text" placeholder="搜索导航菜单和窗口内容">
+                <input class="searchInput se" id="se" type="text" placeholder="搜索导航菜单和窗口内容">
             </div>  
             <div class="header-right">
                 <span href="javascript:;" class="iconBox">
@@ -69,15 +71,49 @@
         <div class="middle side-bar" id="side-bar">
             <div class="side-nav-box">
                 <div class="nav-group">
-                    <div class="side-item1 side-item" data-url="./pages/index1.html" data-title="index1">
+
+                    <div class="side-item1 side-item" data-url="./pages/index1/index1.html" data-title="index1">
                         <img class="side-item-icon" src="./images/attendance.png" alt=""><br>
                         <span class="side-item-text">考勤管理</span>
+                        <ul class="metismenu" id="menu1" >
+                            <li class="title">考勤管理</li>
+                            <li>
+                                <a class="titleLink" href="#" aria-expanded="true">基础设置</a>
+                                <ul aria-expanded="true">
+                                    <li class="subitem" data-url="./pages/index3.html" data-title="index3">班次设置</li>
+                                    <li class="subitem">排版设置</li>
+                                    <li class="subitem">节假日设置</li>
+                                    <li class="subitem">考勤机管理</li>
+                                    <li class="subitem">考勤机人员管理</li>
+                                </ul>
+                            </li>        
+                            <li>
+                                <a class="titleLink" href="#" aria-expanded="true">信息登记</a>
+                                <ul aria-expanded="true">
+                                    <li class="subitem">异常考勤处理</li>
+                                    <li class="subitem">其他考勤登记</li>
+                                    <li class="subitem">计件登记</li>
+                                </ul>
+                            </li>        
+                            <li>
+                                <a class="titleLink" href="#" aria-expanded="true">汇总查询</a>
+                                <ul aria-expanded="true">
+                                    <li class="subitem">考勤记录查询</li>
+                                    <li class="subitem">部门出勤率分析</li>
+                                    <li class="subitem">部门出勤率排名</li>
+                                    <li class="subitem">考勤汇总统计</li>
+                                    <li class="subitem">人员去向查询</li>
+                                    <li class="subitem">人员去向汇总</li>
+                                </ul>
+                            </li>        
+                        </ul>
                     </div>
                     <div class="side-item2 side-item" data-url="./pages/index2.html" data-title="index2">
                         <img class="side-item-icon" src="./images/secure.png" alt=""><br>
                         <span class="side-item-text">治安管理</span>
                     </div>
-                    <div class="side-item3 side-item" data-url="./pages/index3.html" data-title="index3">
+                    
+                    <!-- <div class="side-item3 side-item" data-url="./pages/index3.html" data-title="index3">
                         <img class="side-item-icon" src="./images/pay.png" alt=""><br>
                         <span class="side-item-text">工资管理</span>
                     </div>
@@ -96,7 +132,7 @@
                     <div class="side-item7 side-item" data-url="./pages/index7.html" data-title="index7">
                         <img class="side-item-icon" src="./images/sys.png" alt=""><br>
                         <span class="side-item-text">系统管理</span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="SN-btn-group" id="SN-btn-group">
@@ -120,10 +156,12 @@
         </div>
 
     </div>
+
     <script src="./lib/sweetalert/sweetalert-dev.js"></script>
     <script src="./lib/jquery-3.2.1.min.js"></script>
     <script src="./lib/holmes.js"></script>
+    <script src="./lib/metisMenu/metisMenu.js"></script>
     <script src="./js/index.js"></script>
-
+    
 </body>
 </html>
