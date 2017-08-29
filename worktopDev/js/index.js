@@ -1,4 +1,5 @@
 
+//初始化holmes插件
 var h = holmes({
     input: '.se', // default: input[type=search]
     find: '.side-item,.top-nav-item,li', // querySelectorAll that matches each of the results individually
@@ -6,24 +7,8 @@ var h = holmes({
         visible: 'visible',
         hidden: 'hidden'
     },
-    mark:true,
-    onHidden(el) {  
-        // console.log('hidden', el);
-    },
-    onFound(el) { //Callback for when items are found after being empty.
-        // console.log('found', el);
-    },
-    onInput(el) {
-        // console.log('input', el);
-    },
-    onVisible(el) {   
-        // console.log('visible', el);
-    },
-    onEmpty(el) {
-        // console.log('empty', el);
-    }
+    mark:true
 });
-
 
 //构造函数
 function Index(){
@@ -48,11 +33,17 @@ function Index(){
             }
         );
     }
-
     this.themeColor = "#519ab4";  //默认主题颜色
-    this.initSonWin(); //将父数据传给子数据 
+    this.seString = "";  //默认搜索字符串
+    //默认的消息对象，用于传递数据
+    this.message = {
+        themeColor : this.themeColor,
+        seString : this.seString
+    }
+    this.searchObjectArr = []; //用于储存搜索到的侧边栏或顶部栏或子页面
 
     this.init();
+    h.input.removeEventListener("input",h.search);//去除插件的input事件改为手动搜索
 }
 //原型方法
 Index.prototype = {
@@ -65,6 +56,46 @@ Index.prototype = {
         $(".metismenu").metisMenu();
     },
     bind : function(){
+
+        var that = this;
+
+        //搜索栏绑定
+        $("#se").on("keydown",function(e){
+            if(e.keyCode == "13"){  //回车
+                //父窗口搜索
+                h.search();
+                //发消息给子窗口以供搜索 , 并监听返回消息
+                that.message.seString = $("#se").val();
+                that.sendMessage();
+                //清空
+                that.searchObjectArr = [];
+                $(".searchBox").empty();
+            }
+        });
+
+        //监听返回的message
+        window.addEventListener("message", function(e){
+            if(that.searchObjectArr.length != 0){
+                console.log(1112222);
+                return false
+            }
+            var message = e.data; 
+            if( message.isFind || message.href ){ //有子页面匹配
+                that.handleMessage(e,message);  //处理返回的message
+                that.handleSearchBar(); //生成搜索选择框
+            }else if(!message.isFind || !message.href){//无子页面匹配
+                that.handleMessage(e,message);  //处理返回的message
+                var len = that.searchObjectArr.length;
+                if(that.searchObjectArr.length != 0 ){//有匹配父页面
+                    that.handleSearchBar(); //生成搜索选择框
+                }else{//无用message
+                    return false
+                }
+            }
+
+        }, false);
+
+
         //左侧导航栏宽度切换
         this.sideChange();
         //左侧栏事件绑定
@@ -73,10 +104,115 @@ Index.prototype = {
         this.bindRefresh();    
         //主题功能
         this.bindTheme();
+
+    },
+
+    handleSearchBar : function(){
+        var that = this;
+        var list = this.searchObjectArr;
+
+        var html = '';
+        for(var i=0;i<list.length;i++){
+
+            var item = list[i];
+            if(item.hasClass("side-item")){//左侧
+                html += '<li class="searchItem" s-index="'+i+'">左侧标签页:'+item.attr("data-title")+'</li>';
+            }else if(item.hasClass("top-nav-item")){//顶端
+                html += '<li class="searchItem" s-index="'+i+'">顶端标签页:'+item.text()+'</li>';
+            }
+
+        }
+        $(".searchBox").html(html);
+
+        $(document).on("click",".searchBox .searchItem",function(){
+            
+            console.log("111");
+            var index = $(this).attr("s-index");
+            that.searchObjectArr[index].click();
+            $(".searchBox").empty();
+            that.searchObjectArr = [];
+            $("#se").val("");
+
+        });
+
+    },
+    handleMessage : function(e,message){
+
+        var that = this;
+
+        //主页面是否有匹配
+        var marks = $(".wrapper").find("mark");
+        if(marks.length != 0){
+            marks.each(function(){
+                var sideFlag = $(this).parents(".side-item");
+                var topNav = $(this).parents(".top-nav-item");
+                if( sideFlag.length != 0 ){
+                    console.log("匹配到左侧栏item");
+                    // sideFlag.click();
+                    var re = 0;//无重复                    
+                    that.searchObjectArr.forEach(function(el) {
+                        if(el.is(sideFlag)){
+                            re = 1;//重复
+                        }
+                    });
+                    if(re == 0){
+                        that.searchObjectArr.push(sideFlag);
+                    }
+                }
+                if( topNav.length != 0 ){
+                    console.log("匹配到顶部栏item");
+                    var topre = 0;
+                    // topNav.click();
+                    that.searchObjectArr.forEach(function(el) {
+                        if(el.is(topNav)){
+                            topre = 1;//重复
+                        }
+                    });
+                    if(topre == 0){
+                        that.searchObjectArr.push(topNav);
+                    }
+
+                }
+            })
+        }
+
+        if(!message.isFind || !message.href){
+            return false
+        }
+
+        // 子页面是否有匹配
+        if( message.isFind == true ){ //子页面有找到匹配
+            var objectData = "";
+            $(".contentObjectBox").each(function(){
+                var href = $(this)[0].contentWindow.location.href;
+                if( href == message.href ){
+                    objectData = $(this).attr("data");
+                }
+            });
+            if( $('.top-nav-item[data-url="'+objectData+'"]').length != 0 ){
+                // $('.top-nav-item[data-url="'+objectData+'"]').click();
+                var sonObj = $('.top-nav-item[data-url="'+objectData+'"]');
+                var sonre = 0;
+                // topNav.click();
+                that.searchObjectArr.forEach(function(el) {
+                    if(el.is(sonObj)){
+                        sonre = 1;//重复
+                    }
+                });
+                if(sonre == 0){//如果不重复
+                    that.searchObjectArr.push(sonObj);
+                }
+                
+            }
+            e.source.heightlight();  //调用子页面高亮代码
+        }else if( message.isFind == false ){ //子页面未找到匹配
+            console.log("未找到匹配");
+        }
+
     },
     sideChange : function(){
+
         var that = this;
-        
         //左侧栏宽度的切换
         var sideBar = $("#side-bar");
         $(".SN-btn").on("click",function(){
@@ -194,8 +330,6 @@ Index.prototype = {
             $(".content-wrapper").append(objTpl);
             $('.contentObjectBox[data="'+ url +'"]').css("zIndex","100").siblings().css("zIndex","-10");
             that.nowObject = $('.contentObjectBox[data="'+ url +'"]');
-
-            that.initSonWin();
 
             //绑定tag页事件
             that.bindTag();
@@ -421,37 +555,20 @@ Index.prototype = {
         });
     },
 
-    initSonWin : function(){
+    sendMessage : function(){
         var that = this;
-        //子页面需要用的属性与方法
-        // that.nowObject[0].contentWindow.document.themeColor = that.themeColor;
-        // that.nowObject[0].contentWindow.document.Sconfirm = that.Sconfirm;
-        // that.nowObject[0].contentWindow.document.h = h;
-        // that.nowObject[0].contentWindow.h = h; //这个可以
-        // that.nowObject[0].contentWindow.$ = $; //这个可以
-
-        // console.log(window.location.href + 'pages/index1/index1.html');
-
-        // window.postMessage($("#se").val(),window.location.href + 'pages/index1/index1.html');
-
-
-
-        $("#se").off().on("input",function(){
-            console.log($("#se").val());
-            that.nowObject[0].contentWindow.postMessage($("#se").val(),window.location.href + 'pages/index1/index1.html');
-        })
-
-        
-        window.addEventListener("message", function(e){
-            if(typeof e.data == "string"){
-                console.log(e.data);
-            }
-        }, false);
-                
-
+        // console.log(that.message);
+        var objects = $(".contentObjectBox");
+        // 当前有打开的页面都发消息过去
+        $(".contentObjectBox").each(function(){
+            var srcData = $(this).attr("data");
+            var pos = srcData.indexOf("/");
+            var src = srcData.substring(pos+1);
+            var fullHref = window.location.href + 'pages/index1/index1.html';
+            $(this)[0].contentWindow.postMessage(that.message,fullHref);
+        });
 
     }
-
 
 }
 

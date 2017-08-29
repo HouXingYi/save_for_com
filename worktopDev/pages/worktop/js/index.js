@@ -248,13 +248,13 @@ $(function(){
     
     var worktop = new WorkTop();
 
-    setTimeout(function(){
+    // setTimeout(function(){
         // console.log(document);
         // console.log(document.h);
         // console.log(window.document.themeColor);
         // console.log(window.h); //window上的可以document上的不可以
         // window.h.start();
-    },1000);
+    // },1000);
 
 })
 

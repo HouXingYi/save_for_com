@@ -5,14 +5,24 @@
     <title>盛辉运营管理统一平台</title>
     <link rel="stylesheet" href="./lib/sweetalert/sweetalert.css">
     <link rel="stylesheet" href="./css/reset.css">
-
     <link rel="stylesheet" href="./lib/metisMenu/metisMenu.css">
-
     <link rel="stylesheet" href="./css/index.css">
     <style>
-        mark {
-            background: #86BA68;
+
+        /* mark{
+            color: inherit;
+            background: inherit;
+            font-style: inherit;
+            font-weight: inherit;
+        } */
+
+        mark.active{
+            background-color: #ff9;
+            color: #000;
+            font-style: italic;
+            font-weight: bold;
         }
+
     </style>
 </head>
 <body class="blue">
@@ -27,6 +37,18 @@
             <div class="search">
                 <i class="search-icon"></i>
                 <input class="searchInput se" id="se" type="text" placeholder="搜索导航菜单和窗口内容">
+
+                <div class="searchBox">
+                    <!-- <li class="searchItem">左侧标签页:考勤管理</li>
+                    <li class="searchItem">顶部标签页:工作台</li>
+                    <li class="searchItem">顶部标签页:关闭所有窗口</li>
+                    <li class="searchItem">包含sss的窗口:index1</li>
+                    <li class="searchItem">包含sss的窗口:index2</li> -->
+
+                    
+
+                </div>
+
             </div>  
             <div class="header-right">
                 <span href="javascript:;" class="iconBox">
@@ -75,7 +97,7 @@
                     <div class="side-item1 side-item" data-url="./pages/index1/index1.html" data-title="index1">
                         <img class="side-item-icon" src="./images/attendance.png" alt=""><br>
                         <span class="side-item-text">考勤管理</span>
-                        <ul class="metismenu" id="menu1" >
+                        <!-- <ul class="metismenu" id="menu1" >
                             <li class="title">考勤管理</li>
                             <li>
                                 <a class="titleLink" href="#" aria-expanded="true">基础设置</a>
@@ -106,33 +128,32 @@
                                     <li class="subitem">人员去向汇总</li>
                                 </ul>
                             </li>        
-                        </ul>
+                        </ul> -->
                     </div>
-                    <div class="side-item2 side-item" data-url="./pages/index2.html" data-title="index2">
+                    <div class="side-item2 side-item" data-url="./pages/index2/index2.html" data-title="index2">
                         <img class="side-item-icon" src="./images/secure.png" alt=""><br>
                         <span class="side-item-text">治安管理</span>
                     </div>
-                    
-                    <!-- <div class="side-item3 side-item" data-url="./pages/index3.html" data-title="index3">
+                    <div class="side-item3 side-item" data-url="./pages/index3/index3.html" data-title="index3">
                         <img class="side-item-icon" src="./images/pay.png" alt=""><br>
                         <span class="side-item-text">工资管理</span>
                     </div>
-                    <div class="side-item4 side-item" data-url="./pages/index4.html" data-title="index4"> 
+                    <div class="side-item4 side-item" data-url="./pages/index4/index4.html" data-title="index4"> 
                         <img class="side-item-icon" src="./images/ope.png" alt=""><br>
                         <span class="side-item-text">运维管理</span>
                     </div>
-                    <div class="side-item5 side-item" data-url="./pages/index5.html" data-title="index5">
+                    <div class="side-item5 side-item" data-url="./pages/index5/index5.html" data-title="index5">
                         <img class="side-item-icon" src="./images/design.png" alt=""><br>
                         <span class="side-item-text">设计表单</span>
                     </div>
-                    <div class="side-item6 side-item" data-url="./pages/index6.html" data-title="index6">
+                    <div class="side-item6 side-item" data-url="./pages/index6/index6.html" data-title="index6">
                         <img class="side-item-icon" src="./images/sys.png" alt=""><br>
                         <span class="side-item-text">系统管理</span>
                     </div>
-                    <div class="side-item7 side-item" data-url="./pages/index7.html" data-title="index7">
+                    <div class="side-item7 side-item" data-url="./pages/index7/index7.html" data-title="index7">
                         <img class="side-item-icon" src="./images/sys.png" alt=""><br>
                         <span class="side-item-text">系统管理</span>
-                    </div> -->
+                    </div>
                 </div>
             </div>
             <div class="SN-btn-group" id="SN-btn-group">

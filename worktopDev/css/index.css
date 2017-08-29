@@ -72,6 +72,7 @@ body.red{
     height:70px;
     position: relative;
     /* overflow: hidden; */
+    z-index: 500;
 }    
 .wrapper .header .menuIcon{
     position: relative;
@@ -111,7 +112,6 @@ body.red{
     top: 10px;
 }
 
-
 .wrapper .header .search{
     position: absolute;
     right: 385px;
@@ -121,6 +121,25 @@ body.red{
     border: 1px solid #e5e5e5;
     border-radius: 50px;
     background: #fff;
+}
+.wrapper .header .search .searchBox{
+    position: absolute;
+    left: 0px;
+    top: 48px;
+    width: 240px;
+    background: #fff;
+}
+.wrapper .header .search .searchBox li.searchItem{
+    height: 40px;
+    line-height: 40px;
+    list-style-type: none;
+    color: #000;
+    cursor: pointer;
+}
+.wrapper .header .search .searchBox li.searchItem:hover{
+
+    background: #e5e5e5;
+
 }
 .wrapper .header .search .searchInput{
     border: 0;

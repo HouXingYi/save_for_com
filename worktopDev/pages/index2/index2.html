@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>index1</title>
+    <title>index2</title>
 </head>
 <body>
-
     <div class="box">
-        index1
+        index2
         <div class="123">
-            456
+            789
         </div>
         <div class="aa"></div>
         <div class="span">
@@ -22,12 +21,11 @@
 
     <script src="../../lib/jquery-3.2.1.min.js"></script>
     <script>
-        
-        $(function(){
 
+        $(function(){
             var message; 
             var _regex;
-            var isFind = false;
+            var isFind = false;  //是否匹配到字符，默认为未匹配到
             window.addEventListener("message", function(e){
                 message = e.data;
                 if(_regex){
@@ -40,8 +38,7 @@
                     href : window.location.href
                 },event.origin);
             }, false);
-
-            window.heightlight = function(){
+            window.heightlight = function(){  //高亮匹配到的代码
                 var elements = document.querySelectorAll(".box *");
                 var elementsLength = elements.length;
                 var elementsArray = Array.prototype.slice.call(elements);
@@ -53,7 +50,6 @@
                     );
                 })
             }
-
             function clearMark(){
                 var elements = document.querySelectorAll(".box *");
                 var elementsLength = elements.length;
@@ -62,7 +58,6 @@
                     el.innerHTML = el.innerHTML.replace(/<\/?mark>/g, '');   //去掉原来所有的mark
                 })
             }
-
         })
 
     </script>
