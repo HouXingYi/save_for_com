@@ -65,6 +65,9 @@ body.red{
     .logo-img{
         margin-left: 25px !important;
     }
+    #side-bar,#SN-btn-group{
+        display: none;
+    }
 }
 
 /*头部*/
@@ -128,6 +131,8 @@ body.red{
     top: 48px;
     width: 240px;
     background: #fff;
+    /* border: 1px solid #e5e5e5; */
+    border-radius: 3px;
 }
 .wrapper .header .search .searchBox li.searchItem{
     height: 40px;
@@ -135,11 +140,11 @@ body.red{
     list-style-type: none;
     color: #000;
     cursor: pointer;
+    padding-left: 15px;
+    border-bottom: 1px dashed #e5e5e5;
 }
 .wrapper .header .search .searchBox li.searchItem:hover{
-
     background: #e5e5e5;
-
 }
 .wrapper .header .search .searchInput{
     border: 0;

@@ -33,10 +33,15 @@
                 }
                 _regex = new RegExp(`(${message.seString})(?![^<]*>)`, 'gi');
                 isFind = _regex.test($(".box")[0].innerHTML);
+                if(message.seString == ""){
+                    isFind = false;
+                }
                 event.source.postMessage({
                     isFind : isFind,
                     href : window.location.href
                 },event.origin);
+
+
             }, false);
             window.heightlight = function(){  //高亮匹配到的代码
                 var elements = document.querySelectorAll(".box *");
@@ -50,6 +55,9 @@
                     );
                 })
             }
+
+            window.clearMark = clearMark
+
             function clearMark(){
                 var elements = document.querySelectorAll(".box *");
                 var elementsLength = elements.length;

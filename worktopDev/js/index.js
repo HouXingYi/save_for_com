@@ -41,7 +41,6 @@ function Index(){
         seString : this.seString
     }
     this.searchObjectArr = []; //用于储存搜索到的侧边栏或顶部栏或子页面
-
     this.init();
     h.input.removeEventListener("input",h.search);//去除插件的input事件改为手动搜索
 }
@@ -49,21 +48,22 @@ function Index(){
 Index.prototype = {
     //初始化
     init : function(){
+
         // 绑定事件
         this.bind();
         // 宽度自适应适配
         this.respWidth();
+        //多级菜单插件
         $(".metismenu").metisMenu();
+
     },
     bind : function(){
-
         var that = this;
-
         //搜索栏绑定
         $("#se").on("keydown",function(e){
             if(e.keyCode == "13"){  //回车
                 //父窗口搜索
-                h.search();
+                h.search();  //mark
                 //发消息给子窗口以供搜索 , 并监听返回消息
                 that.message.seString = $("#se").val();
                 that.sendMessage();
@@ -72,14 +72,12 @@ Index.prototype = {
                 $(".searchBox").empty();
             }
         });
-
         //监听返回的message
         window.addEventListener("message", function(e){
-            if(that.searchObjectArr.length != 0){
-                console.log(1112222);
+            var message = e.data; 
+            if(that.searchObjectArr.length != 0 && !message.isFind && !message.href){
                 return false
             }
-            var message = e.data; 
             if( message.isFind || message.href ){ //有子页面匹配
                 that.handleMessage(e,message);  //处理返回的message
                 that.handleSearchBar(); //生成搜索选择框
@@ -92,10 +90,17 @@ Index.prototype = {
                     return false
                 }
             }
-
         }, false);
-
-
+        $(document).on("click",".searchBox .searchItem",function(){
+            var index = $(this).attr("s-index");
+            that.searchObjectArr[index].click();
+            //清空
+            $(".searchBox").empty();
+            that.searchObjectArr = [];
+            $("#se").val("");
+            h.search(); //清空
+        });
+        
         //左侧导航栏宽度切换
         this.sideChange();
         //左侧栏事件绑定
@@ -123,17 +128,6 @@ Index.prototype = {
 
         }
         $(".searchBox").html(html);
-
-        $(document).on("click",".searchBox .searchItem",function(){
-            
-            console.log("111");
-            var index = $(this).attr("s-index");
-            that.searchObjectArr[index].click();
-            $(".searchBox").empty();
-            that.searchObjectArr = [];
-            $("#se").val("");
-
-        });
 
     },
     handleMessage : function(e,message){
@@ -182,6 +176,9 @@ Index.prototype = {
 
         // 子页面是否有匹配
         if( message.isFind == true ){ //子页面有找到匹配
+
+            // console.log( message.href );
+
             var objectData = "";
             $(".contentObjectBox").each(function(){
                 var href = $(this)[0].contentWindow.location.href;
@@ -189,6 +186,7 @@ Index.prototype = {
                     objectData = $(this).attr("data");
                 }
             });
+
             if( $('.top-nav-item[data-url="'+objectData+'"]').length != 0 ){
                 // $('.top-nav-item[data-url="'+objectData+'"]').click();
                 var sonObj = $('.top-nav-item[data-url="'+objectData+'"]');
@@ -202,9 +200,9 @@ Index.prototype = {
                 if(sonre == 0){//如果不重复
                     that.searchObjectArr.push(sonObj);
                 }
-                
             }
             e.source.heightlight();  //调用子页面高亮代码
+
         }else if( message.isFind == false ){ //子页面未找到匹配
             console.log("未找到匹配");
         }
@@ -302,7 +300,6 @@ Index.prototype = {
             // }else{
             //     return false
             // }
-            //用插件的话流程控制麻烦点，但样式好看
             that.Sconfirm({
                 text: "打开窗口个数已经达到6个，新开窗口将会关闭第一个窗口，是否继续?",
                 confirmColor : that.themeColor,
@@ -310,13 +307,13 @@ Index.prototype = {
                     var Fitem = $(".top-nav-item").eq(1);
                     that.removeObject(Fitem);
                     append();
-                    h.start(); //搜索重启
+                    // h.start(); //搜索重启
                 }
             });
             return false
         }
         append()
-        h.start(); //搜索重启
+        // h.start(); //搜索重启
         function append(){
             //append顶部item，并设置now
             var tpl =   '<li class="top-nav-item" data-url="' + url + '">' +
@@ -460,6 +457,10 @@ Index.prototype = {
                 var sideWidth = $("#side-bar").width();
                 $("#top-nav").css("left",sideWidth);
                 $("#content-wrapper").css("left",sideWidth);
+                $(".search").css("display","block");
+            }
+            if( w < 960 ){
+                $(".search").css("display","none");
             }
 
         });
@@ -476,11 +477,13 @@ Index.prototype = {
                 content.css("left",sideWidth);
                 $(this).attr("class","menuIcon on");
                 $(this).attr("status","on");
+                $("#side-bar,#SN-btn-group").css("display","block");
             }else if(status == "on"){
                 topNav.css("left",0);
                 content.css("left",0);
                 $(this).attr("class","menuIcon off");
                 $(this).attr("status","off");
+                $("#side-bar,#SN-btn-group").css("display","none");
             }
         });
     },
@@ -554,22 +557,18 @@ Index.prototype = {
             }
         });
     },
-
     sendMessage : function(){
         var that = this;
-        // console.log(that.message);
         var objects = $(".contentObjectBox");
         // 当前有打开的页面都发消息过去
         $(".contentObjectBox").each(function(){
             var srcData = $(this).attr("data");
             var pos = srcData.indexOf("/");
             var src = srcData.substring(pos+1);
-            var fullHref = window.location.href + 'pages/index1/index1.html';
+            var fullHref = window.location.href + src;
             $(this)[0].contentWindow.postMessage(that.message,fullHref);
         });
-
     }
-
 }
 
 $(function(){

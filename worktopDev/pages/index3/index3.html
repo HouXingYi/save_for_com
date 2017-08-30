@@ -33,6 +33,9 @@
                 }
                 _regex = new RegExp(`(${message.seString})(?![^<]*>)`, 'gi');
                 isFind = _regex.test($(".box")[0].innerHTML);
+                if(message.seString == ""){
+                    isFind = false;
+                }
                 event.source.postMessage({
                     isFind : isFind,
                     href : window.location.href
