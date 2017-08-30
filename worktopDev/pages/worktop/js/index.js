@@ -245,49 +245,7 @@ WorkTop.prototype = {
 }
 
 $(function(){
-    
     var worktop = new WorkTop();
-
-    // setTimeout(function(){
-        // console.log(document);
-        // console.log(document.h);
-        // console.log(window.document.themeColor);
-        // console.log(window.h); //window上的可以document上的不可以
-        // window.h.start();
-    // },1000);
-
 })
 
-    
-// window.onload = function(){
-//     //用于父元素调用
-//     function change(theme){
-//         console.log(theme);
-//     }
-//     document.changeColor = change;  
-
-//     // console.log(document.h);
-
-
-//     setTimeout(function(){
-
-//         console.log(document.h);
-//         console.log(document.themeColor);
-
-//     },1000);
-
-
-//     //调用父元素的
-
-//     // document.getElementById("Btn").onclick = function(){
-//     //     document.Sconfirm({
-//     //         text : "子元素调用",
-//     //         confirmColor : document.themeColor,
-//     //         callback : function(){
-//     //             console.log("callback");
-//     //         }
-//     //     })
-//     // }
-
-
-// }
+ 

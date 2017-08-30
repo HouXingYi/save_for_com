@@ -7,7 +7,7 @@
 <body>
 
     <div class="box">
-        index1
+        <span>index1</span>
         <div class="123">
             456
         </div>
@@ -24,7 +24,6 @@
     <script>
         
         $(function(){
-
             var message; 
             var _regex;
             var isFind = false;
@@ -43,7 +42,6 @@
                     href : window.location.href
                 },event.origin);
             }, false);
-
             window.heightlight = function(){
                 var elements = document.querySelectorAll(".box *");
                 var elementsLength = elements.length;
@@ -56,7 +54,6 @@
                     );
                 })
             }
-
             function clearMark(){
                 var elements = document.querySelectorAll(".box *");
                 var elementsLength = elements.length;
@@ -65,7 +62,6 @@
                     el.innerHTML = el.innerHTML.replace(/<\/?mark>/g, '');   //去掉原来所有的mark
                 })
             }
-
         })
 
     </script>

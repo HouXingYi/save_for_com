@@ -141,7 +141,6 @@ Index.prototype = {
                 var sideFlag = $(this).parents(".side-item");
                 var topNav = $(this).parents(".top-nav-item");
                 if( sideFlag.length != 0 ){
-                    console.log("匹配到左侧栏item");
                     // sideFlag.click();
                     var re = 0;//无重复                    
                     that.searchObjectArr.forEach(function(el) {
@@ -154,7 +153,6 @@ Index.prototype = {
                     }
                 }
                 if( topNav.length != 0 ){
-                    console.log("匹配到顶部栏item");
                     var topre = 0;
                     // topNav.click();
                     that.searchObjectArr.forEach(function(el) {
@@ -176,9 +174,6 @@ Index.prototype = {
 
         // 子页面是否有匹配
         if( message.isFind == true ){ //子页面有找到匹配
-
-            // console.log( message.href );
-
             var objectData = "";
             $(".contentObjectBox").each(function(){
                 var href = $(this)[0].contentWindow.location.href;
@@ -204,7 +199,7 @@ Index.prototype = {
             e.source.heightlight();  //调用子页面高亮代码
 
         }else if( message.isFind == false ){ //子页面未找到匹配
-            console.log("未找到匹配");
+            // console.log("未找到匹配");
         }
 
     },
