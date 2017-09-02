@@ -118,17 +118,14 @@ Index.prototype = {
 
         var html = '';
         for(var i=0;i<list.length;i++){
-
             var item = list[i];
             if(item.hasClass("side-item")){//左侧
                 html += '<li class="searchItem" s-index="'+i+'">左侧标签页:'+item.attr("data-title")+'</li>';
             }else if(item.hasClass("top-nav-item")){//顶端
                 html += '<li class="searchItem" s-index="'+i+'">顶端标签页:'+item.text()+'</li>';
             }
-
         }
         $(".searchBox").html(html);
-
     },
     handleMessage : function(e,message){
 
@@ -201,7 +198,6 @@ Index.prototype = {
         }else if( message.isFind == false ){ //子页面未找到匹配
             // console.log("未找到匹配");
         }
-
     },
     sideChange : function(){
 
