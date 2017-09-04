@@ -2,12 +2,50 @@
 ;(function($){
 
     function WorkTop(){
+
+
         var h = $(window).height();
+
+        this.addItems ={
+            list : [
+                {
+                    smallW:1 , smallH:1 ,
+                    largeW: 2 , largeH: 2 ,
+                    status: "large" , index:0
+                },
+                {
+                    smallW:1 , smallH:1 ,
+                    largeW:3 , largeH:3 ,
+                    status: "large" , index:1
+                },
+                {
+                    smallW:1 , smallH:1 ,
+                    largeW:2 , largeH:2 ,
+                    status: "large" , index:2
+                },
+                {
+                    smallW:1 , smallH:1 ,
+                    largeW:3 , largeH:3 ,
+                    status: "large" , index:3
+                },
+                {
+                    smallW:1 , smallH:1 ,
+                    largeW:2 , largeH:2 ,
+                    status: "large" , index:4
+                },
+                {
+                    smallW:1 , smallH:1 ,
+                    largeW:3 , largeH:3 ,
+                    status: "large" , index:4
+                }
+            ]
+        }
+
         // $(".box").height( h*0.8 );
         //drag配置
         this.opt = {
             acceptWidgets : true  //允许别的页面拖控件过来
-            ,float : true
+            ,float : false  // 东西都会往上顶
             ,draggable : {
                 handle: '.drag-handle-box'  //drag控件的名称
             }
@@ -17,6 +55,8 @@
             // cellHeight : $(window).height()/4 - 10 + "px",
             cellHeight : 'auto' //高由宽来算
             ,verticalMargin : 0
+            ,forDropOnDragCallBack : this.forDropOnDragCallBack
+            ,forDropOnDragList : this.addItems.list
         }
         //插件container的jq对象
         this.gsJq = {} 
@@ -57,10 +97,12 @@
                 }
             ]
         } 
+        
         //新的控件的坐标信息
         this.newItems ={
             list : []
         } 
+
         //如果有localStorage存储的话，覆盖旧的坐标信息
         if(window.localStorage){
             var storage = window.localStorage;
@@ -68,66 +110,39 @@
                 this.oldItems = JSON.parse(storage.items);
             }
         }
+
         this.init();
     }
     WorkTop.prototype = {
+
         init : function(){
 
             var that = this;
             this.initBox();
 
             this.gsJq = $('#grid-stack1').gridstack(this.opt);
-            this.grid = this.gsJq.data('gridstack');
+            this.grid = this.gsJq.data('gridstack'); // 插件实例
 
             //第二模块
             var opt2 = {
-                acceptWidgets : false  //允许别的页面拖控件过来
-                ,float : true,
+                acceptWidgets : false  
+                ,float : false, //东西都会往上顶
                 cellHeight : 'auto', //高由宽来算
-                disableResize :true
-                // ,verticalMargin : '5px'
+                disableResize :true,
+                width: 3
             }
-
 
             this.gsJq2 = $('#grid-stack2').gridstack(opt2);
             this.grid2 = this.gsJq2.data('gridstack');
-
-            $('#grid-stack1').droppable( "option", "disabled", false );
-
-            $('#grid-stack1').droppable({
-                over:function(e){
-                    
-                    // $('#grid-stack1').droppable( "option", "disabled", true );
-                    console.log(e);
-                    
-
-                }
-            })
-
-            $('#grid-stack2').droppable({
-                over:function(e){
-                    // console.log(e);
-                    // $('#grid-stack1').droppable( "option", "disabled", true );
-                    // $('#grid-stack1').droppable( "disable" );
-                },
-                out :function(e){
-                    // console.log(e);
-                    // $('#grid-stack1').droppable( "option", "disabled", false );
-                    // $('#grid-stack1').droppable( "enable" );
-                }
-            })
-
+            
             //当box1被加入的时候
             $('#grid-stack1').on('added', function(event, item) {
-                if (that.grid.willItFit(0, 0, 1, 1, true)) {
-                    that.grid.addWidget(item[0].el, 0, 0, 1, 1, true);
-                }else {
-                    that.grid.removeWidget( item[0].el );
-                    that.resetBox();
-                    alert('没有多余的空间加入控件');
-                    that.grid2.addWidget(item[0].el, 0, 0, 1, 1, true);
-                    return false
-                }
+
+                var tpl = $("#newItemCon").html();
+                var template = _.template(tpl);
+                var html = template();
+                item[0].el.html(html);
+
             });
 
             this.bind();
@@ -194,6 +209,15 @@
                 var grid = event.target;
             });
         },
+        forDropOnDragCallBack: function(el,self){
+            if(el){
+                var index = el.attr("x-index");
+                var list = self.opts.forDropOnDragList;
+                var h = list[index].largeH;
+                var w = list[index].largeW;
+                self.resize(el,w,h);
+            }
+        },
         initBox : function(){
             var that = this;
             //模板引擎渲染并插入
@@ -201,6 +225,11 @@
             var template = _.template(tpl);
             var html = template({list: that.oldItems.list});
             $("#grid-stack1").html(html);
+            //渲染右页面
+            var addTpl = $("#addItemBox").html();
+            var addTemplate = _.template(addTpl);
+            var addHtml = addTemplate();
+            $("#grid-stack2").html(addHtml);
         },
         //取消改变
         resetBox : function(){
@@ -235,7 +264,7 @@
                 that.newItems.list.push(pos);
             })
             var stringItems = JSON.stringify(that.newItems);
-            var storage=window.localStorage;
+            var storage= window.localStorage;
             storage.items = stringItems;
         },
         addNewItem : function(){

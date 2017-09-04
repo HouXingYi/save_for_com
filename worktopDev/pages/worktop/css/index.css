@@ -1,8 +1,7 @@
 
 body{
-    overflow: hidden;
+    overflow-x: hidden;
 }
-
 .box{
     padding: 50px;
     overflow: auto;
@@ -138,19 +137,27 @@ body{
     height: 98%;
 }
 
-
 /* 第二个拖拽框 */
 .box2{
     position: absolute;
     right: -300px;
     top: 61px;
     height: 500px;
-    width: 300px;
+    width: 200px;
     transition: all 0.5s;
 }
 #grid-stack2{
     background: pink;        
 } 
 #grid-stack2 .grid-stack-item{
-    background: black;
+    
+}
+.grid-stack#grid-stack2>.grid-stack-item>.grid-stack-item-content{
+    overflow: hidden;
+}
+
+.itemIcon{
+    width: 45px;
+    height: 45px;
+    background: pink;
 }

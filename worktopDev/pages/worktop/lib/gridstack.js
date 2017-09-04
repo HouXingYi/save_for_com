@@ -5,7 +5,11 @@
  * gridstack.js may be freely distributed under the MIT license.
  * @preserve
 */
+
+
+//工厂模式
 (function(factory) {
+
     if (typeof define === 'function' && define.amd) {
         define(['jquery', 'lodash'], factory);
     } else if (typeof exports !== 'undefined') {
@@ -15,10 +19,13 @@
     } else {
         factory(jQuery, _);
     }
-})(function($, _) {
+
+})(function($, _) {  // 传入两个工具库
 
     var scope = window;
 
+
+    
     var obsolete = function(f, oldName, newName) {
         var wrapper = function() {
             console.warn('gridstack.js: Function `' + oldName + '` is deprecated as of v0.2.5 and has been replaced ' +
@@ -29,12 +36,28 @@
 
         return wrapper;
     };
-
     var obsoleteOpts = function(oldName, newName) {
         console.warn('gridstack.js: Option `' + oldName + '` is deprecated as of v0.2.5 and has been replaced with `' +
             newName + '`. It will be **completely** removed in v1.0.');
     };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //自己定义工具函数
     var Utils = {
         isIntercepted: function(a, b) {
             return !(a.x + a.width <= b.x || b.x + b.width <= a.x || a.y + a.height <= b.y || b.y + b.height <= a.y);
@@ -119,6 +142,33 @@
     Utils.insert_css_rule = obsolete(Utils.insertCSSRule, 'insert_css_rule', 'insertCSSRule');
     // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 
+
+    //工具函数结束
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //GridStackDragDropPlugin开始
+
     /**
     * @class GridStackDragDropPlugin
     * Base class for drag'n'drop plugin.
@@ -153,6 +203,29 @@
         return this;
     };
 
+    //GridStackDragDropPlugin结束
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //GridStackEngine开始
 
     var idSeq = 0;
 
@@ -170,12 +243,10 @@
         this._addedNodes = [];
         this._removedNodes = [];
     };
-
     GridStackEngine.prototype.batchUpdate = function() {
         this._updateCounter = 1;
         this.float = true;
     };
-
     GridStackEngine.prototype.commit = function() {
         if (this._updateCounter !== 0) {
             this._updateCounter = 0;
@@ -184,12 +255,10 @@
             this._notify();
         }
     };
-
     // For Meteor support: https://github.com/troolee/gridstack.js/pull/272
     GridStackEngine.prototype.getNodeDataByDOMEl = function(el) {
         return _.find(this.nodes, function(n) { return el.get(0) === n.el.get(0); });
     };
-
     GridStackEngine.prototype._fixCollisions = function(node) {
         var self = this;
         this._sortNodes(-1);
@@ -208,7 +277,6 @@
                 collisionNode.width, collisionNode.height, true);
         }
     };
-
     GridStackEngine.prototype.isAreaEmpty = function(x, y, width, height) {
         var nn = {x: x || 0, y: y || 0, width: width || 1, height: height || 1};
         var collisionNode = _.find(this.nodes, _.bind(function(n) {
@@ -216,11 +284,9 @@
         }, this));
         return collisionNode === null || typeof collisionNode === 'undefined';
     };
-
     GridStackEngine.prototype._sortNodes = function(dir) {
         this.nodes = Utils.sort(this.nodes, dir, this.width);
     };
-
     GridStackEngine.prototype._packNodes = function() {
         this._sortNodes();
 
@@ -269,10 +335,8 @@
             }, this));
         }
     };
-
     GridStackEngine.prototype._prepareNode = function(node, resizing) {
         node = _.defaults(node || {}, {width: 1, height: 1, x: 0, y: 0});
-
         node.x = parseInt('' + node.x);
         node.y = parseInt('' + node.y);
         node.width = parseInt('' + node.width);
@@ -280,21 +344,17 @@
         node.autoPosition = node.autoPosition || false;
         node.noResize = node.noResize || false;
         node.noMove = node.noMove || false;
-
         if (node.width > this.width) {
             node.width = this.width;
         } else if (node.width < 1) {
             node.width = 1;
         }
-
         if (node.height < 1) {
             node.height = 1;
         }
-
         if (node.x < 0) {
             node.x = 0;
         }
-
         if (node.x + node.width > this.width) {
             if (resizing) {
                 node.width = this.width - node.x;
@@ -302,11 +362,9 @@
                 node.x = this.width - node.width;
             }
         }
-
         if (node.y < 0) {
             node.y = 0;
         }
-
         return node;
     };
 
@@ -518,6 +576,40 @@
         }
     };
 
+    //GridStackEngine开始
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //最主要的的GridStack开始
+
     var GridStack = function(el, opts) {
         var self = this;
         var oneColumnMode, isAutoCellHeight;
@@ -569,9 +661,13 @@
         }
         // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 
+
+
+
         opts.itemClass = opts.itemClass || 'grid-stack-item';
         var isNested = this.container.closest('.' + opts.itemClass).length > 0;
 
+        //融合选项
         this.opts = _.defaults(opts || {}, {
             width: parseInt(this.container.attr('data-gs-width')) || 12,
             height: parseInt(this.container.attr('data-gs-height')) || 0,
@@ -608,8 +704,14 @@
             cellHeightUnit: 'px',
             disableOneColumnMode: opts.disableOneColumnMode || false,
             oneColumnModeClass: opts.oneColumnModeClass || 'grid-stack-one-column-mode',
-            ddPlugin: null
+            ddPlugin: null,
+            forDropOnDragCallBack : function(){
+            }
         });
+
+
+
+        //ddPlugin要理解下
 
         if (this.opts.ddPlugin === false) {
             this.opts.ddPlugin = GridStackDragDropPlugin;
@@ -618,6 +720,10 @@
         }
 
         this.dd = new this.opts.ddPlugin(this);
+
+
+
+
 
         if (this.opts.rtl === 'auto') {
             this.opts.rtl = this.container.css('direction') === 'rtl';
@@ -647,7 +753,8 @@
 
         this._initStyles();
 
-        this.grid = new GridStackEngine(this.opts.width, function(nodes, detachNode) {
+        this.grid = new GridStackEngine(this.opts.width, function(nodes, detachNode) { //onchange回调
+            //当变动的时候
             detachNode = typeof detachNode === 'undefined' ? true : detachNode;
             var maxHeight = 0;
             _.each(nodes, function(n) {
@@ -667,9 +774,13 @@
             self._updateStyles(maxHeight + 10);
         }, this.opts.float, this.opts.height);
 
+
+
+        //初始化,绑定各种事件，这个时候就已经可以移动了。
         if (this.opts.auto) {
             var elements = [];
             var _this = this;
+            //获取所有的子对象，并push到elements数组中
             this.container.children('.' + this.opts.itemClass + ':not(.' + this.opts.placeholderClass + ')')
                 .each(function(index, el) {
                 el = $(el);
@@ -678,10 +789,13 @@
                     i: parseInt(el.attr('data-gs-x')) + parseInt(el.attr('data-gs-y')) * _this.opts.width
                 });
             });
+            //将所有的子对象准备好，绑定对象等。
             _.chain(elements).sortBy(function(x) { return x.i; }).each(function(i) {
                 self._prepareElement(i.el);
             }).value();
         }
+
+
 
         this.setAnimation(this.opts.animate);
 
@@ -695,6 +809,8 @@
             self.cellHeight(self.cellWidth(), false);
         }, 100);
 
+
+        //当窗口改变的时候的处理函数
         this.onResizeHandler = function() {
             if (isAutoCellHeight) {
                 self._updateHeightsOnResize();
@@ -747,6 +863,9 @@
         $(window).resize(this.onResizeHandler);
         this.onResizeHandler();
 
+
+
+        //垃圾桶模式
         if (!self.opts.staticGrid && typeof self.opts.removable === 'string') {
             var trashZone = $(self.opts.removable);
             if (!this.dd.isDroppable(trashZone)) {
@@ -761,7 +880,7 @@
                     if (node._grid !== self) {
                         return;
                     }
-                    self._setupRemovingTimeout(el);
+                    self._setupRemovingTimeout(el); //准备要删除
                 })
                 .on(trashZone, 'dropout', function(event, ui) {
                     var el = $(ui.draggable);
@@ -769,19 +888,27 @@
                     if (node._grid !== self) {
                         return;
                     }
-                    self._clearRemovingTimeout(el);
+                    self._clearRemovingTimeout(el); //不准备要删除
                 });
         }
 
+
+        //可以接受模式
         if (!self.opts.staticGrid && self.opts.acceptWidgets) {
             var draggingElement = null;
 
             var onDrag = function(event, ui) {
                 var el = draggingElement;
+                
+                self.opts.forDropOnDragCallBack(el,self);
+
                 var node = el.data('_gridstack_node');
+
                 var pos = self.getCellFromPixel(ui.offset, true);
+
                 var x = Math.max(0, pos.x);
                 var y = Math.max(0, pos.y);
+
                 if (!node._added) {
                     node._added = true;
 
@@ -799,21 +926,35 @@
                         .attr('data-gs-width', node.width)
                         .attr('data-gs-height', node.height)
                         .show();
+
+
+
+
                     node.el = self.placeholder;
+
+
+
+
                     node._beforeDragX = node.x;
                     node._beforeDragY = node.y;
 
                     self._updateContainerHeight();
                 } else {
+
                     if (!self.grid.canMoveNode(node, x, y)) {
                         return;
                     }
+
                     self.grid.moveNode(node, x, y);
                     self._updateContainerHeight();
+
                 }
             };
 
-            this.dd
+
+
+            this.dd      
+                //可接受的item
                 .droppable(self.container, {
                     accept: function(el) {
                         el = $(el);
@@ -825,10 +966,18 @@
                     }
                 })
                 .on(self.container, 'dropover', function(event, ui) {
+
+
                     var offset = self.container.offset();
                     var el = $(ui.draggable);
+
+
+
                     var cellWidth = self.cellWidth();
                     var cellHeight = self.cellHeight();
+
+
+
                     var origNode = el.data('_gridstack_node');
 
                     var width = origNode ? origNode.width : (Math.ceil(el.outerWidth() / cellWidth));
@@ -856,6 +1005,7 @@
                     el.data('_gridstack_node', el.data('_gridstack_node_orig'));
                 })
                 .on(self.container, 'drop', function(event, ui) {
+
                     self.placeholder.detach();
 
                     var node = $(ui.draggable).data('_gridstack_node');
@@ -863,12 +1013,14 @@
                     var el = $(ui.draggable).clone(false);
                     el.data('_gridstack_node', node);
                     var originalNode = $(ui.draggable).data('_gridstack_node_orig');
+
                     if (typeof originalNode !== 'undefined' && typeof originalNode._grid !== 'undefined') {
                         originalNode._grid._triggerRemoveEvent();
                     }
                     $(ui.helper).remove();
                     node.el = el;
                     self.placeholder.hide();
+
                     el
                         .attr('data-gs-x', node.x)
                         .attr('data-gs-y', node.y)
@@ -880,6 +1032,8 @@
                         .removeData('draggable')
                         .removeClass('ui-draggable ui-draggable-dragging ui-draggable-disabled')
                         .unbind('drag', onDrag);
+
+
                     self.container.append(el);
                     self._prepareElementsByNode(el, node);
                     self._updateContainerHeight();
@@ -891,6 +1045,7 @@
                     $(ui.draggable).unbind('drag', onDrag);
                     $(ui.draggable).removeData('_gridstack_node');
                     $(ui.draggable).removeData('_gridstack_node_orig');
+
                 });
         }
     };
@@ -1059,18 +1214,20 @@
         var cellWidth;
         var cellHeight;
 
+
+        //当drag或resize事件触发时候的回调事件
         var dragOrResize = function(event, ui) {
             var x = Math.round(ui.position.left / cellWidth);
             var y = Math.floor((ui.position.top + cellHeight / 2) / cellHeight);
             var width;
             var height;
 
-            if (event.type != 'drag') {
+            if (event.type != 'drag') { //当resize的时候
                 width = Math.round(ui.size.width / cellWidth);
                 height = Math.round(ui.size.height / cellHeight);
             }
 
-            if (event.type == 'drag') {
+            if (event.type == 'drag') { //当drag的时候
                 if (x < 0 || x >= self.grid.width || y < 0 || (!self.grid.float && y > self.grid.getGridHeight())) {
                     if (!node._temporaryRemoved) {
                         if (self.opts.removable === true) {
@@ -1122,6 +1279,7 @@
             node.lastTriedHeight = height;
             self.grid.moveNode(node, x, y, width, height);
             self._updateContainerHeight();
+
         };
 
         var onStartMoving = function(event, ui) {
@@ -1206,6 +1364,9 @@
             }
         };
 
+
+
+        //绑定以上定义好的三种事件
         this.dd
             .draggable(el, {
                 start: onStartMoving,
@@ -1218,23 +1379,27 @@
                 resize: dragOrResize
             });
 
+
+
+        //禁止或者锁定
         if (node.noMove || (this._isOneColumnMode() && !self.opts.disableOneColumnMode) || this.opts.disableDrag) {
             this.dd.draggable(el, 'disable');
         }
-
         if (node.noResize || (this._isOneColumnMode() && !self.opts.disableOneColumnMode) || this.opts.disableResize) {
             this.dd.resizable(el, 'disable');
         }
-
         el.attr('data-gs-locked', node.locked ? 'yes' : null);
+
     };
 
     GridStack.prototype._prepareElement = function(el, triggerAddEvent) {
         triggerAddEvent = typeof triggerAddEvent != 'undefined' ? triggerAddEvent : false;
+
         var self = this;
         el = $(el);
 
         el.addClass(this.opts.itemClass);
+        //将每个对象做成node并绑定事件
         var node = self.grid.addNode({
             x: el.attr('data-gs-x'),
             y: el.attr('data-gs-y'),
@@ -1255,6 +1420,8 @@
         }, triggerAddEvent);
         el.data('_gridstack_node', node);
 
+
+        //在node的基础上在进行绑定
         this._prepareElementsByNode(el, node);
     };
 

@@ -240,6 +240,60 @@
   max-width: 100%;
 }
 
+
+
+
+/* 右边一列 */
+.grid-stack#grid-stack2 > .grid-stack-item[data-gs-width='1'] {
+  width: 33.333333%;
+}
+.grid-stack#grid-stack2 > .grid-stack-item[data-gs-x='1'] {
+  left: 33.333333%;
+}
+.grid-stack#grid-stack2 > .grid-stack-item[data-gs-min-width='1'] {
+  min-width: 33.333333%;
+}
+.grid-stack#grid-stack2 > .grid-stack-item[data-gs-max-width='1'] {
+  max-width: 33.333333%;
+}
+.grid-stack#grid-stack2 > .grid-stack-item[data-gs-width='2'] {
+  width: 66.666666%;
+}
+.grid-stack#grid-stack2 > .grid-stack-item[data-gs-x='2'] {
+  left: 66.666666%;
+}
+.grid-stack#grid-stack2 > .grid-stack-item[data-gs-min-width='2'] {
+  min-width: 66.666666%;
+}
+.grid-stack#grid-stack2 > .grid-stack-item[data-gs-max-width='2'] {
+  max-width: 66.666666%;
+}
+.grid-stack#grid-stack2 > .grid-stack-item[data-gs-width='3'] {
+  width: 99.999999%;
+}
+.grid-stack#grid-stack2 > .grid-stack-item[data-gs-x='3'] {
+  left: 99.999999%;
+}
+.grid-stack#grid-stack2 > .grid-stack-item[data-gs-min-width='3'] {
+  min-width: 99.999999%;
+}
+.grid-stack#grid-stack2 > .grid-stack-item[data-gs-max-width='3'] {
+  max-width: 99.999999%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 
 .grid-stack > .grid-stack-item[data-gs-width='6'] {
   width: 50%;
