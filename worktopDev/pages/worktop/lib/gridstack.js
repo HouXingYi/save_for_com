@@ -927,14 +927,8 @@
                         .attr('data-gs-height', node.height)
                         .show();
 
-
-
-
                     node.el = self.placeholder;
-
-
-
-
+                    
                     node._beforeDragX = node.x;
                     node._beforeDragY = node.y;
 
