@@ -1,0 +1,33 @@
+
+/* 表格样式 */
+table.hTable{
+}
+table.hTable thead{
+    border: 1px solid rgb(208,213,227);
+    background: rgb(244, 245, 248);
+}
+table.hTable thead tr{
+    line-height: 40px;
+    height: 40px;
+}
+table.hTable thead th{
+    padding-left: 20px;
+    text-align: left;
+    min-width: 100px;
+}
+table.hTable tbody tr{
+    height: 40px;
+    line-height: 40px;
+}
+table.hTable tbody tr:hover{
+    background: rgb(244, 245, 248);
+}
+table.hTable tbody tr td{
+    padding-left: 20px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+
+
+

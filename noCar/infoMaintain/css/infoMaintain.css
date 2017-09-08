@@ -1,0 +1,68 @@
+/* 清除浮动 */
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{*+height:1%;}
+
+.infoBox{
+    width: 500px;
+    height: 560px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    position: absolute;
+    left: 60px;
+    top: 50px;
+}
+.infoBox .infoTitle{
+    height: 50px;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 20px;
+}
+.infoBox .infoTitle .t{
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 14px;
+}
+.infoBox .infoTitle .change{
+    margin-top: 7px;
+    margin-right: 20px;
+    float: right;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    background: rgb(0, 121, 192);
+    cursor: pointer;
+}
+.infoBox .infoTitle .change .changeIcon{
+    
+}
+.infoBox .infoContent{
+    padding: 40px;
+}
+.infoBox .infoContent .line{
+    height: 55px;
+    line-height: 55px;
+}
+.lineLeft{
+    display: inline-block;
+    width: 100px;
+}
+
+.imgItem{
+    display: inline-block;
+    vertical-align: bottom;
+    width: 100px;
+    height: 100px;
+}
+.imgItem img{
+    vertical-align: bottom;
+    width: 100px;
+    height: 100px;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>询价信息</title>
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/hTable.css">
+    <link rel="stylesheet" href="./css/inqueryInfo.css">
+
+    <link rel="stylesheet" href="./hpage/hpage.css">
+
+</head>
+<body>
+
+    <div class="inqueryBox">
+        <form action="">
+            <div class="topBar">
+                <div class="line topItem">
+                    <span class="t">线路</span>
+                    <select>
+                        <option>select1</option>
+                        <option>select2</option>
+                        <option>select3</option>
+                    </select>
+                </div>
+                <div class="signDate topItem">
+                    <span class="t">报名日期</span>
+                    <input type="text" class="signDateInput">
+                </div>
+                <div class="status topItem">
+                    <span class="t">状态</span>
+                    <select>
+                        <option>select1</option>
+                        <option>select2</option>
+                        <option>select3</option>
+                    </select>
+                </div>
+                <div class="button">查询</div>
+            </div>
+            <div class="tableBox">
+                <table class="hTable">
+                    <thead>
+                        <tr>
+                            <th>发布时间</th>
+                            <th>订单号</th>
+                            <th>货物名称</th>
+                            <th>货物重量</th>
+                            <th>货物体积</th>
+                            <th>线路</th>
+                            <th>装卸信息</th>
+                            <th>车型</th>
+                            <th>用车类型</th>
+                            <th>趟次类型</th>
+                            <th>发货时间</th>
+                            <th>报价期限</th>
+                            <th>是否开票</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td>20170829</td>
+                            <td>6534693</td>
+                            <td>北欧实木沙发北欧实木沙发</td>
+                            <td>3吨</td>
+                            <td>50m2</td>
+                            <td>福州、厦门、广州、深圳</td>
+                            <td>一条装卸信息</td>
+                            <td>车型信息</td>
+                            <td>123456</td>
+                            <td>456789</td>
+                            <td>741258</td>
+                            <td>852396</td>
+                            <td>74112586</td>
+                            <td class="quotation">报价</td>
+                        </tr>
+                        <tr>
+                            <td>20170829</td>
+                            <td>6534693</td>
+                            <td>北欧实木沙发北欧实木沙发</td>
+                            <td>3吨</td>
+                            <td>50m2</td>
+                            <td>福州、厦门、广州、深圳</td>
+                            <td>一条装卸信息</td>
+                            <td>车型信息</td>
+                            <td>123456</td>
+                            <td>456789</td>
+                            <td>741258</td>
+                            <td>852396</td>
+                            <td>74112586</td>
+                            <td class="quotation">报价</td>
+                        </tr>
+                        <tr>
+                            <td>20170829</td>
+                            <td>6534693</td>
+                            <td>北欧实木沙发北欧实木沙发</td>
+                            <td>3吨</td>
+                            <td>50m2</td>
+                            <td>福州、厦门、广州、深圳</td>
+                            <td>一条装卸信息</td>
+                            <td>车型信息</td>
+                            <td>123456</td>
+                            <td>456789</td>
+                            <td>741258</td>
+                            <td>852396</td>
+                            <td>74112586</td>
+                            <td class="quotation">报价</td>
+                        </tr>
+                        <tr>
+                            <td>20170829</td>
+                            <td>6534693</td>
+                            <td>北欧实木沙发北欧实木沙发</td>
+                            <td>3吨</td>
+                            <td>50m2</td>
+                            <td>福州、厦门、广州、深圳</td>
+                            <td>一条装卸信息</td>
+                            <td>车型信息</td>
+                            <td>123456</td>
+                            <td>456789</td>
+                            <td>741258</td>
+                            <td>852396</td>
+                            <td>74112586</td>
+                            <td class="quotation">报价</td>
+                        </tr>
+                        <tr>
+                            <td>20170829</td>
+                            <td>6534693</td>
+                            <td>北欧实木沙发北欧实木沙发</td>
+                            <td>3吨</td>
+                            <td>50m2</td>
+                            <td>福州、厦门、广州、深圳</td>
+                            <td>一条装卸信息</td>
+                            <td>车型信息</td>
+                            <td>123456</td>
+                            <td>456789</td>
+                            <td>741258</td>
+                            <td>852396</td>
+                            <td>74112586</td>
+                            <td class="quotation">报价</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </form>
+
+        <div class="paginationBox">
+        </div>
+
+    </div>
+
+    <script src="./lib/jquery-3.2.1.min.js"></script>
+    <script src="./lib/underscore.js"></script>
+
+    <script src="./hpage/hpage.js"></script>
+
+    <script src="./js/inqueryInfo.js"></script>
+
+    <script>
+
+        // 使用插件
+        $(".paginationBox").hpage({
+        });
+        
+    </script>
+
+</body>
+</html>
