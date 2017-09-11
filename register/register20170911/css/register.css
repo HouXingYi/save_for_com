@@ -1,0 +1,715 @@
+@charset "utf-8";
+/*2017/7/28 xuefumei*/
+/* reset */
+body {
+  font-family: "微软雅黑";
+}
+body {
+  color: #585858;
+}
+html {
+  font-size: 14px;
+  color: #5d5d5d;
+}
+body,
+div,
+p,
+span,
+form,
+iframe,
+table,
+td,
+th,
+input,
+textarea,
+button,
+label,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}
+ul,
+ol,
+li,
+dl {
+  list-style-type: none;
+}
+em,
+i,
+dfn,
+cite,
+strong,
+small {
+  font-style: normal;
+}
+img {
+  border: 0;
+}
+fieldset,
+button,
+input,
+select,
+option {
+  vertical-align: middle;
+  font: 12px/18px arial, sans-serif;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+textarea {
+  resize: none;
+}
+/* color */
+a:link,
+a:visited {
+  color: #575757;
+  text-decoration: none;
+}
+a:hover {
+  color: #ef4165;
+  text-decoration: none;
+}
+a:active {
+  color: #1d7400;
+}
+/* clearfix */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+  clear: both;
+}
+.disnone {
+  display: none;
+}
+input,
+select {
+  border: 1px solid #bfcbd9;
+}
+input::-webkit-input-placeholder {
+  color: #d8d8d8;
+  font-size: 14px;
+  padding-left: 8px;
+}
+input:-moz-placeholder {
+  color: #d8d8d8;
+  font-size: 14px;
+}
+input::-moz-placeholder {
+  color: #d8d8d8;
+  font-size: 14px;
+}
+input:-ms-input-placeholder {
+  color: #d8d8d8;
+  font-size: 14px;
+}
+.header {
+  width: 100%;
+  height: 60px;
+  background: url(img/header-left.png) no-repeat top left;
+  border-bottom: 1px solid #d0d5e3;
+}
+.header .logo {
+  width: 216px;
+  height: 35px;
+  margin-left: 14px;
+  margin-top: 12.5px;
+  float: left;
+  background: url(img/logo.png) no-repeat top left;
+}
+.header .login {
+  float: right;
+  width: 122px;
+  height: 60px;
+  line-height: 60px;
+}
+.header .login a {
+  color: #0079c0;
+}
+.main {
+  width: 844px;
+  height: auto;
+  margin: 0 auto;
+  padding-top: 46px;
+}
+.main #step {
+  margin-bottom: 60px;
+}
+.main .register-info {
+  width: 100%;
+}
+.main .register-info .infobox {
+  width: 630px;
+  margin-left: -103px;
+}
+.main .register-info .infobox div {
+  height: 50px;
+}
+.main .register-info .infobox div label {
+  display: block;
+  width: 94px;
+  height: 30px;
+  text-align: right;
+  float: left;
+}
+.main .register-info .infobox div input {
+  width: 506px;
+  height: 30px;
+  float: left;
+  margin-left: 13px;
+}
+.main .register-info .infobox .verifi-code input,
+.main .register-info .infobox .verifi-num input {
+  width: 423px;
+  border-top: 1px solid #bfcbd5;
+  border-left: 1px solid #bfcbd5;
+  border-bottom: 1px solid #bfcbd5;
+  border-right: 1px solid #ffffff;
+}
+.main .register-info .infobox .verifi-code span,
+.main .register-info .infobox .verifi-num span {
+  width: 82px;
+  height: 30px;
+  float: left;
+  display: block;
+  border-top: 1px solid #bfcbd5;
+  border-right: 1px solid #bfcbd5;
+  border-bottom: 1px solid #bfcbd5;
+  border-left: 1px solid #ffffff;
+  line-height: 30px;
+  color: #0079c0;
+}
+.main .register-info .basic-info {
+  width: 630px;
+  margin-left: -103px;
+}
+.main .register-info .basic-info div {
+  height: 50px;
+}
+.main .register-info .basic-info div label {
+  display: block;
+  width: 94px;
+  height: 30px;
+  line-height: 30px;
+  text-align: right;
+  float: left;
+}
+.main .register-info .basic-info div input {
+  width: 506px;
+  height: 30px;
+  float: left;
+  margin-left: 13px;
+  border: 1px solid #bfcbd5;
+}
+.main .register-info .basic-info .address .info {
+  margin: 5px;
+  text-align: center;
+}
+.main .register-info .basic-info .address .info select {
+  width: 166px;
+  height: 30px;
+  background: #FFFFFF;
+  color: #333333;
+  font-size: 14px;
+  border: 1px solid #bfcbd5;
+}
+.main .register-info .basic-info .address .info #s_city,
+.main .register-info .basic-info .address .info #s_county {
+  margin-left: 3px;
+}
+.main .register-info .basic-info .address .info #show {
+  color: #3399FF;
+}
+.main .register-info .basic-info .position-address .cell {
+  border: 1px solid #bfcbd5;
+  width: 464px;
+  height: 30px;
+  line-height: 30px;
+  padding-right: 10px;
+  margin-left: 103px;
+  text-align: right;
+  color: #428fc9;
+  float: left;
+}
+.main .register-info .basic-info .position-address .map {
+  float: right;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: url(img/map.png) no-repeat;
+}
+.main .register-info .car {
+  margin: 10px 0;
+}
+.main .register-info .car .car-item {
+  margin: 10px 0;
+  width: 831px;
+  height: 230px;
+  border: 1px solid #d0d5e3;
+  border-radius: 1px;
+}
+.main .register-info .car .car-item .title {
+  height: 33px;
+}
+.main .register-info .car .car-item .title .name {
+  height: 33px;
+  float: left;
+}
+.main .register-info .car .car-item .title .name i {
+  display: block;
+  width: 16px;
+  height: 13px;
+  margin-left: 12px;
+  margin-top: 10px;
+  background: url(img/cart.png) no-repeat;
+  float: left;
+}
+.main .register-info .car .car-item .title .name span {
+  display: block;
+  float: left;
+  line-height: 33px;
+  margin-left: 10px;
+}
+.main .register-info .car .car-item .title .delete {
+  width: 56px;
+  height: 35px;
+  line-height: 35px;
+  margin-right: 10px;
+  float: right;
+  border: 1px solid #bfcbd9;
+  border-radius: 2px;
+  margin: 5px;
+  text-align: center;
+}
+.main .register-info .car .car-item .car-info {
+  width: 495px;
+  height: 152px;
+  margin-left: 92px;
+  margin-top: 35px;
+}
+.main .register-info .car .car-item .car-info .left {
+  width: 120px;
+  height: 152px;
+  float: left;
+}
+.main .register-info .car .car-item .car-info .left input,
+.main .register-info .car .car-item .car-info .left .select {
+  width: 110px;
+  height: 30px;
+  margin: 5px 4px;
+}
+.main .register-info .car .car-item .car-info .left input {
+  border: 1px solid #bfcbd9;
+}
+.main .register-info .car .car-item .car-info .left .select div {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #bfcbd9;
+  float: left;
+  border-radius: 2px;
+}
+.main .register-info .car .car-item .car-info .left .select div.on {
+  border: 1px solid #fff;
+  background: url(img/select-on.png) no-repeat;
+}
+.main .register-info .car .car-item .car-info .left .select span {
+  display: block;
+  float: left;
+  margin-left: 12px;
+}
+.main .register-info .car .car-item .car-info .middle {
+  width: 120px;
+  float: left;
+  height: 152px;
+}
+.main .register-info .car .car-item .car-info .middle input,
+.main .register-info .car .car-item .car-info .middle select {
+  width: 110px;
+  height: 30px;
+  margin: 5px 4px;
+  border: 1px solid #bfcbd9;
+}
+.main .register-info .car .car-item .car-info .right {
+  width: 188px;
+  height: 152px;
+  float: left;
+}
+.main .register-info .car .car-item .car-info .right input {
+  width: 178px;
+  height: 30px;
+  border: 1px solid #bfcbd9;
+  margin: 5px 4px;
+}
+.main .register-info .car .btns {
+  width: 100%;
+  height: 37px;
+}
+.main .register-info .car .btns div {
+  width: 114px;
+  height: 37px;
+  background-color: #0079c0;
+  color: #fff;
+  border-radius: 3px;
+  text-align: center;
+  line-height: 37px;
+  float: left;
+  margin: 10px;
+}
+.main .register-info .car .btns .addcar {
+  margin-left: 90px;
+}
+.main .register-info .server-info {
+  width: 845px;
+}
+.main .register-info .server-info .wrap {
+  width: 100%;
+  margin-left: -103px;
+}
+.main .register-info .server-info .wrap .car-type,
+.main .register-info .server-info .wrap .cars,
+.main .register-info .server-info .wrap .user-grade,
+.main .register-info .server-info .wrap .user-type {
+  height: 40px;
+}
+.main .register-info .server-info .wrap .car-type span,
+.main .register-info .server-info .wrap .cars span,
+.main .register-info .server-info .wrap .user-grade span,
+.main .register-info .server-info .wrap .user-type span,
+.main .register-info .server-info .wrap .lines span {
+  display: block;
+  width: 103px;
+  height: 30px;
+  line-height: 30px;
+  text-align: right;
+  float: left;
+}
+.main .register-info .server-info .wrap .car-type input[type="radio"] {
+  display: none;
+}
+.main .register-info .server-info .wrap .car-type label {
+  margin-left: 20px;
+  padding-left: 30px;
+  cursor: pointer;
+  background: url(img/ratio.png) no-repeat;
+}
+.main .register-info .server-info .wrap .car-type label.checked {
+  background: url(img/ratio-on.png) no-repeat;
+}
+.main .register-info .server-info .wrap .good-line div {
+  width: 18px;
+  height: 18px;
+}
+.main .register-info .server-info .wrap .cars input {
+  width: 50px;
+  height: 30px;
+  margin-left: 12px;
+}
+.main .register-info .server-info .wrap .user-grade select {
+  width: 50px;
+  height: 30px;
+  margin-left: 12px;
+}
+.main .register-info .server-info .wrap .user-type select {
+  width: 65px;
+  height: 30px;
+  margin-left: 12px;
+}
+.main .register-info .server-info .lines {
+  width: 100%;
+  height: auto;
+}
+.main .register-info .server-info .lines .line {
+  margin-bottom: 20px;
+  height: 30px;
+}
+.main .register-info .server-info .lines .line .line-cell {
+  margin-left: 115px;
+  height: 30px;
+}
+.main .register-info .server-info .lines .line .line-cell label,
+.main .register-info .server-info .lines .line .line-cell input {
+  display: block;
+  float: left;
+  line-height: 30px;
+}
+.main .register-info .server-info .lines .line .line-cell .line-over .line-end {
+  margin-left: 20px;
+}
+.main .register-info .server-info .lines .line .line-cell input {
+  margin-left: 12px;
+  height: 30px;
+  margin-right: 20px;
+}
+.main .register-info .server-info .lines .line .delete {
+  width: 75px;
+  float: right;
+  height: 100%;
+  margin-top: -30px;
+}
+.main .register-info .server-info .lines .line .delete span {
+  display: block;
+  width: 58px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid #bfcbd9;
+  line-height: 30px;
+  border-radius: 3px;
+  margin-right: 10px;
+  margin-top: 0px;
+}
+.main .register-info .server-info .lines .addline-btn {
+  margin-top: 30px;
+  width: 110px;
+  height: 37px;
+  background-color: #0079c0;
+  color: #fff;
+  text-align: center;
+  line-height: 37px;
+  border-radius: 4px;
+  margin-left: 115px;
+}
+.main .register-info .data-info {
+  width: 100%;
+}
+.main .register-info .data-info .explain {
+  height: 110px;
+  border: 1px solid #bfcbd9;
+}
+.main .register-info .data-info .explain .wrap {
+  padding: 12px 25px;
+}
+.main .register-info .data-info .explain .wrap .title {
+  font-size: 12px;
+  text-align: left;
+  height: 20px;
+  line-height: 20px;
+}
+.main .register-info .data-info .explain .wrap .content {
+  font-size: 12px;
+}
+.main .register-info .data-info .explain .wrap .content p {
+  height: 20px;
+  line-height: 20px;
+}
+.main .register-info .data-info .data-item {
+  height: 170px;
+  border-bottom: 1px solid #bfcbd9;
+  border-left: 1px solid #bfcbd9;
+  border-right: 1px solid #bfcbd9;
+  overflow: hidden;
+}
+.main .register-info .data-info .data-item .img {
+  width: 125px;
+  float: left;
+  height: 100%;
+}
+.main .register-info .data-info .data-item .img .wrap {
+  width: 76px;
+  height: 190px;
+  margin: 10px auto;
+  overflow: hidden;
+  padding-top: 28px;
+}
+.main .register-info .data-info .data-item .img .wrap .picture {
+  width: 76px;
+  height: 76px;
+  background: url(img/add-picture.png) no-repeat;
+}
+.main .register-info .data-info .data-item .img .wrap .picture:hover {
+  cursor: pointer;
+}
+.main .register-info .data-info .data-item .img .wrap .msg {
+  line-height: 34px;
+  text-align: center;
+}
+.main .register-info .data-info .data-item .img .wrap .msg:hover {
+  cursor: pointer;
+}
+.main .register-info .data-info .data-item .img .wrap input {
+  width: 106px;
+  height: 270px;
+  position: relative;
+  top: -200px;
+  left: -16px;
+  z-index: 99;
+  border: 1px solid #fff;
+}
+.main .register-info .data-info .data-item .data-one,
+.main .register-info .data-info .data-item .data-two {
+  width: 642px;
+  float: left;
+  height: 100%;
+}
+.main .register-info .data-info .data-item .data-one .wrap,
+.main .register-info .data-info .data-item .data-two .wrap {
+  width: 100%;
+  height: 150px;
+  margin-top: 42px;
+}
+.main .register-info .data-info .data-item .data-one .wrap label,
+.main .register-info .data-info .data-item .data-two .wrap label {
+  display: block;
+  float: left;
+  width: 96px;
+  height: 30px;
+  line-height: 30px;
+  text-align: right;
+}
+.main .register-info .data-info .data-item .data-one .wrap input,
+.main .register-info .data-info .data-item .data-two .wrap input,
+.main .register-info .data-info .data-item .data-one .wrap select,
+.main .register-info .data-info .data-item .data-two .wrap select {
+  width: 210px;
+  height: 30px;
+  margin-left: 12px;
+  display: block;
+  float: left;
+}
+.main .register-info .data-info .data-item .data-one .wrap .one,
+.main .register-info .data-info .data-item .data-two .wrap .one,
+.main .register-info .data-info .data-item .data-one .wrap .two,
+.main .register-info .data-info .data-item .data-two .wrap .two,
+.main .register-info .data-info .data-item .data-one .wrap .last,
+.main .register-info .data-info .data-item .data-two .wrap .last {
+  height: 50px;
+}
+.main .register-info .data-info .data-item .data-one .wrap .one,
+.main .register-info .data-info .data-item .data-two .wrap .one {
+  margin-top: 69px;
+  margin-left: 20px;
+}
+.main .register-info .data-info .data-item .data-one .wrap input,
+.main .register-info .data-info .data-item .data-two .wrap input {
+  width: 420px;
+}
+.main .register-info .data-info .data-item .data-one {
+  margin-left: -20px;
+}
+.main .register-info .data-info .data-item .data-two {
+  margin-left: -10px;
+}
+.main .register-info .data-info .data-item .delete {
+  width: 75px;
+  float: right;
+  height: 100%;
+}
+.main .register-info .data-info .data-item .delete span {
+  display: block;
+  width: 58px;
+  height: 36px;
+  text-align: center;
+  border: 1px solid #bfcbd9;
+  line-height: 37px;
+  border-radius: 3px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.main .register-info .data-info .databtn {
+  height: 75px;
+  border-bottom: 1px solid #bfcbd9;
+  border-left: 1px solid #bfcbd9;
+  border-right: 1px solid #bfcbd9;
+}
+.main .register-info .data-info .databtn .add-data,
+.main .register-info .data-info .databtn .clear-data {
+  height: 37px;
+  border-radius: 3px;
+  color: #fff;
+  float: left;
+  margin: 20px 4px;
+  background-color: #0079c0;
+  line-height: 37px;
+  text-align: center;
+}
+.main .register-info .data-info .databtn .add-data {
+  width: 100px;
+  margin-left: 203px;
+}
+.main .register-info .data-info .databtn .clear-data {
+  width: 160px;
+}
+.main .btnbox {
+  margin-top: 50px;
+  padding-top: 50px;
+  height: 145px;
+}
+.main .btnbox .next-step,
+.main .btnbox .up-step {
+  width: 89px;
+  height: 37px;
+  color: #fff;
+  line-height: 37px;
+  background-color: #0079c0;
+  border-radius: 5px;
+  float: right;
+  margin: 4px;
+}
+.main .btnbox .next-step .txt,
+.main .btnbox .up-step .txt {
+  display: block;
+  float: left;
+  width: 42px;
+  margin-left: 12px;
+  text-align: center;
+}
+.main .btnbox .next-step .arrow,
+.main .btnbox .up-step .arrow {
+  float: left;
+}
+.main .btnbox .next-step .arrow {
+  width: 8px;
+  height: 15px;
+  margin-top: 11px;
+  margin-left: 12px;
+  background: url(img/next-step.png) no-repeat;
+}
+.main .btnbox .next-step.finish .arrow {
+  width: 11px;
+  height: 8px;
+  margin-top: 15px;
+  margin-left: 12px;
+  background: url(img/finish.png) no-repeat;
+}
+.main .btnbox .up-step .arrow {
+  width: 7px;
+  height: 12px;
+  margin-top: 12.5px;
+  margin-left: 12px;
+  background: url(img/up-step.png) no-repeat;
+}
+.main .btnbox .up-step.disabled {
+  background-color: #e5e8ed;
+}
+.main .btnbox .up-step.disabled .arrow {
+  background: url(img/up-step-x.png) no-repeat;
+}
+.main .btnbox .up-step.disabled .txt {
+  color: #b4bcca;
+}
+.kucity {
+  background: #fdfdfd;
+  opacity: 1;
+}

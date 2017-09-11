@@ -13,21 +13,41 @@
             position: absolute;
             top: 100px;
         }
+        #renew{
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="box">
         <div class="pagebox"></div>
         <img class="pic" src="./doc/询价信息.png" alt="" >
+        <button id="renew">renewPage</button>
     </div>
-    <script src="./lib/jquery-3.2.1.min.js"></script>
+    <script src="./lib/jquery-1.9.1.min.js"></script>
     <script src="./components/Hpage/Hpage.js"></script>
     <script>
-    
-        $(".pagebox").hpage({
-            
+        var page = $(".pagebox").hpage({
+            allNum : 20,           // 总页数
+            numForEachPage : 10,   // 每页数据条数
+            initPage : 1,          // 初始化页数
+            render : function(a,b,c){
+                // console.log("当前页数",a); 
+                // console.log("每页条数",b);
+                // console.log("共几页",c);
+            }            
         });
-    
+        $("#renew").on("click",function(){
+            page.refresh({
+                allNum : 6,           // 总页数
+                numForEachPage : 20,   // 每页数据条数
+                initPage : 1           // 初始化页数
+            });
+        });
+        
+
     </script>
 </body>
 </html>

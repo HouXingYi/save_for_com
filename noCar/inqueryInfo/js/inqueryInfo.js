@@ -1,6 +1,6 @@
 
 
-(function($,_){
+(function($,_,window){
 
     function InqueryInfo(){
         this.dataList = "";
@@ -23,6 +23,7 @@
                     if(data.total > 0){
                         that.dataList = data;
                         that.handleDataList();
+                        that.initDalog();
                     }
                 }, 
                 complete:function(XHR,textStatus){ 
@@ -39,15 +40,26 @@
             //渲染
             var listTemplete = template("listTpl",{list: list});
             $(".hTable tbody").html(listTemplete);
-        }        
+        },        
+        initDalog : function(){
+            $(".quotationLink").modaal({
+                width : 780,
+                height :　250,
+                before_open : function(){
+                }
+            });
+        }
 
     }
 
     $(function(){
         var inqueryInfo = new InqueryInfo();
+        window.inqueryInfo = inqueryInfo;
     })
+    
+})(jQuery,_,window);
 
-})(jQuery,_);
+
 
 
 

@@ -45,3 +45,49 @@ td.quotation{
     bottom: 50px;
 }
 
+
+/* dialog内容样式 */
+
+#quotationCon{
+}
+#quotationCon .quotationTitle{
+    height: 40px;
+    border-bottom: 1px solid #e5e5e5;
+    padding-left: 20px;
+    line-height: 40px;
+    font-weight: bold;
+}
+#quotationCon .quotationBox{
+    position: relative;
+    width: 400px;
+    margin: 30px auto;
+    line-height: 45px;
+}
+#quotationCon .quotationBox .leftT{
+    margin-right: 20px;
+}
+#quotationCon .quotationBox .rightInput{
+    width: 300px;
+    height: 30px;
+}
+#quotationCon .quotationBox .btn{
+    background: rgb(22, 155, 213);
+    position: absolute;
+    width: 140px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    line-height: 40px;
+    text-align: center;
+}
+#quotationCon .quotationBox .btn.cancel{
+    bottom: -60px;
+    left: 30px;
+}
+#quotationCon .quotationBox .btn.quota{
+    bottom: -60px;
+    left: 220px;
+}
+
+
+

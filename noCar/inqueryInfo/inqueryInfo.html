@@ -7,6 +7,7 @@
     <title>询价信息</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/hTable.css">
+    <link rel="stylesheet" href="./lib/modaal/modaal.css">
     <link rel="stylesheet" href="./css/inqueryInfo.css">
 </head>
 <body>
@@ -66,6 +67,7 @@
     <script id="listTpl" type="text/html">
         {{each list as value i}}
         <tr >
+            <td class="quotation"><a href="#inlineCon" class="quotationLink">报价</a></td>
             <td>{{ value.UPDATETIME }}</td>
             <td>{{ value.UPDATETIME }}</td>
             <td>{{ value.UPDATETIME }}</td>
@@ -78,13 +80,32 @@
             <td>{{ value.UPDATETIME }}</td>
             <td>{{ value.UPDATETIME }}</td>
             <td>{{ value.UPDATETIME }}</td>
-            <td>{{ value.UPDATETIME }}</td>
-            <td class="quotation">报价</td>
+            <td class="quotation"><a href="#inlineCon" class="quotationLink">报价</a></td>
         </tr>
         {{/each}}
     </script>
+
+    <div id="inlineCon" style="display:none;">
+        <div class="quotationCon" id="quotationCon" >
+            <div class="quotationTitle">报价</div>
+            <div class="quotationBox">
+                <div class="line">
+                    <span class="leftT">我的报价</span>
+                    <input type="text" class="rightInput">
+                </div>
+                <div class="line">
+                    <span class="leftT">确认报价</span>
+                    <input type="text" class="rightInput">
+                </div>
+                <div class="btn cancel">取消</div>
+                <div class="btn quota">报价</div>
+            </div>
+        </div>
+    </div>
+
     <script src="./lib/jquery-3.2.1.min.js"></script>
     <script src="./lib/underscore.js"></script>
+    <script src="./lib/modaal/modaal.js"></script>
     <script src="./lib/template-web.js"></script>
     <script src="./js/inqueryInfo.js"></script>
 </body>

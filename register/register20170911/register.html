@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>注册</title>
+
+		<link rel="stylesheet" href="css/lib/kuCity.css">
+		<link rel="stylesheet" type="text/css" href="css/register.css" />
+		<link rel="stylesheet" type="text/css" href="css/lib/jquery.step.css" />
+        <script type="text/javascript" src="js/lib/jquery.min.js "></script>
+		<script type="text/javascript" src="js/lib/jquery.step.min.js"></script>
+		<!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+		<!--[if lt IE 9]>
+         <script src="js/lib/html5shiv.js"></script>
+         <script src="js/lib/respond.min.js"></script>
+      <![endif]-->
+		
+	</head>
+
+	<body>
+		<div class="header clearfix">
+			<div class="logo"></div>
+			<div class="login"><span>已有账号？</span>
+				<a href="">去登录</a>
+			</div>
+		</div>
+		<div class="main">
+			<!--流程条-->
+			<div id="step"></div>
+			<div class="register-info" id="regCtn">
+				<!--注册第一步  账号注册  开始-->
+				<div class="ctn0 stepctn infobox">
+					<div class="username">
+						<label>账号</label><input type="text" placeholder="输入手机号或邮箱地址" />
+					</div>
+					<div class="verifi-code">
+						<label>验证码</label><input type="text" /><span><img src="css/img/verify.png" alt="" /></span>
+					</div>
+					<div class="verifi-num">
+						<label>短信验证码</label><input type="text" /><span>获取验证码</span>
+					</div>
+					<div class="password">
+						<label>密码</label><input type="password" />
+					</div>
+					<div class="password-again">
+						<label>再次确认密码</label><input type="password" />
+					</div>
+				</div>
+				<!--注册第一步结束-->
+				<!--注册第二步  基本信息  开始-->
+				<div class="ctn1 disnone stepctn basic-info">
+					<div class="company-name">
+						<label>单位名称</label><input type="text" />
+					</div>
+					<div class="linkman">
+						<label>联系人</label><input type="text" />
+					</div>
+					<div class="linkway">
+						<label>联系方式</label><input type="text" />
+					</div>
+					<div class="address">
+						<label>地址</label>
+						<div class="info">
+							<div>
+								<select id="s_province" name="s_province"></select>
+								<select id="s_city" name="s_city"></select>
+								<select id="s_county" name="s_county"></select>
+								<script class="resources library" src="js/lib/area.js" type="text/javascript"></script>
+								<script type="text/javascript">
+									_init_area();
+								</script>
+							</div>
+							<div id="show"></div>
+						</div>
+					</div>
+					<div class="position-address">
+						<input type="text" class="cell" /><span class="map"></span>
+						<!--<div class="cell">自动定位当前位置</div>-->
+					</div>
+				</div>
+				<!--注册第二步结束-->
+				
+				<!--注册第三步  业务信息  开始-->
+				<div class="ctn2 disnone stepctn server-info">
+					<div class="wrap">
+						<div class="car-type bill">
+							<span>是否提供发票</span>
+							<input type="radio" id="a" checked="checked" name="sport" value="0">
+							<label name="a" class="checked" for="a" onclick="checkedCar1();">是</label>
+							<input type="radio" id="b" name="sport " value="1">
+							<label name="b" for="b" onclick="checkedCar1();">否</label>
+							<input type="radio" id="c" name="sport " value="2">
+							<label name="c" for="c" onclick="checkedCar1();">均可</label>
+						</div>
+						<div class="car-type good-line">
+							<span>优势路线</span>
+							<input type="radio" id="m" name="sport " value="0">
+							<label name="m" for="m" onclick="checkedCar2();">均可&nbsp;(勾选后表示全部线路均可，不用填写路线)</label>
+							<!--<input type="text" /><label for="">均可&nbsp;(勾选后表示全部线路均可，不用填写路线)</label>-->
+						</div>
+						<div class="car-type two-way">
+							<span>是否双向</span>
+							<input type="radio" id="a2" checked="checked" name="sport" value="0">
+							<label name="a2" class="checked " for="a2" onclick="checkedCar();">区域覆盖</label>
+							<input type="radio" id="b2" name="sport " value="1">
+							<label name="b2" for="b2" onclick="checkedCar3();">单向</label>
+							<input type="radio" id="c2" name="sport " value="c2">
+							<label name="c2" for="c2" onclick="checkedCar3();">双向</label>
+						</div>
+						<div class="lines">
+							<div id="line">
+								<div class="line">
+									<span>线路一</span>
+									<div class="line-cell">
+										<label for="">出发地</label><input type="text" class="search">
+										<label class="line-over" for="">途径</label><input type="text" class="search search2 ">
+										<label class="line-end" for="">目的地</label><input type="text" class="search3">
+										
+									</div>
+									<!-- <div class="delete" onclick="del(event);">
+										<span>删除</span>
+									</div> -->
+								</div>
+							</div>
+							<div class="addline-btn" onclick="addline();">新增路线</div>
+						</div>
+					</div>
+				</div>
+				<!--注册第三步结束-->
+				<!--注册第四步  资质信息  开始-->
+				<div class="ctn3 disnone stepctn data-info">
+					<div class="explain">
+						<div class="wrap">
+							<div class="title">上传说明：</div>
+							<div class="content">
+								<p>1.必须上传车辆资质，一个车辆需提供一套资质，如道路运输证等；并上传司机驾驶证；</p>
+								<p>2.车辆投保的需上传投标凭证；</p>
+								<p>3.企业和个体工商户需上传三证等资质</p>
+							</div>
+						</div>
+					</div>
+					<div id="data-items">
+						<div class="data-item">
+							<div class="img">
+								<div class="wrap">
+									<div class="picture"></div>
+									<p class="msg">上传证件</p>
+									<input id="File1" type="file" />
+								</div>
+							</div>
+							<div class="data-one">
+								<div class="wrap">
+									<div class="one">
+										<label for="">证件号</label><input type="text" />
+									</div>
+								</div>
+							</div>
+							<div class="delete" onclick="del();">
+								<span>删除</span>
+							</div>
+						</div>
+					</div>
+					<div class="databtn">
+						<div class="add-data" onclick="addData();">添加证明</div>
+						<div class="clear-data">清空所有资质凭证</div>
+					</div>
+				</div>
+				<!--注册第四步   结束-->
+			</div>
+			<div class="btnbox">
+				<div class="next-step" id="nextBtn"><span class="txt">下一步</span>
+					<div class="arrow"></div>
+				</div>
+				<div class="up-step disabled" id="prevBtn">
+					<div class="arrow "></div><span class="txt ">上一步</span>
+				</div>
+			</div>
+		</div>
+
+		<!--<script type="text/javascript" src="js/lib/jquery-1.9.1.min.js "></script>-->
+		<!--jquery-1.10.2.min.js-->
+
+		<script type="text/javascript" src="js/lib/kuCity.js "></script>
+		<script type="text/javascript" src="js/register.js "></script>
+	</body>
+
+</html>
