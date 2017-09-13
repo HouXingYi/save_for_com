@@ -1,6 +1,7 @@
-
 /* 表格样式 */
 table.hTable{
+    font-size: 14px;
+    width: 100%;
 }
 table.hTable thead{
     border: 1px solid rgb(208,213,227);
@@ -13,14 +14,20 @@ table.hTable thead tr{
 table.hTable thead th{
     padding-left: 20px;
     text-align: left;
-    min-width: 100px;
+    white-space: nowrap;
 }
 table.hTable tbody tr{
     height: 40px;
     line-height: 40px;
+    border-bottom: 1px solid rgb(208,213,227);
+    border-right: 1px solid rgb(208,213,227);
 }
 table.hTable tbody tr:hover{
-    background: rgb(244, 245, 248);
+    background: rgb(250, 251, 252);
+}
+
+table.hTable tbody tr:nth-child(even){
+    background: rgb(250, 251, 252);
 }
 table.hTable tbody tr td{
     padding-left: 20px;

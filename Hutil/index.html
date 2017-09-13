@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试</title>
+    <link rel="stylesheet" href="./Hpage/Hpage.css">
+    <link rel="stylesheet" href="./Modaal/modaal.css">
+</head>
+<body>
+    <div class="box">
+        <div class="pageBox"></div>
+        <a href="#inline" class="inline">Show</a>
+    </div>
+    <div id="inline" style="display:none;">
+        <div class="abc">
+            123
+        </div>
+    </div>
+    <script src="./jquery-1.9.1.min.js"></script>
+    <script src="./Hpage/Hpage.js"></script>
+    <script src="./Modaal/modaal.js"></script>
+    <script>
+        //分页
+        $(".pageBox").hpage({
+            render : function(a,b,c){
+                console.log(a);
+                console.log(b);
+                console.log(c);
+            }
+        });
+        // dialog
+        $('.inline').modaal({
+            width: 500,
+            height: 500,
+            before_open : function(){
+            },
+            after_open : function(){
+                //打开5秒后关闭
+                setTimeout(function(){
+                    $('.inline').modaal('close');
+                },5000);
+            }
+        });
+    </script>
+</body>
+</html>

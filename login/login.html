@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+    <style>
+        .box{
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgb(221, 221, 221);
+        }
+        .boxCon{
+            width: 400px;
+            height: 225px;
+            background: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -250px;
+            margin-top: -200px;
+            padding: 40px 50px;
+        }
+        .loginTitle{
+            display: block;
+            font-size: 20px;
+            text-align: center;
+            border-bottom: 1px solid #e5e5e5;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .line{
+            height: 30px;
+            border: 1px solid #e5e5e5;
+            border-radius: 5px;
+            margin-top: 15px;
+            line-height: 30px;
+        }
+        .line .lineLeft{
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+        }
+
+        .line .rightInput{
+            outline: none;
+            background:none;  
+            outline:none;  
+            border:0px;
+            color: #2f4f4f;
+            width: 250px;
+            height: 22px;
+        }
+
+        .btn{
+            display: inline-block;
+            width: 160px;
+            height: 35px;
+            background: rgb(71, 179, 75);
+            color: #fff;
+            border-radius: 5px;
+            line-height: 35px;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        .btn:hover{
+            background: rgb(71, 179, 75);
+        }
+        .btn:active{
+            background: #008B45;
+        }
+        .loginBtn{
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="boxCon">
+            <span class="loginTitle">管理员登录</span>
+            <div class="line user">
+                <span class="userName lineLeft">用户名:</span>
+                <input type="text" class="userNameInput rightInput" id="userNameInput">
+            </div>
+            <div class="line code">
+                <span class="codeValue lineLeft">密码:</span>
+                <input type="text" class="codeValueInput rightInput" id="codeValueInput">
+            </div>
+            <div class="btnGroup">
+                <div class="loginBtn btn" id="loginBtn">登录</div>
+                <div class="resetBtn btn" id="resetBtn">重置</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("loginBtn").onclick = function(e){
+            console.log(e);
+            // do something
+        }
+        document.getElementById("resetBtn").onclick = function(e){
+            var userNameInput = document.getElementById("userNameInput");
+            var codeValueInput = document.getElementById("codeValueInput");
+            userNameInput.value = "";
+            codeValueInput.value = "";
+        }
+    </script>
+</body>
+</html>

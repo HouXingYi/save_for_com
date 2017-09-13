@@ -1,7 +1,7 @@
 /* 清除浮动 */
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 .clearfix{*+height:1%;}
-
+/* 样式 */
 .infoBox{
     width: 500px;
     height: 560px;
@@ -32,8 +32,11 @@
     background: rgb(0, 121, 192);
     cursor: pointer;
 }
-.infoBox .infoTitle .change .changeIcon{
-    
+.infoBox .infoTitle .change:hover{
+    background: rgb(0, 121, 192);
+}
+.infoBox .infoTitle .change:active{
+    background: rgb(4, 84, 131);
 }
 .infoBox .infoContent{
     padding: 40px;
@@ -42,11 +45,16 @@
     height: 55px;
     line-height: 55px;
 }
+.infoBox .infoContent .line .lineRight input{
+    height: 25px;
+    font-size: 14px;
+    width: 255px;
+    padding-left: 10px;
+}
 .lineLeft{
     display: inline-block;
     width: 100px;
 }
-
 .imgItem{
     display: inline-block;
     vertical-align: bottom;

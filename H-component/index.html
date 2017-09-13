@@ -22,6 +22,7 @@
 </head>
 <body>
     <div class="box">
+        <a href="./testUtil.html">测试Util</a>
         <div class="pagebox"></div>
         <img class="pic" src="./doc/询价信息.png" alt="" >
         <button id="renew">renewPage</button>
@@ -29,6 +30,7 @@
     <script src="./lib/jquery-1.9.1.min.js"></script>
     <script src="./components/Hpage/Hpage.js"></script>
     <script>
+
         var page = $(".pagebox").hpage({
             allNum : 20,           // 总页数
             numForEachPage : 10,   // 每页数据条数
@@ -46,7 +48,6 @@
                 initPage : 1           // 初始化页数
             });
         });
-        
 
     </script>
 </body>
