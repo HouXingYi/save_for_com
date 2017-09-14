@@ -1,0 +1,343 @@
+*,
+body,
+div,
+p,
+img,
+dl,
+dt,
+dd,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+iframe,
+fieldset,
+form,
+label,
+input,
+button,
+textarea,
+del,
+strong,
+b,
+span,
+header,
+footer,
+section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+}
+body {
+  font-size: 14px;
+  font-family: "微软雅黑";
+}
+* {
+  box-sizing: border-box;
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
+.f-pl {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.f-pr {
+  position: absolute;
+  left: right;
+  top: 0;
+}
+.f-fl {
+  float: left;
+}
+.f-fr {
+  float: right;
+}
+html,
+body {
+  height: 100%;
+}
+iframe {
+  display: block;
+}
+.header {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 59px;
+  overflow: hidden;
+  min-width: 1024px;
+  border-bottom: 1px solid #d0d5e3;
+  background: #ffffff url(img/headerbg.png) no-repeat top left;
+}
+.header .logo {
+  float: left;
+  width: 216px;
+  height: 59px;
+  margin-top: 11px;
+}
+.header .topnav {
+  float: right;
+  overflow: hidden;
+  color: #333;
+}
+.header .topnav .navinfo {
+  float: left;
+  height: 59px;
+  border-left: 1px solid #d0d5e3;
+  padding-left: 32px;
+  padding-right: 28px;
+  line-height: 58px;
+}
+.header .topnav .navinfo b {
+  padding-right: 18px;
+}
+.header .topnav .navinfo b a {
+  color: #333;
+}
+.header .topnav .navbtn {
+  float: left;
+  width: 72px;
+  height: 59px;
+  overflow: hidden;
+  border-left: 1px solid #d0d5e3;
+  text-align: center;
+}
+.header .topnav .navbtn img {
+  display: block;
+  width: 19px;
+  height: 20px;
+  margin: 10px auto 8px auto;
+}
+.header .topnav .navbtn label {
+  display: block;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: center;
+}
+.header .topnav .navbtn a {
+  display: block;
+}
+.header .topnav .navbtn a label {
+  color: #333;
+}
+.container {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  height: 100%;
+}
+.container .mainleft,
+.container .mainright {
+  display: table-cell;
+  padding-top: 59px;
+  vertical-align: top;
+}
+.container .mainleft {
+  width: 212px;
+  height: 100%;
+  padding-top: 65px;
+  background: #ffffff url(img/mainleftbg.jpg) no-repeat bottom left;
+  border-right: 1px solid #d0d5e3;
+}
+.container .mainleft .leftnav {
+  width: 100%;
+  overflow: hidden;
+}
+.container .mainleft .leftnav li {
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+.container .mainleft .leftnav li h1 {
+  height: 46px;
+  overflow: hidden;
+  border-left: 4px solid transparent;
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 46px;
+  cursor: pointer;
+}
+.container .mainleft .leftnav li h1 span {
+  float: left;
+  width: 60px;
+  overflow: hidden;
+}
+.container .mainleft .leftnav li h1 span img {
+  margin-top: 15px;
+  margin-left: 26px;
+}
+.container .mainleft .leftnav li h1 b {
+  float: left;
+  width: 116px;
+  color: #6c6c6c;
+}
+.container .mainleft .leftnav li h1 label {
+  float: left;
+  width: 16px;
+  overflow: hidden;
+}
+.container .mainleft .leftnav li h1 label img {
+  margin-top: 18px;
+}
+.container .mainleft .leftnav li h1 img {
+  display: block;
+}
+.container .mainleft .leftnav li .u-show {
+  display: block;
+}
+.container .mainleft .leftnav li .u-hide {
+  display: none;
+}
+.container .mainleft .leftnav li.active h1 {
+  border-left-color: #0079c0;
+}
+.container .mainleft .leftnav li.active h1 b {
+  color: #0079c0;
+}
+.container .mainleft .leftnav li.active .u-show {
+  display: none;
+}
+.container .mainleft .leftnav li.active .u-hide {
+  display: block;
+}
+.container .mainleft .leftnav li dl {
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 10px 5px 75px;
+  border-top: 1px solid #d0d5e3;
+  border-bottom: 1px solid #d0d5e3;
+  background-color: #f4f5f8;
+  display: none;
+}
+.container .mainleft .leftnav li dl dd {
+  color: #6c6c6c;
+  line-height: 38px;
+}
+.container .mainleft .leftnav li dl dd a {
+  display: block;
+  color: #6c6c6c;
+}
+.container .mainleft .leftnav li dl dd a:hover {
+  color: #0079c0;
+}
+.container .mainright {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 101px;
+}
+.container .mainright .topnav {
+  position: absolute;
+  top: 59px;
+  left: 0;
+  width: 100%;
+  height: 51px;
+  overflow: hidden;
+  background-color: #f4f5f8;
+}
+.container .mainright .topnav ul {
+  width: 100%;
+  height: 51px;
+  border-bottom: 1px solid #d0d5e3;
+}
+.container .mainright .topnav ul li {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  padding-left: 22px;
+  padding-right: 40px;
+  padding-bottom: 3px;
+  border-top: 3px solid transparent;
+  border-right: 1px solid #d0d5e3;
+  color: #6c6c6c;
+  line-height: 46px;
+  text-align: center;
+}
+.container .mainright .topnav ul li span {
+  position: absolute;
+  right: 13px;
+  top: 10px;
+  display: block;
+  font-size: 24px;
+  line-height: 28px;
+  cursor: pointer;
+}
+.container .mainright .topnav ul li.active {
+  border-top-color: #0079c2;
+  background-color: #fff;
+  color: #0079c0;
+}
+.DialogHtml {
+  position: fixed;
+  z-index: 10003;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+.DialogHtml .m-tipbox {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  width: 280px;
+  margin-left: -140px;
+  margin-top: -80px;
+}
+.DialogHtml .m-tipbox .tiptitle {
+  width: 100%;
+  padding: 0 10px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom: 1px solid #e1e1e1;
+  background-color: #e5e5e5;
+  background-image: -moz-linear-gradient(top, #f5f5f5, #e5e5e5);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#e5e5e5));
+  background-image: -webkit-linear-gradient(top, #f5f5f5, #e5e5e5);
+  background-image: -o-linear-gradient(top, #f5f5f5, #e5e5e5);
+  background-image: linear-gradient(to bottom, #f5f5f5, #e5e5e5);
+  background-repeat: repeat-x;
+  font-size: 14px;
+  line-height: 32px;
+}
+.DialogHtml .m-tipbox .tipcon {
+  width: 100%;
+  overflow: hidden;
+  min-height: 60px;
+  padding: 20px 20px 10px 20px;
+  color: #333333;
+  font-size: 14px;
+  letter-spacing: 1px;
+  line-height: 22px;
+}
+.DialogHtml .m-tipbox .tipbtn {
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+}
+.DialogHtml .m-tipbox .tipbtn span {
+  display: inline-block;
+  min-width: 78px;
+  padding: 0 10px;
+  border-radius: 3px;
+  background-color: #e5e5e5;
+  background-image: -moz-linear-gradient(top, #f1f1f1, #e5e5e5);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f1f1f1), to(#e5e5e5));
+  background-image: -webkit-linear-gradient(top, #f1f1f1, #e5e5e5);
+  background-image: -o-linear-gradient(top, #f1f1f1, #e5e5e5);
+  background-image: linear-gradient(to bottom, #f1f1f1, #e5e5e5);
+  background-repeat: repeat-x;
+  letter-spacing: 2px;
+  line-height: 32px;
+  cursor: pointer;
+}
