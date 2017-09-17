@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片</title>
+    <!-- <link rel="stylesheet" href="./lib/webuploader.css"> -->
+</head>
+<body>
+    <div id="uploader-demo">
+        <div id="fileList" class="uploader-list"></div>
+        <div id="filePicker">选择图片</div>
+        <div class="imgGroup">
+            <img src="" alt="" style="width:100px;height:100px;">
+            <img src="" alt="" style="width:100px;height:100px;">
+            <img src="" alt="" style="width:100px;height:100px;">
+            <img src="" alt="" style="width:100px;height:100px;">
+        </div>
+    </div>
+    <script src="./lib/jquery.1.9.1.js"></script>
+    <script src="./lib/webuploader.js"></script>
+    <script>
+    var uploader = WebUploader.create({
+        swf: './lib/Uploader.swf',
+        pick: '#filePicker',
+        //只允许图片
+        accept: {
+            title: 'Images',
+            extensions: 'gif,jpg,jpeg,bmp,png',
+            mimeTypes: 'image/*'
+        }
+    });
+    uploader.on('filesQueued',function(file){
+        for(var i=0;i<file.length;i++){
+            alert(file[i].name);
+        }
+        uploader.makeThumb( file, function( error, src ) {
+            $(".imgGroup img").eq(0).attr( 'src', src );
+        }, 100, 100 );
+    });
+    </script>
+</body>
+</html>
