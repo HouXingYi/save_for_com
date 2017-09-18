@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片</title>
+    <link rel="stylesheet" href="./lib/webuploader.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./lib/Hgallery/Hgallery.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    
+    <div id="filePicker"></div>
+    <img src="" alt="" id="tpl">
+    <script src="./lib/jquery.1.9.1.js"></script>
+    <script src="./lib/webuploader.js"></script>
+    <script src="./lib/Hgallery/Hgallery.js"></script>
+    <!-- <script src="./js/index.js"></script> -->
+
+    <script>
+    
+
+    $(function(){
+        var uploader = WebUploader.create({
+            swf: '../lib/Uploader.swf',
+            pick: '#filePicker',
+            accept: {
+                title: 'Images',
+                extensions: 'gif,jpg,jpeg,bmp,png',
+                mimeTypes: 'image/*'
+            }
+        });
+
+        uploader.on('filesQueued',function(files){
+            uploader.makeThumb( files, function( error, src ) {
+                console.log(src);
+                $("#tpl").attr("src",src);
+            }, 110, 73 );
+        });
+
+
+    })
+
+    
+    </script>
+
+</body>
+</html>

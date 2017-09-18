@@ -2229,6 +2229,7 @@
              * });
              */
             makeThumb: function( file, cb, width, height ) {
+                
                 var opts, image;
     
                 file = this.request( 'get-file', file );
@@ -2253,9 +2254,16 @@
                 image = new Image( opts );
     
                 image.once( 'load', function() {
+
                     file._info = file._info || image.info();
                     file._meta = file._meta || image.meta();
-    
+                    //"auto则为原来"
+                    if(width == "auto"){
+                        width = file._info.width ;
+                    }
+                    if(height == "auto"){
+                        height = file._info.height ;
+                    }
                     // 如果 width 的值介于 0 - 1
                     // 说明设置的是百分比。
                     if ( width <= 1 && width > 0 ) {

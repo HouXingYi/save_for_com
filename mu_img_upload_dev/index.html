@@ -5,48 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>图片</title>
-    <!-- <link rel="stylesheet" href="./lib/webuploader.css"> -->
+    <link rel="stylesheet" href="./lib/webuploader.css">
     <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./lib/Hgallery/Hgallery.css">
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-    <div class="uploadImgBox">
-        <div class="topInfo"></div>
-        <div class="ImgShowBox">
-            <div class="prev"></div>
-            <div class="ShowCon">
-                <ul class="showImgList">
-                    <li class="showImgItem">
-                        <img src="" alt="">
-                    </li>
-                    <li class="showImgItem">
-                        <img src="" alt="">
-                    </li>
-                    <li class="showImgItem">
-                        <img src="" alt="">
-                    </li>
-                    <li class="showImgItem">
-                        <img src="" alt="">
-                    </li>
-                    <li class="showImgItem">
-                        <img src="" alt="">
-                    </li>
-                </ul>
+
+    <div class="wrapper">
+        <div class="uploadImgBox">
+            <div class="topInfo">
+                <div class="infoGroup">
+                    <div class="line" class="paperType">
+                        <span class="textLeft">证件类型:</span>
+                        <span class="textRight">
+                            <input type="text" class="paperTypeInput">
+                        </span>
+                    </div>
+                    <div class="line" class="paperNum">
+                        <span class="textLeft">证件号:</span>
+                        <span class="textRight">
+                            <input type="text" class="paperNumInput">
+                        </span>
+                    </div>
+                    <div class="line" class="paperTime">
+                        <span class="textLeft">有效期:</span>
+                        <span class="textRight">
+                            <input type="text" class="paperTimeStartInput">
+                            <input type="text" class="paperTimeEndInput">
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div class="next"></div>
+            <div id="DB_gallery">
+                <div class="addBox" id="addBox">
+                    <div class="addImgBox" id="addImgBox" >
+                        <img src="./img/add.png" alt="">
+                    </div>
+                    <div class="hidden" id="filePicker" style="display:none;">
+                    </div>
+                </div>
+                <div class="DB_imgSet" id="DB_imgSet" style="display:none;">
+                    <div class="DB_imgWin">
+                        <div class="imgBox" >
+                            <img src="" alt=""/>
+                        </div>
+                    </div>
+                    <div class="DB_page"><span class="DB_current">0</span>-<span class="DB_total">0</span></div>
+                    <div class="DB_prevBtn"><img src="img/prev_off.png" alt="向前"/></div>
+                    <div class="DB_nextBtn"><img src="img/next_off.png" alt="向后"/></div>
+                </div>
+                <div class="DB_thumSet" id="DB_thumSet" style="display:none;">
+                    <ul class="DB_thumMove" id="DB_thumMove">
+                    </ul>
+                    <div class="DB_thumLine"></div>
+                    <div class="DB_prevPageBtn"><img src="img/prev_page.png" alt="上一页"/></div>
+                    <div class="DB_nextPageBtn"><img src="img/next_page.png" alt="下一页"/></div>
+                </div>
+            </div>
         </div>
-        <div class="thumbnail">
-            <ul class="thumbList">
-                <li class="thumbItem"><img src="" alt=""></li>
-                <li class="thumbItem"><img src="" alt=""></li>
-                <li class="thumbItem"><img src="" alt=""></li>
-                <li class="thumbItem"><img src="" alt=""></li>
-                <li class="thumbItem"><img src="" alt=""></li>
-            </ul>
-        </div>   
     </div>
+    
     <script src="./lib/jquery.1.9.1.js"></script>
     <script src="./lib/webuploader.js"></script>
+    <script src="./lib/Hgallery/Hgallery.js"></script>
     <script src="./js/index.js"></script>
 </body>
 </html>

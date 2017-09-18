@@ -1,5 +1,65 @@
+
+.wrapper{
+  width: 900px;
+  margin: 0 auto;
+  min-height: 100px
+}
+.topInfo{
+  height: 200px;
+  width: 100%;
+  background: #e5e5e5;
+}
 .uploadImgBox {
   width: 100%;
 }
 
-/*# sourceMappingURL=index.css.map */
+#DB_gallery{
+  min-height: 400px;
+  border: 1px solid #e5e5e5;
+}
+.addBox{
+  width: 900px;
+  height: 400px;
+  position: relative;
+}
+.addBox .addImgBox{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -150px;
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;  
+  border: 1px solid #e5e5e5;
+}
+
+.addBox .addImgBox:hover{
+}
+
+.addBox .addImgBox:active{
+  background: rgba(0, 0, 0, 0.2);
+}
+.addBox .addImgBox img{
+  margin-top: 50px;
+}
+
+
+
+.uploadImgBox .topInfo .infoGroup{
+  padding: 20px;
+  line-height: 50px;
+}
+.uploadImgBox .topInfo .infoGroup .line input{
+  height: 20px;
+}
+.uploadImgBox .topInfo .infoGroup .textLeft{
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+  font-size: 18px;
+}
+
+
