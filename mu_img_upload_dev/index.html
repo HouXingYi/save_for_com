@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>图片</title>
+    <title>图片上传</title>
     <link rel="stylesheet" href="./lib/webuploader.css">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./lib/Hgallery/Hgallery.css">
@@ -42,14 +42,14 @@
                 </div>
             </div>
             <div id="DB_gallery">
-                <div class="addBox" id="addBox">
+                <div class="addBox" id="addBox" style="z-index:10;">
                     <div class="addImgBox" id="addImgBox" >
                         <img src="./img/add.png" alt="">
                     </div>
                     <div class="hidden" id="filePicker" >
                     </div>
                 </div>
-                <div class="DB_imgSet" id="DB_imgSet" style="display:none;">
+                <div class="DB_imgSet" id="DB_imgSet" style="z-index:-10">
                     <div class="DB_imgWin">
                         <div class="imgBox" >
                             <img src="" alt=""/>
@@ -59,7 +59,7 @@
                     <div class="DB_prevBtn"><img src="img/prev_off.png" alt="向前"/></div>
                     <div class="DB_nextBtn"><img src="img/next_off.png" alt="向后"/></div>
                 </div>
-                <div class="DB_thumSet" id="DB_thumSet" style="display:none;">
+                <div class="DB_thumSet" id="DB_thumSet" style="z-index:-10">
                     <ul class="DB_thumMove" id="DB_thumMove">
                     </ul>
                     <div class="DB_thumLine"></div>
@@ -70,8 +70,9 @@
         </div>
     </div>
 
-    <img id="tpl1" src="" alt="">
-    <img id="tpl2" src="" alt="">
+    <div id="save" style="width:50px;height:50px;background:red;">
+        保存
+    </div>
 
     <script src="./lib/jquery.1.9.1.js"></script>
     <script src="./lib/webuploader.js"></script>

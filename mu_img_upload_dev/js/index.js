@@ -18,7 +18,6 @@ ImgUploadGallery.prototype = {
         this.bind();
     },
     bind : function(){
-
         var that = this;
         uploader.on('filesQueued',function(files){
             var len = files.length;
@@ -36,44 +35,66 @@ ImgUploadGallery.prototype = {
                 that.toggleBox(true);
                 that.hgallery.refresh();
             }else{  //第一次则初始化
+                console.log(1);
                 $("#DB_thumMove").append(strHtml);
                 that.toggleBox(true);
                 that.initGallery();
             }
             for(var j = 0;j<files.length;j++){
-                that.handleSrc(files[j]);
+                that.handleSrc(files[j],j);
             }
         });
-
         // //初始化添加
         // $("#addImgBox").on("click",function(){
         //     $("#filePicker").find("label").click();
         // });
-        // // //再次添加
+        // //再次添加
         // $("#imgAddNew").on("click",function(){
-        //     $("#filePicker").find("label").click();
+        //     $("#filePicker").find("object").click();
         // });
-        
         //删除
         $("#imgDelete").on("click",function(){
             that.deleteImg();
         });
     },
     toggleBox : function(isShow){
-
         if( isShow == true ){
-            $("#addBox").css("z-index","-10");
-            $("#DB_imgSet").show();
-            $("#DB_thumSet").show();
+            // $("#addBox").css("z-index","-10");
+            $("#DB_imgSet").css("z-index","10");
+            $("#DB_thumSet").css("z-index","10");
             $(".editBox").show();
+            $(".webuploader-pick").css({
+                "left" : "773px",
+                "top" : "-60px",
+                "height" : "50px",
+                "width" : "55px",
+                "padding" : "0px"
+            })
+            $(".webuploader-pick").next().css({
+                "left" : "773px",
+                "top" : "-60px",
+                "height" : "50px",
+                "width" : "55px"
+            })
         }else if( isShow == false ){
-            // $("#addBox").show();
-            $("#addBox").css("z-index","10");
-            $("#DB_imgSet").hide();
-            $("#DB_thumSet").hide();
+            // $("#addBox").css("z-index","10");
+            $("#DB_imgSet").css("z-index","-10");
+            $("#DB_thumSet").css("z-index","-10");
             $(".editBox").hide();
+            $(".webuploader-pick").css({
+                "left" : "284px",
+                "top" : "36px",
+                "height" : "300px",
+                "width" : "300px",
+                "padding": "10px 15px"
+            })
+            $(".webuploader-pick").next().css({
+                "left" : "284px",
+                "top" : "36px",
+                "height" : "300px",
+                "width" : "300px"
+            })
         }
-
     },
     initGallery : function(){
         var that = this;
@@ -93,45 +114,37 @@ ImgUploadGallery.prototype = {
         });
     },
     //填充src
-    handleSrc : function(file){
+    handleSrc : function(file,i){
         var that = this;
         // for(var i = 0;i<files.length;i++){
             // that.fileGroup.push(files[i]);
             // (function(i){
-
                 var infoObject = {};
                 //缩略图src
                 uploader.makeThumb( file, function( error, src ) {
-
-                    console.log(src);
-                    $("#tpl1").attr("src",src);
-                    return false
-
+                    // console.log(src);
+                    // $("#tpl1").attr("src",src);
+                    // return false
                     // $("#DB_thumMove").find("img[init-index="+i+"]").eq(0).attr("src",src);
-                    // $("#DB_thumMove img").each(function(){
-                    //     var index = $(this).attr("init-index");
-                    //     if( index == i){
-                    //         $(this).attr("src",src);
-                    //     }
-                    // });
-
+                    $("#DB_thumMove img").each(function(){
+                        var index = $(this).attr("init-index");
+                        if( index == i){
+                            $(this).attr("src",src);
+                        }
+                    });
                 }, 110, 73 );
-
                 //完整尺寸src
                 uploader.makeThumb( file, function( error, src ) {
-
-                    console.log(src);
-                    $("#tpl2").attr("src",src);
-                    return false
-
+                    // console.log(src);
+                    // $("#tpl2").attr("src",src);
+                    // return false
                     // var link = $("#DB_thumMove").find("img[init-index="+i+"]").parents("a").eq(0).attr("href",src);
-                    // $("#DB_thumMove img").each(function(){
-                    //     var index = $(this).attr("init-index");
-                    //     if( index == i){
-                    //         link = $(this).parents("a").eq(0).attr("href",src);
-                    //     }
-                    // });
-
+                    $("#DB_thumMove img").each(function(){
+                        var index = $(this).attr("init-index");
+                        if( index == i){
+                            link = $(this).parents("a").eq(0).attr("href",src);
+                        }
+                    });
                     var id = link.attr("data-id");
                     if(that.infoList.length == 0 ){ //初始化第一个
                         $("#infoGroup").attr("data-id",id);
@@ -218,11 +231,18 @@ ImgUploadGallery.prototype = {
         that.onChangeImg(nowLi,true);
         $(".imgBox img").hide().attr('src',nowSrc).fadeIn(500);
         deleteLi.remove();
+    },
+    ImgSave : function(){
+        return this.infoList
     }
-
 }
 $(function(){
     var imgUploadGallery = new ImgUploadGallery();
+    window.imgUploadGallery = imgUploadGallery
 });
 
-
+//保存
+$("#save").on("click",function(){
+    var list = imgUploadGallery.ImgSave();
+    console.log(list);
+});
