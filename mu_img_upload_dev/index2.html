@@ -9,22 +9,28 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./lib/Hgallery/Hgallery.css">
     <link rel="stylesheet" href="./css/index.css">
-</head>
-<body>
-    
-    <div id="filePicker"></div>
-    <img src="" alt="" id="tpl">
     <script src="./lib/jquery.1.9.1.js"></script>
     <script src="./lib/webuploader.js"></script>
-    <script src="./lib/Hgallery/Hgallery.js"></script>
-    <!-- <script src="./js/index.js"></script> -->
-
-    <script>
+    <style>
+        .webuploader-pick{
+            background: red;
+        }
     
+    </style>
+</head>
+<body>
 
-    $(function(){
+
+    <div id="filePicker" style="background:red;"></div>
+    <img id="tpl" src="" alt="">
+    
+    <script src="./lib/Hgallery/Hgallery.js"></script>
+    <script>
+        
+
+
         var uploader = WebUploader.create({
-            swf: '../lib/Uploader.swf',
+            swf: './lib/Uploader.swf',
             pick: '#filePicker',
             accept: {
                 title: 'Images',
@@ -34,16 +40,27 @@
         });
 
         uploader.on('filesQueued',function(files){
+
             uploader.makeThumb( files, function( error, src ) {
+
+                // $("#DB_thumMove").find("img[init-index="+i+"]").eq(0).attr("src",src);
+                
                 console.log(src);
+
                 $("#tpl").attr("src",src);
-            }, 110, 73 );
-        });
 
+                // $("#DB_thumMove img").each(function(){
+                //     console.log(2);
+                //     var index = $(this).attr("init-index");
+                //     if( index == i){
+                //         $(this).attr("src",src);
+                //     }
+                // });
+                
+            }, 'auto', 'auto' );
 
-    })
-
-    
+        })
+        
     </script>
 
 </body>

@@ -9,44 +9,24 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./lib/Hgallery/Hgallery.css">
     <link rel="stylesheet" href="./css/index.css">
+    <script src="./lib/jquery.1.9.1.js"></script>
+    <script src="./lib/webuploader.js"></script>
+    <style>
+        .webuploader-pick{
+            background: red;
+        }
+    
+    </style>
 </head>
 <body>
 
-    <div class="wrapper">
-        <div class="uploadImgBox">
-            <div class="topInfo">
-                <div class="infoGroup" id="infoGroup" data-id="">
-                    <div class="line" class="paperType">
-                        <span class="textLeft">证件类型:</span>
-                        <span class="textRight">
-                            <input type="text" class="paperTypeInput">
-                        </span>
-                    </div>
-                    <div class="line" class="paperNum">
-                        <span class="textLeft">证件号:</span>
-                        <span class="textRight">
-                            <input type="text" class="paperNumInput">
-                        </span>
-                    </div>
-                    <div class="line" class="paperTime">
-                        <span class="textLeft">有效期:</span>
-                        <span class="textRight">
-                            <input type="text" class="paperTimeStartInput">
-                            <input type="text" class="paperTimeEndInput">
-                        </span>
-                    </div>
-                </div>
-                <div class="editBox">
-                    <div class="imgAddNew editItem" id="imgAddNew"></div>
-                    <div class="imgDelete editItem" id="imgDelete"></div>
-                </div>
-            </div>
-            <div id="DB_gallery">
+
+        <div id="DB_gallery">
                 <div class="addBox" id="addBox">
                     <div class="addImgBox" id="addImgBox" >
                         <img src="./img/add.png" alt="">
                     </div>
-                    <div class="hidden" id="filePicker" >
+                    <div class="hidden" id="filePicker" style="display:none;">
                     </div>
                 </div>
                 <div class="DB_imgSet" id="DB_imgSet" style="display:none;">
@@ -67,15 +47,56 @@
                     <div class="DB_nextPageBtn"><img src="img/next_page.png" alt="下一页"/></div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <img id="tpl1" src="" alt="">
-    <img id="tpl2" src="" alt="">
-
-    <script src="./lib/jquery.1.9.1.js"></script>
-    <script src="./lib/webuploader.js"></script>
+    <div id="filePicker" style="background:red;"></div>
+    <img id="tpl" src="" alt="">
+    
     <script src="./lib/Hgallery/Hgallery.js"></script>
-    <script src="./js/index.js"></script>
+    <script>
+        
+
+
+        var uploader = WebUploader.create({
+            swf: './lib/Uploader.swf',
+            pick: '#filePicker',
+            accept: {
+                title: 'Images',
+                extensions: 'gif,jpg,jpeg,bmp,png',
+                mimeTypes: 'image/*'
+            }
+        });
+
+
+        var hgallery = $('#DB_gallery').hGallery({
+            thumWidth:110,            
+            thumGap:8,                
+            thumMoveStep:7,           
+            moveSpeed:300,            
+            fadeSpeed:500          
+        });
+
+
+        uploader.on('filesQueued',function(files){
+
+            uploader.makeThumb( files, function( error, src ) {
+
+                // $("#DB_thumMove").find("img[init-index="+i+"]").eq(0).attr("src",src);
+                
+                $("#tpl").attr("src",src);
+
+                // $("#DB_thumMove img").each(function(){
+                //     console.log(2);
+                //     var index = $(this).attr("init-index");
+                //     if( index == i){
+                //         $(this).attr("src",src);
+                //     }
+                // });
+                
+            }, 'auto', 'auto' );
+
+        })
+        
+    </script>
+
 </body>
 </html>

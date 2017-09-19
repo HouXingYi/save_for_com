@@ -1,14 +1,14 @@
 
-var uploader = WebUploader.create({
-    swf: '../lib/Uploader.swf',
-    pick: '#filePicker',
-    accept: {
-        title: 'Images',
-        extensions: 'gif,jpg,jpeg,bmp,png',
-        mimeTypes: 'image/*'
-    }
-});
 function ImgUploadGallery(){
+    this.uploader = WebUploader.create({
+        swf: '../lib/Uploader.swf',
+        pick: '#filePicker',
+        accept: {
+            title: 'Images',
+            extensions: 'gif,jpg,jpeg,bmp,png',
+            mimeTypes: 'image/*'
+        }
+    });
     this.fileGroup = [];
     this.infoList = [];
     this.init();
@@ -18,9 +18,8 @@ ImgUploadGallery.prototype = {
         this.bind();
     },
     bind : function(){
-
         var that = this;
-        uploader.on('filesQueued',function(files){
+        this.uploader.on('filesQueued',function(files){
             var len = files.length;
             var strHtml = "";
             for(var i=0;i<len;i++){
@@ -40,40 +39,35 @@ ImgUploadGallery.prototype = {
                 that.toggleBox(true);
                 that.initGallery();
             }
-            for(var j = 0;j<files.length;j++){
-                that.handleSrc(files[j]);
-            }
+            that.handleSrc(files);
         });
 
         // //初始化添加
-        // $("#addImgBox").on("click",function(){
-        //     $("#filePicker").find("label").click();
-        // });
-        // // //再次添加
-        // $("#imgAddNew").on("click",function(){
-        //     $("#filePicker").find("label").click();
-        // });
-        
+        $("#addImgBox").on("click",function(){
+            $("#filePicker").find("label").click();
+        });
+        // //再次添加
+        $("#imgAddNew").on("click",function(){
+            $("#filePicker").find("label").click();
+        });
         //删除
+
         $("#imgDelete").on("click",function(){
             that.deleteImg();
         });
     },
     toggleBox : function(isShow){
-
         if( isShow == true ){
-            $("#addBox").css("z-index","-10");
+            $("#addBox").hide();
             $("#DB_imgSet").show();
             $("#DB_thumSet").show();
             $(".editBox").show();
         }else if( isShow == false ){
-            // $("#addBox").show();
-            $("#addBox").css("z-index","10");
+            $("#addBox").show();
             $("#DB_imgSet").hide();
             $("#DB_thumSet").hide();
             $(".editBox").hide();
         }
-
     },
     initGallery : function(){
         var that = this;
@@ -93,21 +87,17 @@ ImgUploadGallery.prototype = {
         });
     },
     //填充src
-    handleSrc : function(file){
+    handleSrc : function(files){
         var that = this;
-        // for(var i = 0;i<files.length;i++){
-            // that.fileGroup.push(files[i]);
-            // (function(i){
-
+        for(var i = 0;i<files.length;i++){
+            that.fileGroup.push(files[i]);
+            (function(i){
                 var infoObject = {};
+                console.log(0);
                 //缩略图src
-                uploader.makeThumb( file, function( error, src ) {
+                that.uploader.makeThumb( files[i], function( error, src ) {
 
-                    console.log(src);
-                    $("#tpl1").attr("src",src);
-                    return false
-
-                    // $("#DB_thumMove").find("img[init-index="+i+"]").eq(0).attr("src",src);
+                    $("#DB_thumMove").find("img[init-index="+i+"]").eq(0).attr("src",src);
                     // $("#DB_thumMove img").each(function(){
                     //     var index = $(this).attr("init-index");
                     //     if( index == i){
@@ -116,15 +106,11 @@ ImgUploadGallery.prototype = {
                     // });
 
                 }, 110, 73 );
-
                 //完整尺寸src
-                uploader.makeThumb( file, function( error, src ) {
+                that.uploader.makeThumb( files[i], function( error, src ) {
 
-                    console.log(src);
-                    $("#tpl2").attr("src",src);
-                    return false
-
-                    // var link = $("#DB_thumMove").find("img[init-index="+i+"]").parents("a").eq(0).attr("href",src);
+                    var link
+                    var link = $("#DB_thumMove").find("img[init-index="+i+"]").parents("a").eq(0).attr("href",src);
                     // $("#DB_thumMove img").each(function(){
                     //     var index = $(this).attr("init-index");
                     //     if( index == i){
@@ -142,11 +128,9 @@ ImgUploadGallery.prototype = {
                     infoObject.imgSrc = src;
                     infoObject.id = id;
                     that.infoList.push(infoObject);
-
                 }, "auto" , "auto" );
-
-            // })(i);
-        // }
+            })(i);
+        }
     },
     onChangeImg : function(currLi,isDelete){
         var that = this;
@@ -195,8 +179,8 @@ ImgUploadGallery.prototype = {
                 that.infoList = [];
                 deleteLi.remove();
                 that.toggleBox(false);
-                uploader.reset();
-                var files = uploader.getFiles();
+                that.uploader.reset();
+                var files = that.uploader.getFiles();
                 return false
             }else{//不是最后一个，红框前移
                 that.hgallery.$thumLine.css({'left':nowLi.position().left});
