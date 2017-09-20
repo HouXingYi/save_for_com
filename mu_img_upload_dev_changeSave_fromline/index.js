@@ -17,6 +17,15 @@ function ImgUploadGallery(){
 ImgUploadGallery.prototype = {
     init : function(){
         this.bind();
+        this.posPick();  
+    },
+    posPick : function(){
+    	var pick = $(".webuploader-pick");
+    	var pickNext = $(".webuploader-pick").next();
+    	pickNext.css({
+    		"left" : pick.css("left"),
+    		"top" : pick.css("top")
+    	})
     },
     bind : function(){
         var that = this;
@@ -65,14 +74,14 @@ ImgUploadGallery.prototype = {
             $("#DB_thumSet").css("z-index","10");
             $(".editBox").show();
             $(".webuploader-pick").css({
-                "left" : "773px",
+                "left" : "720px",
                 "top" : "-60px",
                 "height" : "50px",
                 "width" : "55px",
                 "padding" : "0px"
             })
             $(".webuploader-pick").next().css({
-                "left" : "773px",
+                "left" : "720px",
                 "top" : "-60px",
                 "height" : "50px",
                 "width" : "55px"
@@ -205,7 +214,6 @@ ImgUploadGallery.prototype = {
     },
     deleteImg : function(){
 
-        console.log("delete");
 
         var that = this;
         var deleteLi = $("#DB_thumMove li[status=now]");
@@ -251,13 +259,13 @@ ImgUploadGallery.prototype = {
         return this.infoList
     }
 }
-$(function(){
-    var imgUploadGallery = new ImgUploadGallery();
-    window.imgUploadGallery = imgUploadGallery
-});
-
-//保存
-$("#save").on("click",function(){
-    var list = imgUploadGallery.ImgSave();
-    console.log(list);
-});
+//$(function(){
+//    var imgUploadGallery = new ImgUploadGallery();
+//    window.imgUploadGallery = imgUploadGallery
+//});
+//
+////保存
+//$("#save").on("click",function(){
+//    var list = imgUploadGallery.ImgSave();
+//    console.log(list);
+//});
