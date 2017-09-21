@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>WebUploader演示 - 带裁剪功能 </title>
+    <!-- <link rel="stylesheet" type="text/css" href="./webuploader.css" /> -->
+    <style>
+        .filePicker2Box{
+            position: absolute;
+            top: -1000px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="wrapper"> -->
+        <!-- <div class="uploader-container"> -->
+            <!-- <div id="filePicker">html5版本</div> -->
+            <div class="filePicker2Box">
+                <div id="filePicker2">flash版本</div>
+            </div>
+        <!-- </div>
+        <div id="log">
+            <strong>console 会影响 md5 时间的计算，所以在测试 md5 速度的时候，把 console 关了</strong>
+        </div>
+    </div> -->
+
+    <div id="change">
+        改变
+    </div>
+
+    <script type="text/javascript" src="./jquery.js"></script>
+    <script type="text/javascript" src="./webuploader.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
+    <script>
+
+        console.log(1);
+        
+        
+
+        $(".webuploader-pick").css({
+            "width" : "100px",
+            "height" : "100px",
+            "position" : "absolute",
+            "left" : "100px",
+            "top" : "100px",
+            "background" : "red"
+        })
+        $(".webuploader-pick").next().css({
+            "width" : "100px",
+            "height" : "100px",
+            "position" : "absolute",
+            "left" : "100px",
+            "top" : "100px"
+        })
+        console.log(2);
+
+        $("#change").on("click",function(){
+            $(".filePicker2Box").css({
+                "top" : "100px"
+            })
+            $(".webuploader-pick").css({
+                "width" : "100px",
+                "height" : "100px",
+                "position" : "absolute",
+                "left" : "100px",
+                "top" : "100px"
+            })
+            $(".webuploader-pick").next().css({
+                "width" : "100px",
+                "height" : "100px",
+                "position" : "absolute",
+                "left" : "100px",
+                "top" : "100px"
+            })
+        });
+        
+    </script>
+</body>
+</html>

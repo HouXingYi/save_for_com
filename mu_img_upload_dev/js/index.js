@@ -12,11 +12,25 @@ var uploader = WebUploader.create({
 function ImgUploadGallery(){
     this.fileGroup = [];
     this.infoList = [];
-    this.init();
+    // this.init();
+    // var pick = $(".webuploader-pick");
+    // console.log(pick);
+    // var pickNext = $(".webuploader-pick").next();
+    // pickNext.css({
+    //     // "left" : pick.css("left"),
+    //     // "top" : pick.css("top"),
+    //     "left" : "100px",
+    //     "top" : "100px",
+    //     "width" : "500px",
+    //     "height" : "500px",
+    //     "background" : "red"
+    // })
+    
 }
 ImgUploadGallery.prototype = {
     init : function(){
         this.bind();
+        console.log(uploader);
     },
     bind : function(){
         var that = this;
@@ -260,4 +274,16 @@ $(function(){
 $("#save").on("click",function(){
     var list = imgUploadGallery.ImgSave();
     console.log(list);
+});
+
+$("#changePos").on("click",function(){
+    $(".uploadImgBox").css({
+        "top" : "-900px"
+    })
+});
+
+$("#changePos2").on("click",function(){
+    $(".uploadImgBox").css({
+        "top" : "0"
+    })
 });

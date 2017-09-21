@@ -13,6 +13,18 @@ function ImgUploadGallery(){
     this.fileGroup = [];
     this.infoList = [];
     this.init();
+
+    var pick = $(".webuploader-pick");
+    console.log(pick);
+    var pickNext = $(".webuploader-pick").next();
+    pickNext.css({
+        "left" : pick.css("left"),
+        "top" : pick.css("top"),
+        "width" : "300px",
+        "height" : "300px",
+        "background" : "red"
+    })
+
 }
 ImgUploadGallery.prototype = {
     init : function(){
