@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>统一平台操作台</title>
+    <link rel="stylesheet" href="css/gridstack.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<style>
+		html,body{height: 100%;}
+	</style>
+</head>
+<body>
+	<div class="m-container">
+		<div class="top-tool" id="topTool">
+			<span class="btn_qx" style="display: none;"><img src="css/img/icon-del.png" />取消</span>
+			<span class="btn_bc" style="display: none;"><img src="css/img/icon-save.png" />保存</span>
+			<span class="btn_zdy"><img src="css/img/icon-set.png" />自定义</span>
+		</div>
+		<div class="consolebox">
+			<div class="boxleft">
+				<div class="boxbody" id="tipbody">
+					<ul class="ulbody grid-stack" id="ulbody"
+						 data-gs-animate="true" data-gs-width="5" data-gs-height="0" data-gs-current-height="0">
+						<li class="sm-rectangle grid-stack-item"
+							 data-gs-x="0" data-gs-y="0" data-gs-width="3" data-gs-height="0" 
+							 data-smallW="1" data-smallH="1" data-largeW="3"  data-largeH="1"data-status="large" data-index="0">
+							<div class="libox">
+							<div class="opt-move"><img src="css/img/icon-move.png" /></div>
+							<div class="opt-edit"><img src="css/img/icon-edit.png" /></div>
+							<div class="title"><label>快捷导航</label><span class="f-fr"><img src="css/img/icon-zoom.jpg" /></span></div>
+							<ul class="quick-nav ">
+								<li><span><img src="css/img/icon-star.png" /></span><p>治安信息管理</p></li>
+								<li><span><img src="css/img/icon-shift.png" /></span><p>班次设置</p></li>
+								<li><span><img src="css/img/icon-model.png" /></span><p>模板管理</p></li>
+								<li><span><img src="css/img/icon-bus.png" /></span><p>组织机构管理</p></li>
+								<li><span><img src="css/img/icon-add.png" /></span><p>添加菜单</p></li>
+							</ul>
+							</div>
+						</li>
+						<li class="sm-square grid-stack-item"
+							 data-gs-x="3" data-gs-y="0" data-gs-width="1" data-gs-height="0"
+							 data-smallW="1" data-smallH="1" data-largeW="3"  data-largeH="1"data-status="large" data-index="1">
+							<div class="libox">
+							<div class="opt-move ui-draggable-handle"><img src="css/img/icon-move.png" /></div>
+							<div class="opt-edit"><img src="css/img/icon-edit.png" /></div>
+							<div class="title"><label>治安分析</label><span class="f-fr"><img src="css/img/icon-zoom.jpg" /></span></div>
+							
+							</div>
+						</li>
+						<li class="sm-square grid-stack-item"
+							 data-gs-x="4" data-gs-y="0" data-gs-width="1" data-gs-height="0"
+							 data-smallW="1" data-smallH="1" data-largeW="3"  data-largeH="1"data-status="large" data-index="2">
+							<div class="libox">
+							<div class="opt-move ui-draggable-handle"><img src="css/img/icon-move.png" /></div>
+							<div class="opt-edit"><img src="css/img/icon-edit.png" /></div>
+							<div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%; padding-left: 33px; padding-top: 4px;">
+								<!--<iframe id="tianqi" name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=83" width="162" height="176" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>-->
+								
+							</div>
+							
+							</div>
+						</li>
+						<li class="lg-rectangle grid-stack-item"
+							 data-gs-x="0" data-gs-y="1" data-gs-width="3" data-gs-height="2"
+							 data-smallW="1" data-smallH="1" data-largeW="3"  data-largeH="2"data-status="large" data-index="3">
+							<div class="libox">
+							<div class="opt-move ui-draggable-handle"><img src="css/img/icon-move.png" /></div>
+							<div class="opt-edit"><img src="css/img/icon-edit.png" /></div>
+							<div class="title"><label>统计表</label><span class="f-fr"><img src="css/img/icon-zoom.jpg" /></span></div>
+							
+							</div>
+						</li>
+						<li class="lg-square grid-stack-item"
+							 data-gs-x="3" data-gs-y="1" data-gs-width="2" data-gs-height="2"
+							 data-smallW="1" data-smallH="1" data-largeW="3"  data-largeH="2"data-status="large" data-index="4">
+							<div class="libox">
+							<div class="opt-move ui-draggable-handle"><img src="css/img/icon-move.png" /></div>
+							<div class="opt-edit"><img src="css/img/icon-edit.png" /></div>
+							<div class="title bg-blue"><label>日历</label><span class="f-fr"><img src="css/img/icon-zoom.jpg" /></span></div>
+							<div id="laydate"></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="boxright" id="boxright">
+				<div class="addmodel" id="addmodel">
+					<b>添加模块</b>
+					<div class="u-txt">
+						<input type="text" class="ipt-txt" value="" placeholder="搜索模块" />
+						<span class="f-pr"><img src="css/img/icon-srh.png" /></span>
+					</div>
+					<div class="u-txt">
+						<select class="ipt-txt">
+							<option value="0">选择模块类别</option>
+						</select>
+					</div>
+					<ul class="model-list grid-stack" id="modelList" data-gs-animate="true" data-gs-width="3" data-gs-height="0" data-gs-current-height="0">
+						<li id="weather" class="grid-stack-item"
+							 data-gs-x="0" data-gs-y="0" data-gs-width="1" data-gs-height="0" data-index="0">
+							<img src="css/img/model-img1.jpg" /><p>天气</p>
+						</li>
+						<li class="grid-stack-item"
+							 data-gs-x="1" data-gs-y="0" data-gs-width="1" data-gs-height="0" data-index="1">
+							<img src="css/img/model-img2.jpg" /><p>日历</p>
+						</li>
+						<li class="grid-stack-item"
+							 data-gs-x="2" data-gs-y="0" data-gs-width="1" data-gs-height="0" data-index="2">
+							<img src="css/img/model-img3.jpg" /><p>统计表</p>
+						</li>
+						<li class="grid-stack-item"
+							 data-gs-x="0" data-gs-y="1" data-gs-width="1" data-gs-height="0" data-index="3">
+							<img src="css/img/model-img3.jpg" /><p>统计表</p>
+						</li>
+					</ul>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/gridstack/lodash.js"></script>
+	<script type="text/javascript" src="js/gridstack/gridstack.js"></script>
+    <script type="text/javascript" src="js/gridstack/gridstack.jQueryUI.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/laydate/laydate.js"></script>
+	<script type="text/javascript" src="js/myBus.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript">
+		laydate.render({
+			elem: '#laydate'
+			,position: 'static'
+			,showBottom: false//不显示控件的底部栏区域
+		});
+		$(function(){
+			
+		});
+	</script>
+</body>
+</html>
