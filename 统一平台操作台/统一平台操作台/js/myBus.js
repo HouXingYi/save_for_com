@@ -80,9 +80,11 @@ function _gridstack(){
         }
         ,cell_height : 'auto' //高由宽来算
         ,disableResize :true
+        ,width : 3
     }
     $("#ulbody").gridstack(options);
-    $("#modelList").gridstack(optiRight);
+    // $("#modelList").gridstack(optiRight);
+    $("#modelList2").gridstack(optiRight);
     //取坐标信息填入html中
     function introHtml(){
 	    for(var i in oldItems.list){

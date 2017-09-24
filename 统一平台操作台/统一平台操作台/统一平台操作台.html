@@ -7,6 +7,13 @@
 	<link rel="stylesheet" href="css/style.css" />
 	<style>
 		html,body{height: 100%;}
+
+		#modelList2 li{
+			width: 100px;
+			background: red;
+
+		}
+		
 	</style>
 </head>
 <body>
@@ -95,25 +102,51 @@
 							<option value="0">选择模块类别</option>
 						</select>
 					</div>
-					<ul class="model-list grid-stack" id="modelList" data-gs-animate="true" data-gs-width="3" data-gs-height="0" data-gs-current-height="0">
+
+					<!-- <ul class="model-list grid-stack" id="modelList" data-gs-animate="true" data-gs-width="3" data-gs-height="0" data-gs-current-height="0">
 						<li id="weather" class="grid-stack-item"
-							 data-gs-x="0" data-gs-y="0" data-gs-width="1" data-gs-height="0" data-index="0">
-							<img src="css/img/model-img1.jpg" /><p>天气</p>
+							 data-gs-x="0" data-gs-y="0" data-gs-width="1" data-gs-height="1" data-index="0">
+							<div class="grid-stack-item-content">
+								<img src="css/img/model-img1.jpg" /><p>天气</p>
+							</div>
 						</li>
 						<li class="grid-stack-item"
-							 data-gs-x="1" data-gs-y="0" data-gs-width="1" data-gs-height="0" data-index="1">
+							 data-gs-x="1" data-gs-y="0" data-gs-width="1" data-gs-height="1" data-index="1">
 							<img src="css/img/model-img2.jpg" /><p>日历</p>
 						</li>
 						<li class="grid-stack-item"
-							 data-gs-x="2" data-gs-y="0" data-gs-width="1" data-gs-height="0" data-index="2">
+							 data-gs-x="2" data-gs-y="0" data-gs-width="1" data-gs-height="1" data-index="2">
 							<img src="css/img/model-img3.jpg" /><p>统计表</p>
 						</li>
 						<li class="grid-stack-item"
-							 data-gs-x="0" data-gs-y="1" data-gs-width="1" data-gs-height="0" data-index="3">
+							 data-gs-x="0" data-gs-y="1" data-gs-width="1" data-gs-height="1" data-index="3">
 							<img src="css/img/model-img3.jpg" /><p>统计表</p>
 						</li>
+					</ul> -->
+
+					<ul class="model-list2 grid-stack" id="modelList2" data-gs-animate="true" data-gs-width="3" data-gs-height="0" data-gs-current-height="0">
+						<li id="weather" class="grid-stack-item"
+							 data-gs-x="0" data-gs-y="0" data-gs-width="1" data-gs-height="1" data-index="0">
+							<div class="grid-stack-item-content">
+
+							</div>
+						</li>
+						<li class="grid-stack-item"
+							 data-gs-x="1" data-gs-y="0" data-gs-width="1" data-gs-height="1" data-index="1">
+							 <div class="grid-stack-item-content">
+							</div>
+						</li>
+						<li class="grid-stack-item"
+							 data-gs-x="2" data-gs-y="0" data-gs-width="1" data-gs-height="1" data-index="2">
+							 <div class="grid-stack-item-content">
+							</div>
+						</li>
+						<li class="grid-stack-item"
+							 data-gs-x="0" data-gs-y="1" data-gs-width="1" data-gs-height="1" data-index="3">
+							 <div class="grid-stack-item-content">
+							</div>
+						</li>
 					</ul>
-					
 					
 				</div>
 			</div>
@@ -127,7 +160,7 @@
     <script type="text/javascript" src="js/jquery-ui.js"></script>
     <script type="text/javascript" src="js/laydate/laydate.js"></script>
 	<script type="text/javascript" src="js/myBus.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
+	<!-- <script type="text/javascript" src="js/index.js"></script> -->
 	<script type="text/javascript">
 		laydate.render({
 			elem: '#laydate'
