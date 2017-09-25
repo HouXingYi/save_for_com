@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>jerichotab with resizable</title>
+    <script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.jerichotab.js"></script>
+    <script type="text/javascript" src="js/jquery.resizable.js"></script>
+    <link rel="Stylesheet" href="css/jquery.jerichotab.css" />
+    <style type="text/css">
+        #resizableDiv
+        {
+            width:600px;
+            height:500px;
+            position:absolute;
+            left:100px;
+            top:50px;
+            border:solid 1px #888;
+            background:#dedede;
+            }
+        #resizableHandler
+        {
+            z-index:999999;
+            cursor:se-resize;
+            position:absolute;
+            right:0;
+            bottom:0;
+            width:11px;
+            height:11px;
+            background:url(images/resize_se.gif) no-repeat center center;
+            }
+    </style>
+    <script type="text/javascript">
+        $().ready(function() {
+            $('#resizableDiv').resizable({
+                handler: '#resizableHandler',
+                onResize: function() {
+                    $.fn.jerichoTab.resize();
+                }
+            });
+            var d1 = new Date().getTime();
+            $.fn.initJerichoTab({
+                renderTo: '#resizableDiv',
+                uniqueId: 'myJerichoTab',
+                contentCss: { 'height': $('#resizableDiv').height() - 50 },
+                tabs: [{
+                    title: 'JeirchoTab',
+                    closeable: false,
+                    iconImg: 'images/jerichotab.png',
+                    data: { dataType: 'formtag', dataLink: '#tbNews' },
+                    onLoadCompleted: function(h) {
+                        $('<b style="color:red" />').html('The JerichoTab processed in ' + (new Date().getTime() - d1) + ' milliseconds!').appendTo(h);
+                    } 
+                    },
+                    {
+                    title: 'ASPX',
+                    closeable: false,
+                    data: { dataType: 'iframe', dataLink: 'a.aspx' }
+                    }],
+                activeTabIndex: 1,
+                loadOnce: true
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="resizableDiv">
+        <div id="resizableHandler">&nbsp;</div>
+    </div>
+    <div id="tbNews">news</div>
+</body>
+</html>
