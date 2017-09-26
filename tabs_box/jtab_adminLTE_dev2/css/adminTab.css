@@ -1,0 +1,181 @@
+﻿
+.wrapper .content-wrapper{
+    transition: all 0.5s;
+    position: absolute;
+    top: 70px;
+    left: 200px;
+    right: 0;
+    background: #fff;
+    bottom: 0;
+    width: auto;
+    overflow: hidden;
+    overflow-y: auto;
+    height: auto;
+    color: #000;
+    border-radius: 3px;
+}
+
+.wrapper .content-wrapper .jericho_tab{
+    height: 100%;
+}
+
+.wrapper .content-wrapper .tab_pages{
+    background: rgb(244, 245, 248);
+    height: 50px;
+} 
+.wrapper .content-wrapper .tab_pages .jericho_tabs{
+    float: left;
+}
+.wrapper .content-wrapper .tab_content{
+    height: 500px;
+}
+.wrapper .content-wrapper .tab_content #jerichotab_contentholder{
+    height: 500px;
+}
+.wrapper .header{
+    height:70px;
+    position: relative;
+    background: rgb(60, 141, 188);
+}    
+.wrapper .side-bar{
+    position: fixed;
+    top: 70px;
+    bottom: 0;
+    width: 200px;
+    background: rgb(34, 45, 50);
+    color: #fff;
+}
+
+/* 左侧 */
+.functree{
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.functree>li.treeview>.modules{
+    display: block;
+    height: 20px;
+    padding: 12px 5px 12px 15px;
+    cursor: pointer;
+}
+
+.functree>li.treeview>.modulesList{
+}
+
+.functree>li.treeview>.modulesList>.modulesItem{
+    padding: 12px 5px 12px 15px;
+    background: rgb(44, 59, 65);
+    cursor: pointer;
+}
+.functree>li.treeview>.modulesList>.modulesItem span.func{
+    display: block;
+    color: #8aa4af;
+}
+
+.functree>li.treeview>.modulesList>.modulesItem:hover span{
+    color: #fff;
+}
+
+
+/* 顶端导航 */
+.tab_pages .tabs{
+    height: 100%;
+}
+
+.tab_pages .tabs>ul{
+    height: 100%;
+}
+.tab_pages .tabs>ul>li.jericho_tabs{
+    cursor: pointer;
+    height: 48px;
+    /* border: 1px solid #e5e5e5; */
+    color: #6C6C6C;
+}
+.tab_pages .tabs>ul>li.jericho_tabs.tab_selected{
+    color: rgb(60, 141, 188);
+    background: #fff;
+    /* border-bottom: 0px solid #e5e5e5; */
+}
+.tab_pages .tabs>ul>li.jericho_tabs .tab_left{
+    border: 1px solid #e5e5e5;
+    line-height: 50px;
+    float: left;
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+.tab_pages .tabs>ul>li.jericho_tabs.tab_selected .tab_left{
+    border-bottom: 0px solid #e5e5e5;
+}
+.tab_pages .tabs>ul>li.jericho_tabs .tab_left .tab_close a{
+    display: inline-block;
+    position: absolute;
+    right: 18px;
+    height: 20px;
+    width: 20px;
+    background: #000;
+    top: 14px;
+    background: url("../images/close.png");
+    background-size: 20px 20px ;
+}
+.tab_pages .tabs>ul>li.jericho_tabs .tab_right{
+    float: right;
+}
+
+
+
+
+
+.jericho_sliders.jericho_sliderleft_enable{
+    background: #fff;
+    background: url("../images/arr_left.png");
+    background-size: 19px 50px;
+}
+.jericho_sliders.jericho_sliderleft_hover{
+    background: #fff;
+    background: url("../images/arr_left.png");
+    background-size: 19px 50px;
+}
+.jericho_sliders.jericho_sliderleft_disable{
+    background: #fff;
+    background: url("../images/arr_left.png");
+    background-size: 19px 50px;
+}
+
+.jericho_sliders.jericho_sliderright_enable{
+    background: #fff;
+    background: url("../images/arr_right.png");
+    background-size: 19px 50px;
+}
+.jericho_sliders.jericho_sliderright_hover{
+    background: #fff;
+    background: url("../images/arr_right.png");
+    background-size: 19px 50px;
+}
+.jericho_sliders.jericho_sliderright_disable{
+    background: #fff;
+    background: url("../images/arr_right.png");
+    background-size: 19px 50px;
+}
+
+/* .slideIconLeft{
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    width: 19px;
+    height: 50px;
+    background: url("../images/arr_left.png");
+    background-size: 19px 50px;
+}
+.slideIconRight{
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: inline-block;
+    width: 19px;
+    height: 50px;
+    background: url("../images/arr_right.png");
+    background-size: 19px 50px;
+} */
+
