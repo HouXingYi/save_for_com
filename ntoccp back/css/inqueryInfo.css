@@ -1,0 +1,47 @@
+
+.button{
+    display: inline-block;
+    color: #fff;
+    background: rgb(0, 121, 192);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.button:hover{
+}
+.button:active{
+}
+
+select{
+    width: 85px;
+    height: 35px;
+    font-size: 16px;
+}
+.signDateInput{
+    height: 30px;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.inqueryBox .topBar{
+    height: 50px;
+    padding: 20px;
+}
+.inqueryBox .topBar .topItem{
+    display: inline-block;
+}
+.inqueryBox .tableBox{
+    width: 100%;
+    overflow: auto;
+}
+td.quotation{
+    color: rgb(33, 138, 200);
+    cursor: pointer;
+}
+    
+.paginationBox{
+    position: absolute;
+    right: 100px;
+    bottom: 50px;
+}
+
