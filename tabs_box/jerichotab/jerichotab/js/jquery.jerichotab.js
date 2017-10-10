@@ -13,55 +13,62 @@
         
     ========================================
     ========================================
-    #API:
-        #$.fn.initJerichoTab(Function):
-                *renderTo(String): the tab render to('#sample')
-                *uniqueId(String): the tab's id(It must be unique)
-                *tabs(Array): the tabs will be initialized, whose items will be formated as follows:
-                    {
-                    **title(String): the tab title text
-                    **iconImg(String): the tab icon that displayed from title text,
-                    **closeable(Boolean): the switch that controls whether the tab can be closed (true as default)
-                    }
-                *activeTabIndex(Int): the tab you'd like to select after loading(0 as default)
-                *contentHeight(Int): height of the content div tag
-                *contentCss(Object): the same as style sheet
-                *loadOnce(Boolean): the switch controls if load tab content at the first time(true as default)
-                *tabWidth(Int): width of each tab(150 as default)
-        #$.fn.jerichoTab.addTab(Function):
-                *tabId(String); the unique tab Id(Unused, private)
-                *tabFirer(JQuery Object): the object that makes tab shown in a special way
-                *title(String): the tab title text
-                *data(Object): the tab data to load,including:
-                            **dataType:type of data,
-                            **dataLink:data link
-                                #example(must use as suited):
-                                ##formtag:
-                                    *dataType:'formtag', 
-                                    //***use the html tags in this page
-                                    *dataLink:'#example' 
-                                    //***id of the tag you'd like to display in this tab
-                                ##iframe:
-                                    *dataType:'iframe', 
-                                    //***use the iframe to load another page
-                                    *dataLink:''
-                                    //***such as 'iframetemplates/iframe.htm' 
-                                    //***the relative url of the page you'd like to display in this tab,
-                                    //***and jerichoTab will use an iframe to load it
-                                ###html:
-                                    *dataType:'html',
-                                    //*** load data from html url
-                                    *dataLink:''
-                                    // *** the relative url of your html page
-                                ##ajax:
-                                *dataType:'ajax',
-                                //***use ajax to load data with asynchronous operations
-                                *dataLink:''
-                                //*** yes,u can write down your ajax handler url and then jerichotab'll make a callback,
-                                //*** so the responseText will be displayed in the content holder(u can use html tags in your server callback datas)
-                *onLoadCompleted(Function): fired after the data has been loaded
-                *iconImg(String): the tab icon that displayed below title text(relative to...),
-                *closeable(Boolean): set whether the tab can be closed(true as default)
+
+
+
+    #$.fn.initJerichoTab(Function):
+    *renderTo(String): the tab render to('#sample')
+    *uniqueId(String): the tab's id(It must be unique)
+    *tabs(Array): the tabs will be initialized, whose items will be formated as follows:
+        {
+        **title(String): the tab title text
+        **iconImg(String): the tab icon that displayed from title text,
+        **closeable(Boolean): the switch that controls whether the tab can be closed (true as default)
+        }
+    *activeTabIndex(Int): the tab you'd like to select after loading(0 as default)
+    *contentHeight(Int): height of the content div tag
+    *contentCss(Object): the same as style sheet
+    *loadOnce(Boolean): the switch controls if load tab content at the first time(true as default)
+    *tabWidth(Int): width of each tab(150 as default)
+
+
+
+    #$.fn.jerichoTab.addTab(Function):
+    *tabId(String); the unique tab Id(Unused, private)
+    *tabFirer(JQuery Object): the object that makes tab shown in a special way
+    *title(String): the tab title text
+    *data(Object): the tab data to load,including:
+        **dataType:type of data,
+        **dataLink:data link
+            #example(must use as suited):
+            ##formtag:
+                *dataType:'formtag', 
+                //***use the html tags in this page
+                *dataLink:'#example' 
+                //***id of the tag you'd like to display in this tab
+            ##iframe:
+                *dataType:'iframe', 
+                //***use the iframe to load another page
+                *dataLink:''
+                //***such as 'iframetemplates/iframe.htm' 
+                //***the relative url of the page you'd like to display in this tab,
+                //***and jerichoTab will use an iframe to load it
+            ###html:
+                *dataType:'html',
+                //*** load data from html url
+                *dataLink:''
+                // *** the relative url of your html page
+            ##ajax:
+            *dataType:'ajax',
+            //***use ajax to load data with asynchronous operations
+            *dataLink:''
+            //*** yes,u can write down your ajax handler url and then jerichotab'll make a callback,
+            //*** so the responseText will be displayed in the content holder(u can use html tags in your server callback datas)
+    *onLoadCompleted(Function): fired after the data has been loaded
+    *iconImg(String): the tab icon that displayed below title text(relative to...),
+    *closeable(Boolean): set whether the tab can be closed(true as default)
+
+
     ========================================
 */
 

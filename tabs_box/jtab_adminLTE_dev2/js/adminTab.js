@@ -3,6 +3,7 @@ $(function(){
     init();
 });
 function init(){
+
     $.fn.initJerichoTab({
         renderTo: '.content-wrapper',
         uniqueId: 'myJerichoTab',
@@ -12,12 +13,14 @@ function init(){
             closeable: false,
             data: { dataType: 'iframe', dataLink: 'template/main.html' }
         }],
-        activeTabIndex: 0,   //最先激活的tab  // 首页
+        activeTabIndex: 0,   
         loadOnce: true
     });
+
     bindEvent();
 }
 function bindEvent(){
+    
     $('span.func').click(function() {
         $.fn.jerichoTab.addTab({
             tabFirer: $(this),
